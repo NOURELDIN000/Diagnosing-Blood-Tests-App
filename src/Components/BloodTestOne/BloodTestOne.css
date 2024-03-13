@@ -1,0 +1,48 @@
+.main-blood-test-one {
+  overflow: hidden;
+}
+
+.main-blood-test-one img{
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+   
+}
+
+
+.show-img {
+  /* border:5px solid #000; */
+  height: 500px;
+  margin-top: 20px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url("../../../public/images/s.jpg");
+  
+  /* overflow: hidden; */
+}
+
+.img-btn {
+  margin: 20px 0;
+}
+
+.img-btn-two {
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+
+
+/* @media screen and (min-width:320px) and (max-width:480px) {
+    .show-img{
+        width: 300px;
+        height: 300px;
+    }
+} */
+
+@media screen and (min-width:320px) and (max-width:768px) {
+    .show-img{
+        width: 300px;
+        height: 300px;
+    }
+}

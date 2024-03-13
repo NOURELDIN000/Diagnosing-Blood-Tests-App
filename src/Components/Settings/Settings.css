@@ -1,0 +1,21 @@
+
+.language-div{
+    border: 1px solid #000;
+    padding-right: 7px;
+    padding-left: 7px;
+    border-radius: 10px;
+}
+
+.city-div{
+    margin-top: 30px;
+}
+
+.language-div .form-select{
+    border: none;
+    cursor: pointer;
+    width: 160px;
+}
+
+.language-div .form-select:focus{
+    box-shadow: none;
+}

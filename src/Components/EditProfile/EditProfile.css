@@ -1,0 +1,23 @@
+
+.border{
+    border: 5px solid red;
+}
+
+.edit-form{
+    /* border: 5px solid red; */
+}
+
+.main{
+    /* border: 5px solid red; */
+
+    align-items: start;
+    min-height: auto;
+   
+}
+
+.edit-form .main form {
+    margin-top: 0;
+    padding-top: 0;
+    /* border: 5px solid red; */
+    height: auto;
+}

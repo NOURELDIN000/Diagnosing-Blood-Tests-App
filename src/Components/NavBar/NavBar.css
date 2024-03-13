@@ -1,0 +1,83 @@
+.Navbar{
+
+    background-color: #3daed2;
+    /* background-color:#4bbcd7; */
+}
+
+a.nav-link{
+    margin-left: 20px;
+}
+
+.Navbar svg{
+    font-size: 20px;
+    color: #fff;
+    transition: .3s ease-in-out;
+}
+
+.Navbar svg:hover{
+    /* font-size: 21px; */
+    scale: 1.1;
+}
+
+
+.search{
+    margin-left: 50px;
+    margin-top: 5px;
+    
+}
+
+.search-form-control{
+    height: 35px;
+    border-radius: 35px;
+    border: 3px solid #f8f9fa78 !important;
+    /* background-color: rgb(11, 74, 185) !important; */
+    background-color: #3daed2;
+    
+    
+}
+
+
+.search-form-control:focus{
+    background-color: #3daed2;
+    box-shadow: none;
+}
+
+
+
+.search-form-control::placeholder{
+    /* padding-left: 18px; */
+    color: #fff;
+}
+
+
+
+
+@media  (max-width:768px) {
+    .search{
+        margin-top: 10px;
+        margin-left: 10px;
+        width: 40%;
+    }
+}
+
+
+
+@media   (min-width:769px)    and  (max-width:991px) {
+    .search{
+        margin-top: 10px;
+        margin-left: 10px;
+        width: 40%;
+    }
+}
+
+
+/* #4bbcd7 */
+
+/* for icons */
+/* #0390b2 */
+
+
+/* seacr border */
+/* #2696ba */
+/* or */
+/* #f8f9fa78 */

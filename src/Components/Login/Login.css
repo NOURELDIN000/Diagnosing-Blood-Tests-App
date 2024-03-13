@@ -1,0 +1,111 @@
+.login {
+  display: flex;
+  /* width: 30%; */
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login form {
+  width: 100%;
+  /* border: 2px solid red; */
+  padding: 50px;
+  /* margin-right: auto;
+    margin-left: auto;
+    
+    margin: auto;
+     */
+}
+
+.login input {
+  /* border: none !important; */
+  /* border-bottom: 1px solid #333 !important; */
+  outline: none !important;
+  border-radius: 0px !important;
+}
+
+.login input:focus {
+  /* border: none !important; */
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.login-control,
+.login-control:focus {
+  border: none;
+  border-bottom: 1px solid #333;
+}
+
+.login button.btn,
+.login a.btn {
+  color: #fff;
+  background-color: #3daed2;
+  width: 100%;
+  margin-top: 30px;
+  padding: 15px 0;
+}
+
+.login a.btn {
+  margin-top: 15px;
+}
+
+.login button.btn:hover,
+.login a.btn:hover {
+  color: #fff;
+  background-color: lightblue;
+}
+
+.login .social .face {
+  border: 1px solid #000;
+  border-radius: 50%;
+  background-color: #fff;
+  padding: 10px;
+}
+
+.login .social .google {
+  border: 1px solid #000;
+  border-radius: 50%;
+  background-color: #fff;
+  padding: 10px;
+  margin-left: 15px;
+}
+
+.login .social a {
+  color: #333;
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .login {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .login {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .login {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+  .login {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .login {
+    width: 40%;
+  }
+}
+
+
+/* forgot style */
+/* <a href="/login" style={{position:'absolute', right:'0px' , top:'25px' ,color:'#3b9bce' ,textDecoration:'none'}}>Forgot? */
