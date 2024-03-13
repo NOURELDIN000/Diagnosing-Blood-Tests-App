@@ -1,7 +1,7 @@
 import { FaPen } from "react-icons/fa";
 import "./EditProfile.css";
 
-import React, { useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import { IoPersonOutline } from "react-icons/io5";
@@ -9,6 +9,7 @@ import { MdAlternateEmail } from "react-icons/md";
 import { LuLock } from "react-icons/lu";
 import { useNavigate } from "react-router";
 import NavBar from "../NavBar/NavBar";
+import ImageContext from "../ImageProfile";
 
 const EditProfile = () => {
   const labelText = () => {
@@ -60,17 +61,46 @@ const EditProfile = () => {
     }
   };
 
+  const fileInputRef = useRef(null);
+  // const [selectedImage, setSelectedImage] = useState(null);
+  const { selectedImage, setSelectedImage } = useContext(ImageContext);
+
+  const handleFileSelect = (event) => {
+    const file = event.target.files[0];
+    if (file && file.type.startsWith("image/")) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setSelectedImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleClick = () => {
+    fileInputRef.current.click(); // Ensure that fileInputRef is not null before calling click()
+  };
+
   return (
     <div>
-      <NavBar/>
+      <NavBar />
       <div className="img-profile  d-flex justify-content-center align-items-center ">
-        <img src="../images/log.jpg" alt="profile img" />
+        {selectedImage ? (
+          <img src={selectedImage} alt="" />
+        ) : (
+          <img src="../images/log.jpg" alt="" />
+        )}
         <div className="fapen-icon">
-          <button className="fapen-btn">
-            {" "}
+          <button className="fapen-btn" onClick={handleClick}>
             <FaPen />
           </button>
         </div>
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          style={{ display: "none" }}
+          onChange={handleFileSelect}
+        />
       </div>
       <div className="text-center profile-info ">
         <h3 style={{ marginTop: "15px" }}>Profile name </h3>

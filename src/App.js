@@ -11,20 +11,24 @@ import BloodTestOneResult from "./Components/BloodTestOneResult/BloodTestOneResu
 import Profile from "./Components/Profile/Profile";
 import EditProfile from "./Components/EditProfile/EditProfile";
 import Settings from "./Components/Settings/Settings";
+import { ImageProvider } from "./Components/ImageProfile";
 
 function App() {
   return (
     <>
+        <ImageProvider>
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/testone" element={<BloodTestOne />} />
         <Route path="/testone/result" element={<BloodTestOneResult />} />
+        <Route path="/settings" element={<Settings/>} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/edit/profile" element={<EditProfile/>} />
-        <Route path="/settings" element={<Settings/>} />
       </Routes>
+        
+        </ImageProvider>
     </>
   );
 }

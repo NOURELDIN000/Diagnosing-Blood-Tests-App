@@ -2,9 +2,10 @@ import { AiOutlineLogout } from "react-icons/ai";
 import NavBar from "../NavBar/NavBar";
 import "./Settings.css";
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { BiSolidChevronRight } from "react-icons/bi";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import ImageContext from "../ImageProfile";
 
 const Settings = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("English");
@@ -19,11 +20,18 @@ const Settings = () => {
     setSelectedCity(e.target.value);
   };
 
+  // const [selectedImage, setSelectedImage] = useState(null);
+  const { selectedImage } = useContext(ImageContext);
+
   return (
     <div>
       <NavBar />
       <div className="img-profile  d-flex justify-content-center align-items-center">
-        <img src="./images/log.jpg" alt="" />
+        {selectedImage ? (
+          <img src={selectedImage} alt="" />
+        ) : (
+          <img src="./images/log.jpg" alt="" />
+        )}
       </div>
       <div className="container mt-5">
         <div className="language-div d-flex align-items-center">
@@ -75,20 +83,30 @@ const Settings = () => {
             </select>
           </div>
         </div>
-        <div className='profile-btns'>
-      
-      <button style={{color:'red'}}> <AiOutlineLogout style={{marginRight:'5px' , fontSize:'22px' , color:'red'}} /> Logout
-  
-      <span style={{}}><BiSolidChevronRight style={{color:'#000'}}/></span>
-      </button>
-      </div>
-      <div className='profile-btns'>
-      
-      <button style={{color:'red', marginBottom:'20px'}}> <RiDeleteBin6Line style={{marginRight:'5px' , fontSize:'22px' , color:'red'}} /> Delete Account
-  
-      <span style={{bottom:'19px'}}><BiSolidChevronRight style={{color:'#000'}}/></span>
-      </button>
-      </div>
+        <div className="profile-btns">
+          <button style={{ color: "red" }}>
+            {" "}
+            <AiOutlineLogout
+              style={{ marginRight: "5px", fontSize: "22px", color: "red" }}
+            />{" "}
+            Logout
+            <span style={{}}>
+              <BiSolidChevronRight style={{ color: "#000" }} />
+            </span>
+          </button>
+        </div>
+        <div className="profile-btns">
+          <button style={{ color: "red", marginBottom: "20px" }}>
+            {" "}
+            <RiDeleteBin6Line
+              style={{ marginRight: "5px", fontSize: "22px", color: "red" }}
+            />{" "}
+            Delete Account
+            <span style={{ bottom: "19px" }}>
+              <BiSolidChevronRight style={{ color: "#000" }} />
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   );

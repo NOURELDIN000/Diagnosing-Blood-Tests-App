@@ -4,6 +4,7 @@ import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 // import ExampleCarouselImage from 'components/ExampleCarouselImage';
 import { Link } from "react-router-dom";
+import Footer from "../Footer/Footer";
 
 const Home = () => {
   return (
@@ -93,6 +94,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </div>
   );
 };

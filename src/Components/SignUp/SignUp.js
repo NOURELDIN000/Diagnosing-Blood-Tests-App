@@ -211,7 +211,7 @@ const SignUp = () => {
           }}
         >
           <div className="face">
-            <a href="https://www.facebook.com/login/">
+            <a target='/' href="https://www.facebook.com/login/">
               <SlSocialFacebook
                 style={{
                   fontSize: "30px",
@@ -220,7 +220,7 @@ const SignUp = () => {
             </a>
           </div>
           <div className="google">
-            <a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmyaccount.google.com%3Futm_source%3Daccount-marketing-page%26utm_medium%3Dgo-to-account-button&ifkv=ASKXGp3P7bHrRY_iEcpNteLHOZApj3_VskTo7MkjApjq_JCmHi1FHXyC_PznUFaLJKmKvCJn_GNN4A&service=accountsettings&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S1929573637%3A1707145915883510&theme=glif">
+            <a target='/' href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmyaccount.google.com%3Futm_source%3Daccount-marketing-page%26utm_medium%3Dgo-to-account-button&ifkv=ASKXGp3P7bHrRY_iEcpNteLHOZApj3_VskTo7MkjApjq_JCmHi1FHXyC_PznUFaLJKmKvCJn_GNN4A&service=accountsettings&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S1929573637%3A1707145915883510&theme=glif">
               <FaGoogle
                 style={{
                   fontSize: "30px",
