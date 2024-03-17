@@ -10,6 +10,7 @@ import { LuLock } from "react-icons/lu";
 import { useNavigate } from "react-router";
 import NavBar from "../NavBar/NavBar";
 import ImageContext from "../ImageProfile";
+import Footer from "../Footer/Footer";
 
 const EditProfile = () => {
   const labelText = () => {
@@ -229,6 +230,7 @@ const EditProfile = () => {
           </form>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };

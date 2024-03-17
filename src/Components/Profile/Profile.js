@@ -1,7 +1,7 @@
 import "./Profile.css";
 
-import React, { useContext, useRef, useState } from "react";
-import { FaPen } from "react-icons/fa";
+import React, { useContext, useRef } from "react";
+
 import { IoCameraOutline } from "react-icons/io5";
 import { BiSolidChevronRight } from "react-icons/bi";
 import { TfiUpload } from "react-icons/tfi";
@@ -13,6 +13,8 @@ import analysisAnimation from "../../animation/analysis.json";
 import NavBar from "../NavBar/NavBar";
 import { useNavigate } from "react-router";
 import ImageContext from "../ImageProfile";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import Footer from "../Footer/Footer";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -37,6 +39,11 @@ const Profile = () => {
     fileInputRef.current.click(); // Ensure that fileInputRef is not null before calling click()
   };
 
+  const handleDelete = () => {
+    setSelectedImage(null);
+  };
+
+
   return (
     <>
       <NavBar />
@@ -55,7 +62,16 @@ const Profile = () => {
                   <button className="fapen-btn" onClick={handleClick}>
                     <IoCameraOutline />
                   </button>
-                </div>
+                  </div>
+                  { selectedImage &&
+                 ( <div className="delete-icon">
+                    
+                  <button className="delete-btn" onClick={handleDelete}>
+                  <RiDeleteBin6Line />
+                  </button>
+                  </div>
+)}
+                
                 <input
                   ref={fileInputRef}
                   type="file"
@@ -108,7 +124,7 @@ const Profile = () => {
                 </button>
               </div>
               <div className="profile-btns">
-                <button style={{ color: "red", marginBottom: "20px" }}>
+                <button style={{ color: "red", marginBottom: "80px" }}>
                   {" "}
                   <AiOutlineLogout
                     style={{
@@ -118,7 +134,7 @@ const Profile = () => {
                     }}
                   />{" "}
                   Logout
-                  <span style={{ bottom: "19px" }}>
+                  <span style={{ bottom: "78px" }}>
                     <BiSolidChevronRight style={{ color: "#000" }} />
                   </span>
                 </button>
@@ -139,6 +155,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

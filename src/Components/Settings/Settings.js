@@ -6,18 +6,27 @@ import React, { useContext, useState } from "react";
 import { BiSolidChevronRight } from "react-icons/bi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import ImageContext from "../ImageProfile";
+import Footer from "../Footer/Footer";
 
 const Settings = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState("English");
-  const [selectedCity, setSelectedCity] = useState("Cairo");
+  const [selectedLanguage, setSelectedLanguage] = useState(
+    localStorage.getItem("selectedLanguage") || "English"
+  );
+  const [selectedCity, setSelectedCity] = useState(
+    localStorage.getItem("selectedCity") || "Cairo"
+  );
 
   // Function to handle language change
   const handleLanguageChange = (e) => {
+    const language = e.target.value;
     setSelectedLanguage(e.target.value);
+    localStorage.setItem("selectedLanguage", language);
   };
 
   const handleCityChange = (e) => {
-    setSelectedCity(e.target.value);
+    const city = e.target.value;
+    setSelectedCity(city);
+    localStorage.setItem("selectedCity", city);
   };
 
   // const [selectedImage, setSelectedImage] = useState(null);
@@ -96,18 +105,19 @@ const Settings = () => {
           </button>
         </div>
         <div className="profile-btns">
-          <button style={{ color: "red", marginBottom: "20px" }}>
+          <button style={{ color: "red", marginBottom: "80px" }}>
             {" "}
             <RiDeleteBin6Line
               style={{ marginRight: "5px", fontSize: "22px", color: "red" }}
             />{" "}
             Delete Account
-            <span style={{ bottom: "19px" }}>
+            <span style={{ bottom: "78px" }}>
               <BiSolidChevronRight style={{ color: "#000" }} />
             </span>
           </button>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };

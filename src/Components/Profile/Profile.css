@@ -21,7 +21,7 @@
   /* border-radius: 50%; */
 }
 
-.fapen-icon {
+.fapen-icon, .delete-icon {
   color: #fff;
   border: 1px solid #3daed2;
   background-color: #3daed2;
@@ -33,13 +33,26 @@
   font-size: 15px;
   position: absolute;
   right: -33px;
-  bottom: 0;
+  bottom: 37px;
   cursor: pointer;
+  transition: .3s;
 }
 
-.fapen-btn {
+.delete-icon{
+  border: 1px solid red;
+  background-color: red;
+  bottom: 0;
+}
+
+
+.fapen-btn, .delete-btn {
   all: unset;
 }
+
+.fapen-icon:hover, .delete-icon:hover {
+  opacity: .8;
+}
+
 
 .profile-info button {
   margin-top: 5px;
