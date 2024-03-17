@@ -12,6 +12,8 @@ import Profile from "./Components/Profile/Profile";
 import EditProfile from "./Components/EditProfile/EditProfile";
 import Settings from "./Components/Settings/Settings";
 import { ImageProvider } from "./Components/ImageProfile";
+import ChatBot from "./Components/ChatBot/ChatBot";
+
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
         <Route path="/settings" element={<Settings/>} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/edit/profile" element={<EditProfile/>} />
+        <Route path="/chat" element={<ChatBot/>} />
       </Routes>
         
         </ImageProvider>
