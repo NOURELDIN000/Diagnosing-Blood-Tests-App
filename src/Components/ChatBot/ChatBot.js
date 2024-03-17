@@ -10,6 +10,7 @@ const API_KEY = "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";
 export default function ChatBot() {
   const [isTyping, setIsTyping] = useState(false);
   const inputRef = useRef();
+
   const [messages, setMessages] = useState([
     {
       message: "Hello, how can I help you?",
@@ -87,66 +88,67 @@ export default function ChatBot() {
   }
 
   return (
-    <div>
+    <div className="main-chat">
       <NavBar />
       <div className="container ">
         <main className="">
           <section className="">
             <article>
               {messages.map((message, i) => {
-                  let isBot = message.sender === "ChatGPT";
-                  return (
-                    <div key={i} className="p-4 m-2 rounded  my-3 ">
-                      {isBot ? (
-                        // <img src='
-                        // ' alt="ChatBot" className=" w-10 p-2 rounded-full ps-0" />
-                        <div className="d-flex align-items-center fw-bold">
-                          <div
-                            className="rounded-pill fw-bold "
-                            style={{
-                              border: "1px solid #000",
-                              width: "23px",
-                              height: "23px",
-                              fontSize: "15px",
-                              textAlign: "center",
-                              color: "#fff",
-                              background: "#000",
-                            }}
-                          >
-                            B
-                          </div>
-                          <div className="ms-2">Bot</div>
-                        </div>
-                      ) : (
-                        <div className="d-flex align-items-center fw-bold">
-                          {" "}
-                          <FaUserCircle className=" text-2xl text-secondColor/90 block m-2 ms-0" />{" "}
-                          <div className="fw-bold">You</div>{" "}
-                        </div>
-                      )}
-
-                      <div className="msg-div">
-                        <p
-                          className="msg-content mt-3 fw-bold"
+                let isBot = message.sender === "ChatGPT";
+                return (
+                  <div key={i} className="p-4 m-2 rounded  my-3 ">
+                    {isBot ? (
+                      // <img src='
+                      // ' alt="ChatBot" className=" w-10 p-2 rounded-full ps-0" />
+                      <div className="d-flex align-items-center fw-bold">
+                        <div
+                          className="rounded-pill fw-bold "
                           style={{
                             border: "1px solid #000",
-                            display: "inline-block",
-                            borderRadius: "10px",
-                            background: "#f0f0f0",
+                            width: "23px",
+                            height: "23px",
+                            fontSize: "15px",
+                            textAlign: "center",
+                            color: "#fff",
+                            background: "#000",
                           }}
                         >
-                          {message.message}
-                        </p>
-                        <p
-                          className="msg-time ms-2"
-                          style={{ fontSize: "13px" }}
-                        >
-                          {message.time}
-                        </p>
+                          B
+                        </div>
+                        <div className="ms-2">Bot</div>
                       </div>
+                    ) : (
+                      <div className="d-flex align-items-center fw-bold">
+                        {" "}
+                        <FaUserCircle
+                          className=" m-2 ms-0"
+                          style={{ fontSize: "17px" }}
+                        />{" "}
+                        <div className="fw-bold">You</div>{" "}
+                      </div>
+                    )}
+
+                    <div className="msg-div">
+                      <p
+                        className="msg-content mt-3 "
+                        style={{
+                          border: "1px solid #000",
+                          display: "inline-block",
+                          borderRadius: "10px",
+                          background: "#f3f3f3",
+                          color: "#000000D9",
+                        }}
+                      >
+                        {message.message}
+                      </p>
+                      <p className="msg-time ms-2" style={{ fontSize: "13px" }}>
+                        {message.time}
+                      </p>
                     </div>
-                  );
-                })}
+                  </div>
+                );
+              })}
             </article>
             <div className="ms-5">
               {isTyping && (

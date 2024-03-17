@@ -1,5 +1,3 @@
-
-
 .chat-div {
   /* width: 90%;
     position:fixed;
@@ -17,7 +15,7 @@
   right: 40px;
   bottom: 25px;
   color: #3daed2;
-  /* color: blue; */
+
   transition: 0.3s;
 }
 
@@ -29,7 +27,8 @@
   padding: 10px 20px;
   width: 100%;
   border-radius: 15px;
-  position: relative;
+  /* position: relative; */
+
   transition: 0.1s;
   outline: none;
   border: 1px solid #000;
@@ -45,14 +44,6 @@
   opacity: 0.8;
 }
 
-
-.msg-content{
-    padding: 10px 20px;
+.msg-content {
+  padding: 10px 20px;
 }
-
-
-
-/* .message {
-  margin-bottom: 15px;
-  font-size: 20px;
-} */

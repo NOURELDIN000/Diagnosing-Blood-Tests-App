@@ -13,24 +13,30 @@ const Home = () => {
 
       <Carousel fade className="main-carosuel">
         <Carousel.Item>
+          <div className="carosuel-img">
+            
           <img
             src="./images/1.jpg"
             alt=""
             text="First slide"
-            style={{ width: "100%", height: "500px" }}
+            style={{ width: "100%",  }}
           />
+          </div>
           <Carousel.Caption>
             <h3>First slide label</h3>
             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
+          <div className="carosuel-img">
+            
           <img
             src="./images/2.jpg"
             alt=""
             text="Second slide"
-            style={{ width: "100%", height: "500px" }}
+            style={{ width: "100%",  }}
           />
+          </div>
           <Carousel.Caption>
             <h3>Second slide label</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>

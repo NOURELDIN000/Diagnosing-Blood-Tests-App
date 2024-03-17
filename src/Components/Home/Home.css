@@ -1,13 +1,25 @@
 /* .home-page {
-  height: 5000px;
+  min-height: 70vh;
 } */
 
-.main-carosuel {
-  margin-top: 50px;
-  margin-bottom: auto;
-  border-top: 3px solid #3daed2;
+
+/* .carosuel-img{
+  height: 100vh;
+} */
+.carosuel-img img{
+  height: 92vh;
   border-bottom: 3px solid #3daed2;
 }
+
+/*
+.main-carosuel {
+  /* margin-top: 50px; */
+  /* margin-bottom: auto; */
+  /* border-top: 3px solid #3daed2; */
+  /* border-bottom: 3px solid #3daed2; */
+  /* min-height: 92vh; }*/
+
+
 
 .main-carosuel button {
   display: none;
