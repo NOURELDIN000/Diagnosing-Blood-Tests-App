@@ -43,12 +43,11 @@ const Profile = () => {
     setSelectedImage(null);
   };
 
-
   return (
     <>
       <NavBar />
 
-      <div className="d-flex overflow-x-hidden">
+      <div className="d-flex overflow-x-hidden ">
         <div className="container ">
           <div className="row d-flex">
             <div className="col-md-6 ">
@@ -62,16 +61,15 @@ const Profile = () => {
                   <button className="fapen-btn" onClick={handleClick}>
                     <IoCameraOutline />
                   </button>
+                </div>
+                {selectedImage && (
+                  <div className="delete-icon">
+                    <button className="delete-btn" onClick={handleDelete}>
+                      <RiDeleteBin6Line />
+                    </button>
                   </div>
-                  { selectedImage &&
-                 ( <div className="delete-icon">
-                    
-                  <button className="delete-btn" onClick={handleDelete}>
-                  <RiDeleteBin6Line />
-                  </button>
-                  </div>
-)}
-                
+                )}
+
                 <input
                   ref={fileInputRef}
                   type="file"

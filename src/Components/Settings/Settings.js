@@ -44,7 +44,7 @@ const Settings = () => {
       </div>
       <div className="container mt-5">
         <div className="language-div d-flex align-items-center">
-          <div className=" fw-bold">Language</div>
+          <div className=" fw-bold ms-2">Language</div>
           <div className="ms-auto ">
             <select
               className="form-select"
@@ -58,7 +58,7 @@ const Settings = () => {
         </div>
 
         <div className="language-div d-flex align-items-center city-div">
-          <div className=" fw-bold">City</div>
+          <div className=" fw-bold ms-2">City</div>
           <div className="ms-auto ">
             <select
               className="form-select"

@@ -224,7 +224,7 @@ const EditProfile = () => {
               )}
             </FloatingLabel>
 
-            <button className="btn" type="submit">
+            <button className="btn edit-btn" type="submit">
               Edit
             </button>
           </form>

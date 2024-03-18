@@ -47,6 +47,10 @@
   padding: 15px 0;
 }
 
+.login button.btn{
+  letter-spacing: 1px;
+}
+
 .login a.btn {
   margin-top: 15px;
 }
@@ -54,7 +58,8 @@
 .login button.btn:hover,
 .login a.btn:hover {
   color: #fff;
-  background-color: lightblue;
+  opacity: .9;
+  background-color: #3daed2;
 }
 
 .login .social .face {

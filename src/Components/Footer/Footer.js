@@ -6,12 +6,13 @@ import { FaTwitter } from "react-icons/fa";
 import { TfiYoutube } from "react-icons/tfi";
 
 import { LuInstagram } from "react-icons/lu";
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
     <div className='footer'>
       <ul className='links   list-unstyled d-flex justify-content-center'>
-        <li><a href='/'>Register</a></li>
+        <li><Link to={'/'}>Register</Link></li>
         <li>  <a href='#/'> Forum</a>    </li>
         <li> <a href='#/'>  Affiliate </a> </li>
         <li> <a href='#/'> FAQ</a>  </li>

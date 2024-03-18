@@ -223,11 +223,6 @@ const Login = () => {
             </a>
           </div>
         </div>
-
-        {/* <p style={{ textAlign: "center", marginTop: "30px" }}>
-        By creating an account you agree <br /> to the{" "}
-        <span style={{ color: "#3daed2" }}>Terms of Service</span>.
-      </p> */}
       </form>
     </div>
   );

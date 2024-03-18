@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router";
 import NavBar from "../NavBar/NavBar";
 import "./BloodTestOne.css";
-
+import Lottie from "lottie-react";
+import doneAnimation from "../../animation/done.json"
 import React, {  useEffect, useRef, useState } from "react";
 
 const BloodTestOne = () => {
@@ -210,9 +211,17 @@ const BloodTestOne = () => {
         </button>
       </div>
 
-   { imageSelected  && (<div className="d-flex  justify-content-center">
-        <button className="main-btn rounded-pill border-0  img-btn-two   " onClick={()=>navigate("/testone/result")}>
-          {" "}
+   { imageSelected  && (<div className="d-flex  justify-content-center ">
+
+        <button className="main-btn rounded-pill border-0  img-btn-two     Done-btn position-relative" onClick={()=>navigate("/testone/result")}>
+        <Lottie
+              
+              loop={false}
+              style={{ height: 24, left:'20px'}}
+              animationData={doneAnimation}
+              className="done-animation position-absolute"
+              
+            />
           Done
         </button>
       </div> )}
@@ -225,5 +234,3 @@ export default BloodTestOne;
 
 
 
-{/* <div className="d-flex justify-content-center align-items-center show-img" style={{ backgroundImage: selectedImage ? `url(${selectedImage})` : 'none', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
-{selectedImage && <img src={selectedImage} alt="Selected" style={{ display: 'none' }} />} */}
