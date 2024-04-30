@@ -9,19 +9,19 @@ import ImageContext from "../ImageProfile";
 import Footer from "../Footer/Footer";
 
 const Settings = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState(
-    localStorage.getItem("selectedLanguage") || "English"
-  );
+  // const [selectedLanguage, setSelectedLanguage] = useState(
+  //   localStorage.getItem("selectedLanguage") || "English"
+  // );
   const [selectedCity, setSelectedCity] = useState(
     localStorage.getItem("selectedCity") || "Cairo"
   );
 
   // Function to handle language change
-  const handleLanguageChange = (e) => {
-    const language = e.target.value;
-    setSelectedLanguage(e.target.value);
-    localStorage.setItem("selectedLanguage", language);
-  };
+  // const handleLanguageChange = (e) => {
+  //   const language = e.target.value;
+  //   setSelectedLanguage(e.target.value);
+  //   localStorage.setItem("selectedLanguage", language);
+  // };
 
   const handleCityChange = (e) => {
     const city = e.target.value;
@@ -43,7 +43,7 @@ const Settings = () => {
         )}
       </div>
       <div className="container mt-5">
-        <div className="language-div d-flex align-items-center">
+        {/* <div className="language-div d-flex align-items-center">
           <div className=" fw-bold ms-2">Language</div>
           <div className="ms-auto ">
             <select
@@ -55,7 +55,7 @@ const Settings = () => {
               <option value="Arabic">Arabic</option>
             </select>
           </div>
-        </div>
+        </div> */}
 
         <div className="language-div d-flex align-items-center city-div">
           <div className=" fw-bold ms-2">City</div>

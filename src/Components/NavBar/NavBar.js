@@ -56,7 +56,7 @@ const NavBar = () => {
               </Link>
             </Nav.Link>
             {/* <CiSearch style={{position:'absolute' , right:'300px' ,bottom:'20px' ,fontSize:'20px' ,color:'#fff'}} /> */}
-            <Form className="search">
+            {/* <Form className="search">
               <div style={{ position: "relative" }}>
                 <Form.Control
                   type="text"
@@ -74,7 +74,7 @@ const NavBar = () => {
                   }}
                 />
               </div>
-            </Form>
+            </Form> */}
           </Nav>
         </Navbar.Collapse>
       </Container>
