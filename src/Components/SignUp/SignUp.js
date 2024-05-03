@@ -1,6 +1,6 @@
 import "./SignUp.css";
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import { IoPersonOutline } from "react-icons/io5";
@@ -9,6 +9,11 @@ import { LuLock } from "react-icons/lu";
 import { SlSocialFacebook } from "react-icons/sl";
 import { FaGoogle } from "react-icons/fa";
 import { useNavigate } from "react-router";
+import axios from "axios";
+import { User } from "../Context/Context";
+import Cookie from "cookie-universal"
+
+
 const SignUp = () => {
   const labelText = () => {
     return (
@@ -35,35 +40,95 @@ const SignUp = () => {
     );
   };
 
-  const [name, SetName] = useState("");
-  const [email, SetEmail] = useState("");
-  const [Password, SetPassword] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordR, setPasswordR] = useState("");
 
-  const [accept, SetAccept] = useState(false);
+  const [accept, setAccept] = useState(false);
+const [emailError, setEmailError] = useState("");
+  const [flag, setFlag] = useState(false);
 
-  // const [validationError, setValidationError] = useState(false);
+  const userNow = useContext(User);
+
+const cookie = Cookie()
+
+  // console.log(userNow);
 
   const navigation = useNavigate();
 
-  const Submit = (e) => {
+  async function Submit (e) {
     e.preventDefault();
-    SetAccept(true);
+    setAccept(true);
     if (
       name !== "" &&
-      Password !== "" &&
-      Password.length > 8 &&
+      password !== "" &&
+      password.length > 8 &&
       email !== "" &&
       email.indexOf("@") !== -1 &&
       email.indexOf("@") !== 0 &&
       email.indexOf("@") !== email.length - 1
     ) {
-      navigation("/home");
+      
+      setFlag(true)
+      
+    }else{
+      setFlag(false)
     }
+
+    // if (
+    //   name === "" ||
+    //   Password === "" ||
+    //   Password.length < 8 ||
+    //   email !== "" ||
+    //   email.indexOf("@") === -1 ||
+    //   email.indexOf("@") === 0 ||
+    //   email.indexOf("@") === email.length - 1
+    // ) {
+      
+    //   setFlag(false)
+    // }else{
+    //   setFlag(true)
+    // }
+
+    if (flag){
+     
+    try{
+        let res = await axios.post('http://127.0.0.1:8000/api/register', {
+        name : name,
+        email: email,
+        password: password,
+        password_confirmation: passwordR,
+         });
+         const token = res.data.data.token;
+        
+         const userDetails = res.data.data.user;
+         userNow.setAuth({token, userDetails});
+         cookie.set('nour', token)
+         navigation('/home')
+        
+          
+        
+       } 
+       catch(err){
+        setEmailError(err.response.status)
+        
+       }
+       finally{
+        
+       }
+       
+      }
+
+    
+
+
+
   };
 
   return (
     <div className="main">
-      <form onSubmit={Submit} noValidate  autoComplete="off" className="">
+      <form onSubmit={Submit} noValidate   className="">
         <div className="mb-5">
           <h1>Create an account</h1>
 
@@ -82,7 +147,7 @@ const SignUp = () => {
               type="text"
               value={name}
               onChange={(e) => {
-                SetName(e.target.value);
+                setName(e.target.value);
               }}
             />
           ) : (
@@ -92,7 +157,7 @@ const SignUp = () => {
               type="text"
               value={name}
               onChange={(e) => {
-                SetName(e.target.value);
+                setName(e.target.value);
               }}
             />
           )}
@@ -117,7 +182,7 @@ const SignUp = () => {
               type="email"
               value={email}
               onChange={(e) => {
-                SetEmail(e.target.value);
+                setEmail(e.target.value);
               }}
             />
           ) : (
@@ -127,7 +192,7 @@ const SignUp = () => {
               type="email"
               value={email}
               onChange={(e) => {
-                SetEmail(e.target.value);
+                setEmail(e.target.value);
               }}
             />
           )}
@@ -145,17 +210,20 @@ const SignUp = () => {
               email.endsWith("@") )&& (
               <p className="mt-3 text-danger ">Please Enter a Valid Email.</p>
             )}
+
+          {accept && emailError === 422 && (<p className="mt-3 text-danger ">The email has already been taken.</p>)}
+
         </FloatingLabel>
         <FloatingLabel controlId="floatingPassword" label={labelPass()}>
-          {accept && (Password === "") | (Password.length < 8) ? (
+          {accept && (password === "") | (password.length < 8) ? (
             <Form.Control
               className="is-invalid"
               
               placeholder=""
               type="password"
-              value={Password}
+              value={password}
               onChange={(e) => {
-                SetPassword(e.target.value);
+                setPassword(e.target.value);
               }}
             />
           ) : (
@@ -164,21 +232,51 @@ const SignUp = () => {
               
               placeholder=""
               type="password"
-              value={Password}
+              value={password}
               onChange={(e) => {
-                SetPassword(e.target.value);
+                setPassword(e.target.value);
               }}
             />
           )}
 
-          {Password === "" && accept && (
+          {password === "" && accept && (
             <p className="mt-3 text-danger">Password is Required.</p>
           )}
-          {Password.length < 8 && Password.length !== 0 && accept && (
+          {password.length < 8 && password.length !== 0 && accept && (
             <p className="mt-3 text-danger">
               Password must be at least 8 characters or numbers.
             </p>
           )}
+        </FloatingLabel>
+        <FloatingLabel controlId="floatingPassword" label={labelPass()}>
+          {accept && (passwordR !== password )  ? (
+            <Form.Control
+              className="is-invalid"
+              
+              placeholder=""
+              type="password"
+              value={passwordR}
+              onChange={(e) => {
+                setPasswordR(e.target.value);
+              }}
+            />
+          ) : (
+            <Form.Control
+              className=""
+              
+              placeholder=""
+              type="password"
+              value={passwordR}
+              onChange={(e) => {
+                setPasswordR(e.target.value);
+              }}
+            />
+          )}
+
+          {password !== passwordR  && accept && (
+            <p className="mt-3 text-danger">Password is not match.</p>
+          )}
+          
         </FloatingLabel>
 
         <button className="btn" type="submit">
