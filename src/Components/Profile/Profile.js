@@ -1,6 +1,6 @@
 import "./Profile.css";
-
-import React, { useContext, useRef } from "react";
+import Cookie from "cookie-universal"
+import React, { useContext, useEffect, useRef, useState } from "react";
 
 import { IoCameraOutline } from "react-icons/io5";
 import { BiSolidChevronRight } from "react-icons/bi";
@@ -15,6 +15,7 @@ import { useNavigate } from "react-router";
 import ImageContext from "../ImageProfile";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import Footer from "../Footer/Footer";
+import { User } from "../Context/Context";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -42,6 +43,60 @@ const Profile = () => {
   const handleDelete = () => {
     setSelectedImage(null);
   };
+
+
+  // const userNow = useContext(User);
+
+  const cookie = Cookie();
+  // cookie.set("name", userNow.auth.userDetails.name)
+  
+  // const userName =  cookie.get("name") || (userNow.auth.userDetails && userNow.auth.userDetails.name) || "profileName";
+
+
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+
+  useEffect(() => {
+    // Retrieve user name from local storage or cookie
+    const storedName = cookie.get("userName");
+
+    if (storedName) {
+      setUserName(storedName);
+      
+    } 
+    else {
+      // If not available, set default value
+      setUserName("profileName");
+      
+    }
+  }, []);
+
+  useEffect(() => {
+    // Retrieve user name from local storage or cookie
+    const storedEmail = cookie.get("userEmail");
+    if (storedEmail) {
+      setUserEmail(storedEmail);
+    } else {
+      // If not available, set default value
+      setUserEmail("profileEmail");
+    }
+  }, []);
+
+
+  
+
+  // Load the selected image from localStorage on component initialization
+//   useEffect(() => {
+//    const storedImage = localStorage.getItem('selectedImage');
+//    if (storedImage) {
+//      setSelectedImage(storedImage);
+//    }
+//   //  else{
+//   //    setSelectedImage("./images/log.jpg")
+//   //  }
+//  }, []);
+
+
 
   return (
     <>
@@ -80,8 +135,8 @@ const Profile = () => {
               </div>
 
               <div className="text-center profile-info">
-                <h3 style={{ marginTop: "15px" }}>Profile name </h3>
-                <p style={{ marginTop: "15px" }}>profile_email@gmail.com</p>
+                <h3 style={{ marginTop: "15px" }}>{userName} </h3>
+                <p style={{ marginTop: "15px" }}>{userEmail}</p>
                 <div>
                   <button
                     className="main-btn rounded-pill border-0 "

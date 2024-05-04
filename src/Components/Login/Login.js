@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { User } from "../Context/Context";
 import Cookie from "cookie-universal"
+import ImageContext from "../ImageProfile";
 
 const Login = () => {
   const labelEmail = () => {
@@ -38,12 +39,16 @@ const Login = () => {
   const [accept, setAccept] = useState(false);
   const [flag, setFlag] = useState(false);
   const [emailError, setEmailError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigation = useNavigate();
 
   const userNow = useContext(User);
 
   const cookie = Cookie()
+
+  // const image = useContext(ImageContext);
+
 
   // const Submit = (e) => {
   //   e.preventDefault();
@@ -78,6 +83,7 @@ const Login = () => {
 
 
     if(flag){
+      setLoading(true)
     try{
         let res = await axios.post('http://127.0.0.1:8000/api/login', {
        
@@ -90,11 +96,21 @@ const Login = () => {
          const userDetails = res.data.data.user;
          userNow.setAuth({token, userDetails});
          cookie.set('nour', token)
-         navigation('/home')
+        
+         cookie.set("userName", userDetails.name);
+         cookie.set("userEmail", userDetails.email);
+        //  localStorage.setItem("selectedImage", image.selectedImage);
+           navigation('/home')
+        
        } 
        catch(err){
-        setEmailError(err)
-        console.log(err)   
+        setAccept(true)
+        setEmailError(err.response.status)
+        console.log(err) 
+        
+       }
+       finally{
+        setLoading(false)
        }
       }
 
@@ -123,7 +139,9 @@ const Login = () => {
           {(email === "" ||
             email.indexOf("@") === -1 ||
             email.indexOf("@") === email.length - 1 ||
-            email.startsWith("@")) &&
+            email.startsWith("@") ||
+            emailError === 401
+          ) &&
           accept ? (
             <Form.Control
               className="is-invalid"
@@ -164,7 +182,7 @@ const Login = () => {
         </FloatingLabel>
 
         <FloatingLabel controlId="floatingPassword" label={labelPass()}>
-          {accept && (password === "" || password.length < 8) ? (
+          {accept && (password === "" || password.length < 8 || emailError === 401) ? (
             <>
               <Form.Control
                 className="is-invalid"
@@ -228,7 +246,8 @@ const Login = () => {
         </FloatingLabel>
 
         <button className="btn" type="submit">
-          Log in
+          {/* Log in */}
+          {loading ? "Logging in..." : "Log in"}
         </button>
 
         <div

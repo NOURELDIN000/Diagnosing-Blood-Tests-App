@@ -11,6 +11,9 @@ export const ImageProvider = ({ children }) => {
     if (storedImage) {
       setSelectedImage(storedImage);
     }
+    // else{
+    //   setSelectedImage("./images/log.jpg")
+    // }
   }, []);
 
   // Save the selected image to localStorage whenever it changes

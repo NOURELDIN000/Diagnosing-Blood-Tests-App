@@ -1,7 +1,7 @@
 import { FaPen } from "react-icons/fa";
 import "./EditProfile.css";
 
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import { IoPersonOutline } from "react-icons/io5";
@@ -11,6 +11,7 @@ import { useNavigate } from "react-router";
 import NavBar from "../NavBar/NavBar";
 import ImageContext from "../ImageProfile";
 import Footer from "../Footer/Footer";
+import Cookie from "cookie-universal"
 
 const EditProfile = () => {
   const labelText = () => {
@@ -81,6 +82,39 @@ const EditProfile = () => {
     fileInputRef.current.click(); // Ensure that fileInputRef is not null before calling click()
   };
 
+  const cookie = Cookie();
+
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+
+  useEffect(() => {
+    // Retrieve user name from local storage or cookie
+    const storedName = cookie.get("userName");
+
+    if (storedName) {
+      setUserName(storedName);
+      
+    } 
+    else {
+      // If not available, set default value
+      setUserName("profileName");
+      
+    }
+  }, []);
+
+  useEffect(() => {
+    // Retrieve user name from local storage or cookie
+    const storedEmail = cookie.get("userEmail");
+    if (storedEmail) {
+      setUserEmail(storedEmail);
+    } else {
+      // If not available, set default value
+      setUserEmail("profileEmail");
+    }
+  }, []);
+
+
+
   return (
     <div>
       <NavBar />
@@ -104,8 +138,8 @@ const EditProfile = () => {
         />
       </div>
       <div className="text-center profile-info ">
-        <h3 style={{ marginTop: "15px" }}>Profile name </h3>
-        <p style={{ marginTop: "15px" }}>profile_email@gmail.com</p>
+        <h3 style={{ marginTop: "15px" }}>{userName} </h3>
+        <p style={{ marginTop: "15px" }}>{userEmail}</p>
       </div>
 
       <div className="edit-form">

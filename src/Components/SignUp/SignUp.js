@@ -12,6 +12,7 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import { User } from "../Context/Context";
 import Cookie from "cookie-universal"
+import ImageContext from "../ImageProfile";
 
 
 const SignUp = () => {
@@ -54,6 +55,11 @@ const [emailError, setEmailError] = useState("");
 const cookie = Cookie()
 
   // console.log(userNow);
+
+
+// const image = useContext(ImageContext);
+
+
 
   const navigation = useNavigate();
 
@@ -104,7 +110,13 @@ const cookie = Cookie()
         
          const userDetails = res.data.data.user;
          userNow.setAuth({token, userDetails});
+         
          cookie.set('nour', token)
+        //  cookie.set('name', userNow.auth.userDetails.name)
+        cookie.set("userName", userDetails.name);
+        cookie.set("userEmail", userDetails.email);
+       
+         console.log(userNow);
          navigation('/home')
         
           
@@ -175,7 +187,9 @@ const cookie = Cookie()
          ( email === "" ||
             email.indexOf("@") === -1  ||
             email.indexOf("@") === email.length - 1 ||
-            email.startsWith("@") ) && accept  ?  (
+            email.startsWith("@") ||
+            emailError === 422
+          ) && accept  ?  (
             <Form.Control
               className="is-invalid"
               placeholder="name@example.com"

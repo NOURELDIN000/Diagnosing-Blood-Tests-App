@@ -1,12 +1,15 @@
 import NavBar from "../NavBar/NavBar";
 import "./Home.css";
-import React from "react";
+import React, { useContext } from "react";
 import Carousel from "react-bootstrap/Carousel";
 // import ExampleCarouselImage from 'components/ExampleCarouselImage';
 import { Link } from "react-router-dom";
 import Footer from "../Footer/Footer";
+import { User } from "../Context/Context";
 
 const Home = () => {
+  const userNow = useContext(User);
+  console.log(userNow)
   return (
     <div className="home-page">
       <NavBar />
