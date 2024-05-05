@@ -37,7 +37,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const [accept, setAccept] = useState(false);
-  const [flag, setFlag] = useState(false);
+  // const [flag, setFlag] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -66,26 +66,27 @@ const Login = () => {
   // };
 
   async function Submit (e) {
+    let flag = true
     e.preventDefault();
     setAccept(true);
   
    if (
-      password !== "" &&
-      password.length > 8 &&
-      email !== "" &&
-      email.indexOf("@") !== -1 &&
-      email.indexOf("@") !== 0 &&
-      email.indexOf("@") !== email.length - 1
+      password === "" ||
+      password.length < 8 ||
+      email === "" ||
+      email.indexOf("@") === -1 ||
+      email.indexOf("@") === 0 ||
+      email.indexOf("@") === email.length - 1 
     ) {
       // navigation("/home");
-      setFlag(true);
-    }else {setFlag(false)}
+      flag = false
+    }else {flag = true}
 
 
     if(flag){
       setLoading(true)
     try{
-        let res = await axios.post('http://127.0.0.1:8000/api/login', {
+        let res = await axios.post('https://bload-test.icanforsoftware.com/api/login?api_password=AHMED$2024&username=new_user@gmail.com&password=12345678', {
        
         email: email,
         password: password,
@@ -93,24 +94,27 @@ const Login = () => {
          })
          console.log(res)
          const token = res.data.data.token;
-         const userDetails = res.data.data.user;
-         userNow.setAuth({token, userDetails});
+         const userName = res.data.data.name;
+         const userEmail = res.data.data.email;
+         userNow.setAuth({token, userName , userEmail});
          cookie.set('nour', token)
         
-         cookie.set("userName", userDetails.name);
-         cookie.set("userEmail", userDetails.email);
+         cookie.set("userName", userName);
+         cookie.set("userEmail", userEmail);
         //  localStorage.setItem("selectedImage", image.selectedImage);
-           navigation('/home')
+          //  navigation('/home')
         
        } 
        catch(err){
-        setAccept(true)
-        setEmailError(err.response.status)
+         setAccept(true)
+         setEmailError(err.response.status)
         console.log(err) 
         
        }
        finally{
+        
         setLoading(false)
+        
        }
       }
 
@@ -136,33 +140,25 @@ const Login = () => {
           label={labelEmail()}
           className="mb-3"
         >
-          {(email === "" ||
-            email.indexOf("@") === -1 ||
-            email.indexOf("@") === email.length - 1 ||
-            email.startsWith("@") ||
-            emailError === 401
-          ) &&
-          accept ? (
-            <Form.Control
-              className="is-invalid"
-              placeholder="name@example.com"
-              type="email"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
-          ) : (
-            <Form.Control
-              className=""
-              placeholder="name@example.com"
-              type="email"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
-          )}
+          <Form.Control
+            className={
+              (email === "" ||
+                email.indexOf("@") === -1 ||
+                email.indexOf("@") === email.length - 1 ||
+                email.startsWith("@") ||
+                emailError === 401) &&
+              accept
+                ? "is-invalid"
+                : ""
+            }
+            placeholder="name@example.com"
+            type="email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
+          
 
           {accept && email === "" && (
             <p className="mt-3 text-danger ">Email is Required.</p>
@@ -182,18 +178,21 @@ const Login = () => {
         </FloatingLabel>
 
         <FloatingLabel controlId="floatingPassword" label={labelPass()}>
-          {accept && (password === "" || password.length < 8 || emailError === 401) ? (
-            <>
-              <Form.Control
-                className="is-invalid"
-                placeholder=""
-                type="password"
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              />{" "}
-              <a
+          <>
+          <Form.Control
+            className={
+              accept && (password === "") | (password.length < 8) | ( emailError === 401)
+                ? "is-invalid"
+                : ""
+            }
+            placeholder=""
+            type="password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
+              {/* <a
                 href="/login"
                 style={{
                   position: "absolute",
@@ -204,33 +203,9 @@ const Login = () => {
                 }}
               >
                 Forgot?{" "}
-              </a>
+              </a> */}
             </>
-          ) : (
-            <>
-              <Form.Control
-                className=""
-                placeholder=""
-                type="password"
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              />{" "}
-              <a
-                href="/login"
-                style={{
-                  position: "absolute",
-                  right: "0px",
-                  top: "25px",
-                  color: "#3daed2",
-                  textDecoration: "none",
-                }}
-              >
-                Forgot?{" "}
-              </a>
-            </>
-          )}
+          
 
           {password === "" && accept && (
             <p className="mt-3 text-danger">Password is Required.</p>

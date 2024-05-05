@@ -5,11 +5,11 @@ import { Navigate, Outlet } from 'react-router';
 import Cookie from "cookie-universal"
 const RequireAuth = () => {
   const cookie = Cookie();
-    const user = useContext(User);
-    // const token = user.auth.token
+    const userNow = useContext(User);
+    const token = userNow.auth.token
     
     
-  return  cookie.get("nour") ? <Outlet/> : <Navigate  to={'/login'}/>
+  return  token ? <Outlet/> : <Navigate  to={'/login'}/>
   
 }
 
