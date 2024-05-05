@@ -1,4 +1,4 @@
-import "./SignUp.css";
+
 import { Link } from "react-router-dom";
 import React, {  useState } from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
@@ -12,7 +12,7 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 
 
-const SignUp = () => {
+const DoctorRegisteration = () => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -103,7 +103,7 @@ const SignUp = () => {
         <FloatingLabel
           className="mb-3 "
           controlId="floatingTextOne"
-          label={<> <IoPersonOutline style={{ marginRight: "5px" }} /> Full name</>}
+          label={<> <IoPersonOutline style={{ marginRight: "5px" }} /> Full name </>}
         >
           <Form.Control
             className={accept && name === "" ? "is-invalid" : ""}
@@ -192,6 +192,37 @@ const SignUp = () => {
             </p>
           )}
         </FloatingLabel>
+
+        <FloatingLabel
+          className="mb-3"
+          controlId="floatingPassword"
+          label={<><LuLock style={{ marginRight: "5px" }} />Confirm Password</>}
+        >
+          <Form.Control
+            className={
+              accept && (password === "") | (password.length < 8)
+                ? "is-invalid"
+                : ""
+            }
+            placeholder=""
+            type="password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
+
+          {password === "" && accept && (
+            <p className="mt-3 text-danger">Password is Required.</p>
+          )}
+          {password.length < 8 && password.length !== 0 && accept && (
+            <p className="mt-3 text-danger">
+              Password must be at least 8 characters or numbers.
+            </p>
+          )}
+        </FloatingLabel>
+
+        
 
         <FloatingLabel
           className="mb-3 "
@@ -327,6 +358,82 @@ const SignUp = () => {
 
 
 
+      
+<Form.Group controlId="formFile" className="mb-3 mt-4">
+        <Form.Label>Identification Card (Front)</Form.Label>
+        <Form.Control type="file" />
+      </Form.Group>
+
+      <Form.Group controlId="formFile" className="mb-3 mt-4">
+        <Form.Label>Identification Card (Back)</Form.Label>
+        <Form.Control type="file" />
+      </Form.Group>
+
+      <Form.Group controlId="formFile" className="mb-3 mt-4">
+        <Form.Label>Doctors Syndicate Card</Form.Label>
+        <Form.Control type="file" />
+      </Form.Group>
+
+      <Form.Group controlId="formFile" className="mb-3 mt-4">
+        <Form.Label>Profile Picture</Form.Label>
+        <Form.Control type="file" />
+      </Form.Group>
+
+
+
+      <FloatingLabel
+          className="mb-3 "
+          controlId="floatingTextTen"
+          label="Specialization"
+        >
+          
+          <Form.Select
+            className={accept && governorate === "" ? "is-invalid" : ""}
+            value={governorate}
+            onChange={(e) => {
+              setGovernorate(e.target.value);
+            }}
+          >
+            <option value="">Select a Specialization</option>
+            <option value="SPECIALIZED PHISICAN INTERNAL">SPECIALIZED PHISICAN INTERNAL</option>
+    
+             
+          </Form.Select>
+
+          {governorate === "" && accept && (
+            <p className="mt-3 text-danger">Governorate is Required.</p>
+          )}
+        </FloatingLabel>
+           
+
+        <FloatingLabel
+          className="mb-3 "
+          controlId="floatingTextFour"
+          label="Clinic Address"
+        >
+          <Form.Control
+            className={accept && phone === "" ? "is-invalid" : ""}
+            placeholder=""
+            type="text"
+            value={phone}
+            onChange={(e) => {
+              setPhone(e.target.value);
+            }}
+          />
+
+          {phone === "" && accept && (
+            <p className="mt-3 text-danger ">phone is Required.</p>
+          )}
+          {phone.length < 11 && accept && phone !=="" &&(
+            <p className="mt-3 text-danger "> phone must be 11 numbers.</p>
+          )}
+        </FloatingLabel>
+
+
+
+
+
+
 
 
 <div className="mb-3 " style={{ position: "relative" }}>
@@ -440,4 +547,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default DoctorRegisteration ;

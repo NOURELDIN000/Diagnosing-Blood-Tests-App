@@ -15,6 +15,7 @@ import { ImageProvider } from "./Components/ImageProfile";
 import ChatBot from "./Components/ChatBot/ChatBot";
 import RequireAuth from "./Components/RequireAuth/RequireAuth";
 import PersistLogin from "./Components/persistLogin/PersistLogin";
+import DoctorRegisteration from "./Components/DoctorRegisteration/DoctorRegisteration";
 
 function App() {
   return (
@@ -23,7 +24,12 @@ function App() {
         <Routes>
           <Route path="/" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+
+
+          <Route path="/doctorRegisteration" element={<DoctorRegisteration />} />
           
+
+
             <Route element={<RequireAuth />}>
               <Route path="/home" element={<Home />} />
               <Route path="/testone" element={<BloodTestOne />} />

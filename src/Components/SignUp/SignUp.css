@@ -42,9 +42,16 @@
   outline: none;
 }
 
-.form-select{
+.form-select,.form-check-label,.form-check-input{
   cursor: pointer;
 }
+
+
+.form-control:focus,
+.form-select:focus{
+  border-bottom: 1px solid #3daed2;
+}
+
 
 /* border: none !important; */
 .main input:focus {

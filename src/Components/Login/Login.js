@@ -16,23 +16,7 @@ import Cookie from "cookie-universal"
 import ImageContext from "../ImageProfile";
 
 const Login = () => {
-  const labelEmail = () => {
-    return (
-      <p>
-        {" "}
-        <MdAlternateEmail style={{ marginRight: "5px" }} /> E-mail{" "}
-      </p>
-    );
-  };
-  const labelPass = () => {
-    return (
-      <p>
-        {" "}
-        <LuLock style={{ marginRight: "5px" }} /> Password{" "}
-      </p>
-    );
-  };
-
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -138,7 +122,7 @@ const Login = () => {
 
         <FloatingLabel
           controlId="floatingEmail"
-          label={labelEmail()}
+          label={<><MdAlternateEmail style={{ marginRight: "5px" }} /> E-mail</>}
           className="mb-3"
         >
           <Form.Control
@@ -178,7 +162,7 @@ const Login = () => {
 
         </FloatingLabel>
 
-        <FloatingLabel controlId="floatingPassword" label={labelPass()}>
+        <FloatingLabel controlId="floatingPassword" label={<><LuLock style={{ marginRight: "5px" }} /> Password</>}>
           <>
           <Form.Control
             className={
