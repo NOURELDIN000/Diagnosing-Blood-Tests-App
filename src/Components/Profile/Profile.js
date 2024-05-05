@@ -16,8 +16,10 @@ import ImageContext from "../ImageProfile";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import Footer from "../Footer/Footer";
 import { User } from "../Context/Context";
+import axios from "axios";
 
 const Profile = () => {
+  const[loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const lottieRef = useRef();
 
@@ -83,19 +85,29 @@ const Profile = () => {
   }, []);
 
 
+ const baseUrl = "https://bload-test.icanforsoftware.com/api/" 
+
+
+
+ const token = cookie.get("nour")
+async function handleLogOut(){
+
+setLoading(true)
+  let res = await axios.post(`${baseUrl}logout?api_password=AHMED$2024`, null ,
+       {
+        headers:{
+          "Authorization": "Bearer " + token
+        }
+       }
   
+  
+)
+   console.log(res)
+   setLoading(false)
+   cookie.remove("nour")
+   navigate('/')
 
-  // Load the selected image from localStorage on component initialization
-//   useEffect(() => {
-//    const storedImage = localStorage.getItem('selectedImage');
-//    if (storedImage) {
-//      setSelectedImage(storedImage);
-//    }
-//   //  else{
-//   //    setSelectedImage("./images/log.jpg")
-//   //  }
-//  }, []);
-
+}
 
 
   return (
@@ -177,7 +189,7 @@ const Profile = () => {
                 </button>
               </div>
               <div className="profile-btns">
-                <button style={{ color: "red", marginBottom: "80px" }}>
+                <button style={{ color: "red", marginBottom: "80px" }} onClick={handleLogOut}>
                   {" "}
                   <AiOutlineLogout
                     style={{
@@ -186,7 +198,7 @@ const Profile = () => {
                       color: "red",
                     }}
                   />{" "}
-                  Logout
+                 {loading ? "Logging out..."  : "Logout" }
                   <span style={{ bottom: "78px" }}>
                     <BiSolidChevronRight style={{ color: "#000" }} />
                   </span>

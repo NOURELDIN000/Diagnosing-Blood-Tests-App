@@ -46,7 +46,7 @@ const Login = () => {
   const userNow = useContext(User);
 
   const cookie = Cookie()
-
+  const baseUrl = "https://bload-test.icanforsoftware.com/api/" 
   // const image = useContext(ImageContext);
 
 
@@ -86,10 +86,11 @@ const Login = () => {
     if(flag){
       setLoading(true)
     try{
-        let res = await axios.post('https://bload-test.icanforsoftware.com/api/login?api_password=AHMED$2024&username=new_user@gmail.com&password=12345678', {
+        let res = await axios.post(`${baseUrl}login?api_password=AHMED$2024&username=new_user@gmail.com&password=12345678`, {
        
-        email: email,
+        username: email,
         password: password,
+        
         
          })
          console.log(res)
@@ -102,7 +103,7 @@ const Login = () => {
          cookie.set("userName", userName);
          cookie.set("userEmail", userEmail);
         //  localStorage.setItem("selectedImage", image.selectedImage);
-          //  navigation('/home')
+           navigation('/home')
         
        } 
        catch(err){

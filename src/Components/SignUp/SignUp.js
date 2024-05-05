@@ -1,6 +1,6 @@
 import "./SignUp.css";
 import { Link } from "react-router-dom";
-import React, { useContext, useState } from "react";
+import React, {  useState } from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import { IoPersonOutline } from "react-icons/io5";
@@ -10,9 +10,7 @@ import { SlSocialFacebook } from "react-icons/sl";
 import { FaGoogle } from "react-icons/fa";
 import { useNavigate } from "react-router";
 import axios from "axios";
-import { User } from "../Context/Context";
-import Cookie from "cookie-universal";
-import ImageContext from "../ImageProfile";
+
 
 const SignUp = () => {
   const labelText = () => {
@@ -43,39 +41,26 @@ const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [passwordR, setPasswordR] = useState("");
+
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [gender, setGender] = useState("");
   const [governorate, setGovernorate] = useState("");
   const [age, setAge] = useState("");
-const [male, setMale] = useState("");
-const [female, setFemale] = useState("");
+ 
 
   const [accept, setAccept] = useState(false);
   const [emailError, setEmailError] = useState("");
-  // const [flag, setFlag] = useState(false);
+
   const [loading, setLoading] = useState(false);
 
-  const userNow = useContext(User);
-
-  const cookie = Cookie();
-
-  // console.log(userNow);
-
-  // const image = useContext(ImageContext);
-
+  
   const navigation = useNavigate();
 
-  // const handleGenderChange = (e) => {
-  //   const selectedGender = e.target.value;
-  //   setGender(selectedGender);
-  //   // localStorage.setItem("selectedCity", city);
-  // };
+  const baseUrl = "https://bload-test.icanforsoftware.com/api/";
 
   async function Submit(e) {
     let flag = true;
-    // console.log(true)
     e.preventDefault();
     setAccept(true);
     if (
@@ -91,34 +76,18 @@ const [female, setFemale] = useState("");
       age === "" ||
       governorate === "" ||
       address === ""
-      
     ) {
-      flag = false
+      flag = false;
     } else {
-      flag = true
+      flag = true;
     }
-
-    // if (
-    //   name === "" ||
-    //   Password === "" ||
-    //   Password.length < 8 ||
-    //   email !== "" ||
-    //   email.indexOf("@") === -1 ||
-    //   email.indexOf("@") === 0 ||
-    //   email.indexOf("@") === email.length - 1
-    // ) {
-
-    //   setFlag(false)
-    // }else{
-    //   setFlag(true)
-    // }
 
     if (flag) {
       setLoading(true);
       try {
-        let res = await axios
+         await axios
           .post(
-            "https://bload-test.icanforsoftware.com/api/client/register?api_password=AHMED$2024&name&phone&address&governorate",
+            `${baseUrl}client/register?api_password=AHMED$2024&name&phone&address&governorate`,
             {
               name: name,
               email: email,
@@ -127,46 +96,24 @@ const [female, setFemale] = useState("");
               phone: phone,
               governorate: governorate,
               age: age,
-              male: male,
-              female: female
-              
-              // password_confirmation: passwordR,
+              // male: 0,
+              // female: 1,
+              male: gender === "male" ? 1 : 0,
+              female: gender === "female" ? 1 : 0,
             }
           )
           .then((res) => console.log(res));
-        //  const token = res.data.data.token;
-          
-          // const userName = res.data.data.name;
-          // const userEmail = res.data.data.email;
-          // userNow.setAuth({ userName, userEmail});
-        //   // cookie.set('nour', token)
-        // cookie.set("userName", userName);
-        // cookie.set("userEmail", userEmail);
-          
-        
-        
 
-
-        navigation("/login")
-       
-
-         
+        navigation("/login");
       } catch (err) {
-        setAccept(true)
+        setAccept(true);
         setEmailError(err);
         console.log(err);
       } finally {
         setLoading(false);
       }
     }
-
-    // http://127.0.0.1:8000/api/register
   }
-
-
-
-
-
 
   return (
     <div className="main">
@@ -235,13 +182,17 @@ const [female, setFemale] = useState("");
               <p className="mt-3 text-danger ">Please Enter a Valid Email.</p>
             )}
 
-          { accept && emailError === 400 && (
+          {accept && emailError === 400 && (
             <p className="mt-3 text-danger ">
               The email has already been taken.
             </p>
           )}
         </FloatingLabel>
-        <FloatingLabel className="mb-3" controlId="floatingPassword" label={labelPass()}>
+        <FloatingLabel
+          className="mb-3"
+          controlId="floatingPassword"
+          label={labelPass()}
+        >
           <Form.Control
             className={
               accept && (password === "") | (password.length < 8)
@@ -286,7 +237,6 @@ const [female, setFemale] = useState("");
           )}
         </FloatingLabel>
 
-
         <FloatingLabel
           className="mb-3 "
           controlId="floatingTextThree"
@@ -325,16 +275,15 @@ const [female, setFemale] = useState("");
           {phone === "" && accept && (
             <p className="mt-3 text-danger ">phone is Required.</p>
           )}
-          {phone.length < 11 && accept && (
+          {phone.length < 11 && accept && phone !=="" &&(
             <p className="mt-3 text-danger "> phone must be 11 numbers.</p>
           )}
         </FloatingLabel>
 
-
-        <FloatingLabel
+        {/* <FloatingLabel
           className="mb-3 "
           controlId="floatingTextFive"
-          label='Governorate'
+          label="Governorate"
         >
           <Form.Control
             className={accept && governorate === "" ? "is-invalid" : ""}
@@ -345,50 +294,133 @@ const [female, setFemale] = useState("");
               setGovernorate(e.target.value);
             }}
           />
-          {/* <select value={gender}>
+          <select value={gender}>
             <option value="0">male</option>
             <option value="1">female</option>
-          </select> */}
+          </select>
 
           {governorate === "" && accept && (
             <p className="mt-3 text-danger ">governorate is Required.</p>
           )}
-        </FloatingLabel>
+        </FloatingLabel> */}
 
         <FloatingLabel
           className="mb-3 "
-          controlId="floatingTextSix"
-          label="male"
+          controlId="floatingTextFive"
+          label="Governorate"
         >
-          <Form.Control
-            className={accept && male === "" ? "is-invalid" : ""}
-            placeholder=""
-            type="text"
-            value={male}
-            onChange={(e) => {
-              setMale(e.target.value);
-            }}
-          />
-          </FloatingLabel>
-          <FloatingLabel
-          className="mb-3 "
-          controlId="floatingTextSeven"
-          label="female"
-        >
-          <Form.Control
-            className={accept && female === "" ? "is-invalid" : ""}
-            placeholder=""
-            type="text"
-            value={female}
-            onChange={(e) => {
-              setFemale(e.target.value);
-            }}
-          />
-          </FloatingLabel>
-
           
+          <Form.Select
+            className={accept && governorate === "" ? "is-invalid" : ""}
+            value={governorate}
+            onChange={(e) => {
+              setGovernorate(e.target.value);
+            }}
+          >
+            <option value="">Select Governorate</option>
+            <option value="Cairo">Cairo</option>
+              <option value="Alexandria">Alexandria</option>
+              <option value="Damanhur">Damanhur</option>
+              <option value="Damietta">Damietta</option>
+              <option value="Asyut">Asyut</option>
+              <option value="Aswan">Aswan</option>
+              <option value="Sohag">Sohag</option>
+              <option value="Suef">Suef</option>
+              <option value="Hurghada">Hurghada</option>
+              <option value="Tanta">Tanta</option>
+              <option value="Mansoura">Mansoura</option>
+              <option value="Banha">Banha</option>
+              <option value="Minya">Minya</option>
+              <option value="Faiyum">Faiyum</option>
+              <option value="Zagazig">Zagazig</option>
+              <option value="Ismailia">Ismailia</option>
+              <option value="Suez">Suez</option>
+              <option value="Rosetta">Rosetta</option>
+              <option value="Qena">Qena</option>
+              <option value="Port Said">Port Said</option>
+              <option value="Mallawi">Mallawi</option>
+              <option value="Kafr El Sheikh">Kafr El Sheikh</option>
+              <option value="6th of October">6th of October</option>
+              <option value="Giza">Giza</option>
+          </Form.Select>
 
-        <button className="btn" type="submit" >
+          {governorate === "" && accept && (
+            <p className="mt-3 text-danger">Governorate is Required.</p>
+          )}
+        </FloatingLabel>
+
+
+{/* <FloatingLabel
+          className="mb-3"
+          controlId="floatingGender"
+          label="Gender"
+        >
+          <Form.Select
+            className={accept && gender === "" ? "is-invalid" : ""}
+            value={gender}
+            onChange={(e) => {
+              setGender(e.target.value);
+            }}
+          >
+            <option value="">Select gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </Form.Select>
+
+          {gender === "" && accept && (
+            <p className="mt-3 text-danger ">Gender is Required.</p>
+          )}
+        </FloatingLabel> */}
+
+
+
+  
+
+
+
+
+<div className="mb-3 " style={{ position: "relative" }}>
+  <label htmlFor="gender" className="form-label " style={{fontSize:"18px",marginLeft:'11px'}}>
+    Gender:
+  </label>
+  <div className="" style={{ position: "absolute", right: "0px", bottom:"-7px" }}>
+    <Form.Check
+      inline
+      label="Male"
+      type="radio"
+      name="gender"
+      id="male"
+      value="male"
+      checked={gender === "male"}
+      onChange={(e) => setGender(e.target.value)}
+      className="mb-3"
+    />
+    <Form.Check
+      inline
+      label="Female"
+      type="radio"
+      name="gender"
+      id="female"
+      value="female"
+      checked={gender === "female"}
+      onChange={(e) => setGender(e.target.value)}
+    />
+  </div>
+
+  {gender === "" && accept && (
+    <p className="mt-3 text-danger">Gender is Required.</p>
+  )}
+</div>
+
+       
+
+
+
+
+
+
+
+        <button className="btn" type="submit">
           {loading ? "creating an account..." : "Create an account"}
         </button>
 
@@ -459,5 +491,3 @@ const [female, setFemale] = useState("");
 };
 
 export default SignUp;
-
-/* <LuLock  style={{position:'absolute' , top:"30px" , left:"-5px"}} /> */

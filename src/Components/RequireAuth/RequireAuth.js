@@ -6,10 +6,10 @@ import Cookie from "cookie-universal"
 const RequireAuth = () => {
   const cookie = Cookie();
     const userNow = useContext(User);
-    const token = userNow.auth.token
+    // const token = userNow.auth.token
     
     
-  return  token ? <Outlet/> : <Navigate  to={'/login'}/>
+  return  cookie.get("nour") ? <Outlet/> : <Navigate  to={'/login'}/>
   
 }
 

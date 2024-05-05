@@ -31,13 +31,23 @@
 }
 
 .form-control,
-.form-control:focus {
+.form-control:focus,
+.form-select,
+.form-select:focus
+ {
   border: none;
+  border-radius: 0;
   border-bottom: 1px solid #333;
+  box-shadow: none;
+  outline: none;
 }
 
+.form-select{
+  cursor: pointer;
+}
+
+/* border: none !important; */
 .main input:focus {
-  /* border: none !important; */
   outline: none !important;
   box-shadow: none !important;
 }
