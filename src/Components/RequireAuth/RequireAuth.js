@@ -1,6 +1,6 @@
 
 import React, { useContext } from 'react'
-import { User } from '../Context/Context'
+import { User } from '../Auth/Context'
 import { Navigate, Outlet } from 'react-router';
 import Cookie from "cookie-universal"
 const RequireAuth = () => {
@@ -9,7 +9,7 @@ const RequireAuth = () => {
     // const token = userNow.auth.token
     
     
-  return  cookie.get("nour") ? <Outlet/> : <Navigate  to={'/login'}/>
+  return  cookie.get("Bearer") ? <Outlet/> : <Navigate  to={'/login'}/>
   
 }
 

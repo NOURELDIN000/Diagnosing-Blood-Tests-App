@@ -15,7 +15,7 @@ import { useNavigate } from "react-router";
 import ImageContext from "../ImageProfile";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import Footer from "../Footer/Footer";
-import { User } from "../Context/Context";
+
 import axios from "axios";
 
 const Profile = () => {
@@ -89,7 +89,7 @@ const Profile = () => {
 
 
 
- const token = cookie.get("nour")
+ const token = cookie.get("Bearer")
 async function handleLogOut(){
 
 setLoading(true)
@@ -104,7 +104,7 @@ setLoading(true)
 )
    console.log(res)
    setLoading(false)
-   cookie.remove("nour")
+   cookie.remove("Bearer")
    navigate('/')
 
 }

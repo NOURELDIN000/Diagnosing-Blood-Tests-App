@@ -5,6 +5,8 @@ const ImageContext = createContext();
 export const ImageProvider = ({ children }) => {
   const [selectedImage, setSelectedImage] = useState(null);
 
+  
+
    // Load the selected image from localStorage on component initialization
    useEffect(() => {
     const storedImage = localStorage.getItem('selectedImage');

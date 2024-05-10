@@ -1,5 +1,5 @@
 import "./Login.css";
-
+import Alert from 'react-bootstrap/Alert';
 import React, { useContext, useState } from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
@@ -11,7 +11,7 @@ import { FaGoogle } from "react-icons/fa";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { User } from "../Context/Context";
+import { User } from "../Auth/Context";
 import Cookie from "cookie-universal"
 import ImageContext from "../ImageProfile";
 
@@ -82,12 +82,16 @@ const Login = () => {
          const userName = res.data.data.name;
          const userEmail = res.data.data.email;
          userNow.setAuth({token, userName , userEmail});
-         cookie.set('nour', token)
+         cookie.set('Bearer', token)
         
          cookie.set("userName", userName);
          cookie.set("userEmail", userEmail);
         //  localStorage.setItem("selectedImage", image.selectedImage);
            navigation('/home')
+         // eslint-disable-next-line no-lone-blocks
+         {<Alert variant="success">
+          success
+         </Alert>}
         
        } 
        catch(err){
@@ -119,7 +123,7 @@ const Login = () => {
 
           <p>Welcome back!</p>
         </div>
-
+        
         <FloatingLabel
           controlId="floatingEmail"
           label={<><MdAlternateEmail style={{ marginRight: "5px" }} /> E-mail</>}

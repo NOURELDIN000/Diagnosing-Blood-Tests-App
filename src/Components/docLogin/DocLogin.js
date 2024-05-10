@@ -11,8 +11,9 @@ import { FaGoogle } from "react-icons/fa";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { User } from "../Context/Context";
+
 import Cookie from "cookie-universal"
+import { Doctor } from "../Auth/DocAuth";
 
 const DocLogin = () => {
   
@@ -26,7 +27,7 @@ const DocLogin = () => {
 
   const navigation = useNavigate();
 
-  const userNow = useContext(User);
+  const doctorNow = useContext(Doctor);
 
   const cookie = Cookie()
   const baseUrl = "https://bload-test.icanforsoftware.com/api/" 
@@ -79,20 +80,20 @@ const DocLogin = () => {
          console.log(res)
         //  const token = res.data.data.token;
         //  const userName = res.data.data.name;
-        //  const userEmail = res.data.data.email;
-        //  userNow.setAuth({token, userName , userEmail});
+        //  const DocEmail = res.data.config.data.username;
+        //  doctorNow.setAuth({  DocEmail});
         //  cookie.set('nour', token)
         
-        //  cookie.set("userName", userName);
-        //  cookie.set("userEmail", userEmail);
-        //  localStorage.setItem("selectedImage", image.selectedImage);
-        //    navigation('/home')
+        //  cookie.set("DocName", userName);
+        //  cookie.set("DocEmail", DocEmail);
+        
+           navigation('/doctordashboard')
         
        } 
        catch(err){
-        //  setAccept(true)
-        //  setEmailError(err.response.status)
-        // console.log(err) 
+         setAccept(true)
+         setEmailError(err.response.status)
+        console.log(err) 
         
        }
        finally{

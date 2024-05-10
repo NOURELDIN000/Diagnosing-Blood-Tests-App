@@ -1,18 +1,30 @@
 import NavBar from "../NavBar/NavBar";
 import "./Home.css";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
 // import ExampleCarouselImage from 'components/ExampleCarouselImage';
 import { Link } from "react-router-dom";
 import Footer from "../Footer/Footer";
-import { User } from "../Context/Context";
+import { User } from "../Auth/Context";
+import Alert from 'react-bootstrap/Alert';
 
 const Home = () => {
+const [showAlert, setShowAlert] = useState(true)
+
+// Show the Alert component on successful login
+setTimeout(() => {
+  setShowAlert(false); // Hide the Alert component after 3 seconds
+}, 3000);
+
   const userNow = useContext(User);
   console.log(userNow)
   return (
     <div className="home-page">
       <NavBar />
+
+   { showAlert  && <Alert variant="success" style={{zIndex:"3", textAlign:"center"}}>
+            You have logged successfully
+          </Alert> }
 
       <Carousel fade className="main-carosuel">
         <Carousel.Item>
