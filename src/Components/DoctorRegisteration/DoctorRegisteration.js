@@ -17,12 +17,22 @@ const DoctorRegisteration = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordR, setPasswordR] = useState("");
 
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [gender, setGender] = useState("");
   const [governorate, setGovernorate] = useState("");
   const [age, setAge] = useState("");
+  const [identificationFront, setIdentificationFront] = useState("");
+  const [identificationBack, setIdentificationBack] = useState("");
+  const [docSyndicateCard, setDocSyndicateCard] = useState("");
+  const [picProfile, setPicProfile] = useState("");
+  const [Specialization, setSpecialization] = useState("");
+  const [ClinicAddress, setClinicAddress] = useState("");
+  const [clinicGovernorate, setClinicGovernorate] = useState("");
+ 
+
  
 
   const [accept, setAccept] = useState(false);
@@ -43,6 +53,7 @@ const DoctorRegisteration = () => {
       name === "" ||
       password === "" ||
       password.length < 8 ||
+      passwordR !== password ||  
       email === "" ||
       email.indexOf("@") === -1 ||
       email.indexOf("@") === 0 ||
@@ -51,7 +62,14 @@ const DoctorRegisteration = () => {
       phone.length === "" ||
       age === "" ||
       governorate === "" ||
-      address === ""
+      address === "" ||
+      ClinicAddress === "" ||
+      identificationFront === "" ||
+      identificationBack === "" ||
+      Specialization === "" ||
+      picProfile === "" ||
+      docSyndicateCard === ""
+
     ) {
       flag = false;
     } else {
@@ -63,7 +81,7 @@ const DoctorRegisteration = () => {
       try {
          await axios
           .post(
-            `${baseUrl}client/register?api_password=AHMED$2024&name&phone&address&governorate`,
+            `${baseUrl}doctor/regitertion?api_password=AHMED$2024&name&phone&address&governorate`,
             {
               name: name,
               email: email,
@@ -72,15 +90,20 @@ const DoctorRegisteration = () => {
               phone: phone,
               governorate: governorate,
               age: age,
-              // male: 0,
-              // female: 1,
-              male: gender === "male" ? 1 : 0,
-              female: gender === "female" ? 1 : 0,
+              medical_specialization: Specialization,
+              clinic_governorate: clinicGovernorate,
+              clinic_address: ClinicAddress ,
+              identification_card_face : identificationFront ,
+              identification_card_back : identificationBack ,
+              profile_pic : picProfile ,
+
+              // male: gender === "male" ? 1 : 0,
+              // female: gender === "female" ? 1 : 0,
             }
           )
           .then((res) => console.log(res));
 
-        navigation("/login");
+        navigation("/Doclogin");
       } catch (err) {
         setAccept(true);
         setEmailError(err);
@@ -200,26 +223,24 @@ const DoctorRegisteration = () => {
         >
           <Form.Control
             className={
-              accept && (password === "") | (password.length < 8)
+              accept && (passwordR !== password ) 
                 ? "is-invalid"
                 : ""
             }
             placeholder=""
             type="password"
-            value={password}
+            value={passwordR}
             onChange={(e) => {
-              setPassword(e.target.value);
+              setPasswordR(e.target.value);
             }}
           />
-
-          {password === "" && accept && (
-            <p className="mt-3 text-danger">Password is Required.</p>
+          {passwordR === "" && accept && (
+            <p className="mt-3 text-danger">confirm Password is Required.</p>
           )}
-          {password.length < 8 && password.length !== 0 && accept && (
-            <p className="mt-3 text-danger">
-              Password must be at least 8 characters or numbers.
-            </p>
+          {passwordR !== password && accept && (
+            <p className="mt-3 text-danger">confirm Password don't match Password.</p>
           )}
+          
         </FloatingLabel>
 
         
@@ -318,7 +339,7 @@ const DoctorRegisteration = () => {
         >
           
           <Form.Select
-            className={accept && governorate === "" ? "is-invalid" : ""}
+            className={` ${accept && governorate=== "" ? "is-invalid" : "" }   mt-5`} 
             value={governorate}
             onChange={(e) => {
               setGovernorate(e.target.value);
@@ -356,28 +377,111 @@ const DoctorRegisteration = () => {
           )}
         </FloatingLabel>
 
+        <FloatingLabel
+          className="mb-3 "
+          controlId="floatingTextFive"
+          label="Clinic Governorate"
+        >
+          
+          <Form.Select
+            className={` ${accept && clinicGovernorate=== "" ? "is-invalid" : "" }   mt-5`} 
+            value={clinicGovernorate}
+            onChange={(e) => {
+              setClinicGovernorate(e.target.value);
+            }}
+          >
+            <option value="">Select Governorate</option>
+            <option value="Cairo">Cairo</option>
+              <option value="Alexandria">Alexandria</option>
+              <option value="Damanhur">Damanhur</option>
+              <option value="Damietta">Damietta</option>
+              <option value="Asyut">Asyut</option>
+              <option value="Aswan">Aswan</option>
+              <option value="Sohag">Sohag</option>
+              <option value="Suef">Suef</option>
+              <option value="Hurghada">Hurghada</option>
+              <option value="Tanta">Tanta</option>
+              <option value="Mansoura">Mansoura</option>
+              <option value="Banha">Banha</option>
+              <option value="Minya">Minya</option>
+              <option value="Faiyum">Faiyum</option>
+              <option value="Zagazig">Zagazig</option>
+              <option value="Ismailia">Ismailia</option>
+              <option value="Suez">Suez</option>
+              <option value="Rosetta">Rosetta</option>
+              <option value="Qena">Qena</option>
+              <option value="Port Said">Port Said</option>
+              <option value="Mallawi">Mallawi</option>
+              <option value="Kafr El Sheikh">Kafr El Sheikh</option>
+              <option value="6th of October">6th of October</option>
+              <option value="Giza">Giza</option>
+          </Form.Select>
+
+          {clinicGovernorate === "" && accept && (
+            <p className="mt-3 text-danger">Clinic Governorate is Required.</p>
+          )}
+        </FloatingLabel>
+
 
 
       
 <Form.Group controlId="formFile" className="mb-3 mt-4">
         <Form.Label>Identification Card (Front)</Form.Label>
-        <Form.Control type="file" />
+        <Form.Control
+         className={accept && identificationFront === "" ? "is-invalid" : ""}
+         placeholder=""
+         type="file"
+         accept="image/*"
+         value={identificationFront}
+         onChange={(e) => {
+           setIdentificationFront(e.target.value);}}
+          />
       </Form.Group>
+
+      {accept && identificationFront ==="" && (<p className="mt-3 text-danger">Identification Card (Front) is Required.</p>)}
 
       <Form.Group controlId="formFile" className="mb-3 mt-4">
         <Form.Label>Identification Card (Back)</Form.Label>
-        <Form.Control type="file" />
+        <Form.Control
+         className={accept && identificationBack === "" ? "is-invalid" : ""}
+         placeholder=""
+         type="file"
+         accept="image/*"
+         value={identificationBack}
+         onChange={(e) => {
+           setIdentificationBack(e.target.value);}}
+          />
       </Form.Group>
+      {accept && identificationBack ==="" && (<p className="mt-3 text-danger">Identification Card (Back) is Required.</p>)}
 
       <Form.Group controlId="formFile" className="mb-3 mt-4">
-        <Form.Label>Doctors Syndicate Card</Form.Label>
-        <Form.Control type="file" />
+        <Form.Label>Doctor Syndicate Card</Form.Label>
+        <Form.Control
+         className={accept && docSyndicateCard=== "" ? "is-invalid" : ""}
+         placeholder=""
+         type="file"
+         accept="image/*"
+         value={docSyndicateCard}
+         onChange={(e) => {
+           setDocSyndicateCard(e.target.value);}}
+          />
       </Form.Group>
+      {accept && docSyndicateCard ==="" && (<p className="mt-3 text-danger">Doctor Syndicate Card is Required.</p>)}
 
       <Form.Group controlId="formFile" className="mb-3 mt-4">
         <Form.Label>Profile Picture</Form.Label>
-        <Form.Control type="file" />
+        <Form.Control
+         className={accept && picProfile === "" ? "is-invalid" : ""}
+         placeholder=""
+         type="file"
+         accept="image/*"
+         value={picProfile}
+         onChange={(e) => {
+           setPicProfile(e.target.value);}}
+          />
       </Form.Group>
+
+      {accept && picProfile ==="" && (<p className="mt-3 text-danger">Profile Picture is Required.</p>)}
 
 
 
@@ -388,10 +492,10 @@ const DoctorRegisteration = () => {
         >
           
           <Form.Select
-            className={accept && governorate === "" ? "is-invalid" : ""}
-            value={governorate}
+            className= {` ${accept && Specialization === "" ? "is-invalid" : "" }   mt-5`} 
+            value={Specialization}
             onChange={(e) => {
-              setGovernorate(e.target.value);
+              setSpecialization(e.target.value);
             }}
           >
             <option value="">Select a Specialization</option>
@@ -400,8 +504,8 @@ const DoctorRegisteration = () => {
              
           </Form.Select>
 
-          {governorate === "" && accept && (
-            <p className="mt-3 text-danger">Governorate is Required.</p>
+          {Specialization === "" && accept && (
+            <p className="mt-3 text-danger">Specialization is Required.</p>
           )}
         </FloatingLabel>
            
@@ -412,21 +516,19 @@ const DoctorRegisteration = () => {
           label="Clinic Address"
         >
           <Form.Control
-            className={accept && phone === "" ? "is-invalid" : ""}
+            className={accept && ClinicAddress === "" ? "is-invalid" : ""}
             placeholder=""
             type="text"
-            value={phone}
+            value={ClinicAddress}
             onChange={(e) => {
-              setPhone(e.target.value);
+              setClinicAddress(e.target.value);
             }}
           />
 
-          {phone === "" && accept && (
-            <p className="mt-3 text-danger ">phone is Required.</p>
+          {ClinicAddress === "" && accept && (
+            <p className="mt-3 text-danger ">Clinic Address is Required.</p>
           )}
-          {phone.length < 11 && accept && phone !=="" &&(
-            <p className="mt-3 text-danger "> phone must be 11 numbers.</p>
-          )}
+          
         </FloatingLabel>
 
 
@@ -441,10 +543,12 @@ const DoctorRegisteration = () => {
     Gender:
   </label>
   <div className="" style={{ position: "absolute", right: "0px", bottom:"-7px" }}>
+    
+
     <Form.Check
       inline
       label="Male"
-      type="radio"
+      // type="radio"
       name="gender"
       id="male"
       value="male"
@@ -452,20 +556,29 @@ const DoctorRegisteration = () => {
       onChange={(e) => setGender(e.target.value)}
       className="mb-3"
     />
+    
+   
+
     <Form.Check
+    // required
       inline
       label="Female"
-      type="radio"
+      // type="radio"
       name="gender"
       id="female"
       value="female"
       checked={gender === "female"}
       onChange={(e) => setGender(e.target.value)}
+      // feedback="Gender is Required"
+      // feedbackType={ !gender  && accept ? "invalid" : ""}
+      // feedbackType="invalid"
+      className="mb-3"
     />
+    
   </div>
 
   {gender === "" && accept && (
-    <p className="mt-3 text-danger">Gender is Required.</p>
+    <p className="text-danger ">Gender is Required.</p>
   )}
 </div>
 
@@ -493,7 +606,7 @@ const DoctorRegisteration = () => {
           <span>
             <Link
               className="text-decoration-none fw-bold"
-              to={"/login"}
+              to={"/Doctorlogin"}
               style={{ color: "#000", marginLeft: "5px" }}
             >
               Login

@@ -14,8 +14,8 @@ import Settings from "./Components/Settings/Settings";
 import { ImageProvider } from "./Components/ImageProfile";
 import ChatBot from "./Components/ChatBot/ChatBot";
 import RequireAuth from "./Components/RequireAuth/RequireAuth";
-import PersistLogin from "./Components/persistLogin/PersistLogin";
 import DoctorRegisteration from "./Components/DoctorRegisteration/DoctorRegisteration";
+import DocLogin from "./Components/docLogin/DocLogin";
 
 function App() {
   return (
@@ -27,6 +27,7 @@ function App() {
 
 
           <Route path="/doctorRegisteration" element={<DoctorRegisteration />} />
+          <Route path="/doctorlogin" element={<DocLogin />} />
           
 
 

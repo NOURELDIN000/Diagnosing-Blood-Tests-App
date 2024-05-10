@@ -287,7 +287,7 @@ const SignUp = () => {
         >
           
           <Form.Select
-            className={accept && governorate === "" ? "is-invalid" : ""}
+            className={` ${accept && governorate === "" ? "is-invalid" : ""} mt-5 `}
             value={governorate}
             onChange={(e) => {
               setGovernorate(e.target.value);
@@ -337,7 +337,7 @@ const SignUp = () => {
     <Form.Check
       inline
       label="Male"
-      type="radio"
+      // type="radio"
       name="gender"
       id="male"
       value="male"
@@ -348,7 +348,7 @@ const SignUp = () => {
     <Form.Check
       inline
       label="Female"
-      type="radio"
+      // type="radio"
       name="gender"
       id="female"
       value="female"
@@ -358,7 +358,7 @@ const SignUp = () => {
   </div>
 
   {gender === "" && accept && (
-    <p className="mt-3 text-danger">Gender is Required.</p>
+    <p className="text-danger">Gender is Required.</p>
   )}
 </div>
 

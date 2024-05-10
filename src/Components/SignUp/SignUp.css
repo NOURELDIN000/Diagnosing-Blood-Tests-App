@@ -31,9 +31,7 @@
 }
 
 .form-control,
-.form-control:focus,
-.form-select,
-.form-select:focus
+.form-control:focus
  {
   border: none;
   border-radius: 0;
@@ -42,15 +40,31 @@
   outline: none;
 }
 
+.form-select,.form-select:focus{
+  border: 1px solid #333; 
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+}
+
+
 .form-select,.form-check-label,.form-check-input{
   cursor: pointer;
 }
 
 
-.form-control:focus,
-.form-select:focus{
+.form-control:focus
+{
   border-bottom: 1px solid #3daed2;
 }
+
+.form-select:focus{
+  border: 1px solid #3daed2;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
 
 
 /* border: none !important; */
