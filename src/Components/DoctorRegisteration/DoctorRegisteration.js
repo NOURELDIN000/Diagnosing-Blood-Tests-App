@@ -8,6 +8,8 @@ import { MdAlternateEmail } from "react-icons/md";
 import { LuLock } from "react-icons/lu";
 import { SlSocialFacebook } from "react-icons/sl";
 import { FaGoogle } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { FaPhoneAlt } from "react-icons/fa";
 import { useNavigate } from "react-router";
 import axios from "axios";
 
@@ -21,12 +23,12 @@ const DoctorRegisteration = () => {
 
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
-  const [gender, setGender] = useState("");
+  // const [gender, setGender] = useState("");
   const [governorate, setGovernorate] = useState("");
   const [age, setAge] = useState("");
   const [identificationFront, setIdentificationFront] = useState("");
   const [identificationBack, setIdentificationBack] = useState("");
-  const [docSyndicateCard, setDocSyndicateCard] = useState("");
+  // const [docSyndicateCard, setDocSyndicateCard] = useState("");
   const [picProfile, setPicProfile] = useState("");
   const [Specialization, setSpecialization] = useState("");
   const [ClinicAddress, setClinicAddress] = useState("");
@@ -67,8 +69,8 @@ const DoctorRegisteration = () => {
       identificationFront === "" ||
       identificationBack === "" ||
       Specialization === "" ||
-      picProfile === "" ||
-      docSyndicateCard === ""
+      picProfile === "" 
+      // docSyndicateCard === ""
 
     ) {
       flag = false;
@@ -103,7 +105,7 @@ const DoctorRegisteration = () => {
           )
           .then((res) => console.log(res));
 
-        navigation("/Doclogin");
+        navigation("/doctorlogin");
       } catch (err) {
         setAccept(true);
         setEmailError(err);
@@ -248,7 +250,7 @@ const DoctorRegisteration = () => {
         <FloatingLabel
           className="mb-3 "
           controlId="floatingTextTwo"
-          label="Address"
+          label={<> <MdEmail style={{marginRight:"5px"}} />  Address </> }
         >
           <Form.Control
             className={accept && address === "" ? "is-invalid" : ""}
@@ -268,7 +270,7 @@ const DoctorRegisteration = () => {
         <FloatingLabel
           className="mb-3 "
           controlId="floatingTextThree"
-          label="Age"
+          label={<> <IoPersonOutline style={{marginRight:"5px"}} />  Age </> }
         >
           <Form.Control
             className={accept && age === "" ? "is-invalid" : ""}
@@ -288,7 +290,7 @@ const DoctorRegisteration = () => {
         <FloatingLabel
           className="mb-3 "
           controlId="floatingTextFour"
-          label="Phone"
+          label={<> <FaPhoneAlt style={{marginRight:"5px"}} />  Phone</> }
         >
           <Form.Control
             className={accept && phone === "" ? "is-invalid" : ""}
@@ -454,7 +456,7 @@ const DoctorRegisteration = () => {
       </Form.Group>
       {accept && identificationBack ==="" && (<p className="mt-3 text-danger">Identification Card (Back) is Required.</p>)}
 
-      <Form.Group controlId="formFile" className="mb-3 mt-4">
+      {/* <Form.Group controlId="formFile" className="mb-3 mt-4">
         <Form.Label>Doctor Syndicate Card</Form.Label>
         <Form.Control
          className={accept && docSyndicateCard=== "" ? "is-invalid" : ""}
@@ -466,7 +468,7 @@ const DoctorRegisteration = () => {
            setDocSyndicateCard(e.target.value);}}
           />
       </Form.Group>
-      {accept && docSyndicateCard ==="" && (<p className="mt-3 text-danger">Doctor Syndicate Card is Required.</p>)}
+      {accept && docSyndicateCard ==="" && (<p className="mt-3 text-danger">Doctor Syndicate Card is Required.</p>)} */}
 
       <Form.Group controlId="formFile" className="mb-3 mt-4">
         <Form.Label>Profile Picture</Form.Label>
@@ -513,7 +515,7 @@ const DoctorRegisteration = () => {
         <FloatingLabel
           className="mb-3 "
           controlId="floatingTextFour"
-          label="Clinic Address"
+          label={<> <MdEmail style={{marginRight:"5px"}} />  Clinic Address </> }
         >
           <Form.Control
             className={accept && ClinicAddress === "" ? "is-invalid" : ""}
@@ -538,7 +540,7 @@ const DoctorRegisteration = () => {
 
 
 
-<div className="mb-3 " style={{ position: "relative" }}>
+{/* <div className="mb-3 " style={{ position: "relative" }}>
   <label htmlFor="gender" className="form-label " style={{fontSize:"18px",marginLeft:'11px'}}>
     Gender:
   </label>
@@ -580,7 +582,7 @@ const DoctorRegisteration = () => {
   {gender === "" && accept && (
     <p className="text-danger ">Gender is Required.</p>
   )}
-</div>
+</div> */}
 
        
 
@@ -606,7 +608,7 @@ const DoctorRegisteration = () => {
           <span>
             <Link
               className="text-decoration-none fw-bold"
-              to={"/Doctorlogin"}
+              to={"/doctorlogin"}
               style={{ color: "#000", marginLeft: "5px" }}
             >
               Login

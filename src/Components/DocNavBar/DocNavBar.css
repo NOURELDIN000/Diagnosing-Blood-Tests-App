@@ -2,3 +2,21 @@
     background-color: #fff !important;
     box-shadow: 1px 1px 10px 1px #cbc9c9;
 }
+
+.dashLogout{
+    padding: 5px 20px;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    display: inline-block;
+    background-color: #Dc3545;
+    color: #fff;
+    transition: .3s ease-in-out;
+    width: 100px;
+    text-align: center;
+}
+
+.dashLogout:hover{
+    background-color: #fff;
+    color: #Dc3545;
+    border: 1px solid #Dc3545;
+}

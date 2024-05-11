@@ -1,6 +1,6 @@
 import NavBar from "../NavBar/NavBar";
 import "./Home.css";
-import React, { useContext, useState } from "react";
+import React, { useContext} from "react";
 import Carousel from "react-bootstrap/Carousel";
 // import ExampleCarouselImage from 'components/ExampleCarouselImage';
 import { Link } from "react-router-dom";
@@ -8,13 +8,15 @@ import Footer from "../Footer/Footer";
 import { User } from "../Auth/Context";
 import Alert from 'react-bootstrap/Alert';
 
-const Home = () => {
-const [showAlert, setShowAlert] = useState(true)
+const Home = ({showAlert, setShowAlert}) => {
+
 
 // Show the Alert component on successful login
+
 setTimeout(() => {
-  setShowAlert(false); // Hide the Alert component after 3 seconds
-}, 3000);
+  setShowAlert(false); 
+}, 3000)
+
 
   const userNow = useContext(User);
   console.log(userNow)
@@ -22,11 +24,12 @@ setTimeout(() => {
     <div className="home-page">
       <NavBar />
 
-   { showAlert  && <Alert variant="success" style={{zIndex:"3", textAlign:"center"}}>
+  
+
+      { showAlert && <Alert variant="success" style={{zIndex:"3", textAlign:"center", position:"absolute", width:"100%"}}>
             You have logged successfully
           </Alert> }
-
-      <Carousel fade className="main-carosuel">
+      <Carousel fade className="main-carosuel" style={{position:"relative"}}>
         <Carousel.Item>
           <div className="carosuel-img">
             
@@ -122,4 +125,4 @@ setTimeout(() => {
 
 export default Home;
 
-// style={{width:'100%' , height:'500px'}}
+

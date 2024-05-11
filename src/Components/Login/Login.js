@@ -15,7 +15,7 @@ import { User } from "../Auth/Context";
 import Cookie from "cookie-universal"
 import ImageContext from "../ImageProfile";
 
-const Login = () => {
+const Login = ({setShowAlert}) => {
   
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -209,7 +209,7 @@ const Login = () => {
             </p>)}
         </FloatingLabel>
 
-        <button className="btn" type="submit">
+        <button className="btn" type="submit" onClick={()=>setShowAlert(true)}>
           {/* Log in */}
           {loading ? "Logging in..." : "Log in"}
         </button>

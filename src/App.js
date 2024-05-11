@@ -19,8 +19,13 @@ import DocLogin from "./Components/docLogin/DocLogin";
 import DocDashboard from "./Components/docDashboard/DocDashboard";
 import UserProvider from "./Components/Auth/Context";
 import DocProvider from "./Components/Auth/DocAuth";
+import { useState } from "react";
 
 function App() {
+
+  const [showAlert, setShowAlert] = useState()
+
+
   return (
     <>
       <ImageProvider>
@@ -38,10 +43,10 @@ function App() {
 
 
           <Route path="/" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login  setShowAlert={setShowAlert} />} />
 
             <Route element={<RequireAuth />}>
-              <Route path="/home" element={<Home />} />
+              <Route path="/home" element={<Home  showAlert={showAlert} setShowAlert={setShowAlert}   />} />
               <Route path="/testone" element={<BloodTestOne />} />
               <Route path="/testone/result" element={<BloodTestOneResult />} />
               <Route path="/settings" element={<Settings />} />

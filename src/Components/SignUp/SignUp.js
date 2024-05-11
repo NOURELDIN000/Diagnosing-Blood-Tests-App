@@ -8,6 +8,8 @@ import { MdAlternateEmail } from "react-icons/md";
 import { LuLock } from "react-icons/lu";
 import { SlSocialFacebook } from "react-icons/sl";
 import { FaGoogle } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { FaPhoneAlt } from "react-icons/fa";
 import { useNavigate } from "react-router";
 import axios from "axios";
 
@@ -196,7 +198,7 @@ const SignUp = () => {
         <FloatingLabel
           className="mb-3 "
           controlId="floatingTextTwo"
-          label="Address"
+          label={<> <MdEmail style={{marginRight:"5px"}} />  Address </> }
         >
           <Form.Control
             className={accept && address === "" ? "is-invalid" : ""}
@@ -216,7 +218,7 @@ const SignUp = () => {
         <FloatingLabel
           className="mb-3 "
           controlId="floatingTextThree"
-          label="Age"
+          label={<> <IoPersonOutline style={{marginRight:"5px"}} />   Age </> }
         >
           <Form.Control
             className={accept && age === "" ? "is-invalid" : ""}
@@ -236,7 +238,7 @@ const SignUp = () => {
         <FloatingLabel
           className="mb-3 "
           controlId="floatingTextFour"
-          label="Phone"
+          label={<> <FaPhoneAlt style={{marginRight:"5px"}} />  Phone </> }
         >
           <Form.Control
             className={accept && phone === "" ? "is-invalid" : ""}

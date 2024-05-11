@@ -19,7 +19,9 @@ const [doctors, setDoctors] = useState([]);
 
 
 
-
+// function handleDelete(id) {
+//   setDoctors(prevDoctors => prevDoctors.filter(doctor => doctor.id !== id));
+// }
 
 
 
@@ -27,11 +29,11 @@ const [doctors, setDoctors] = useState([]);
     <div className='docdashboard '>
         <DocNavBar/>
       <div className='row d-flex'>
-        <div className=' col-3 col-md-2 sidebar'>
-          <Link> get Patient Test</Link>
+        <div className='  col-3 col-md-4   col-lg-2 sidebar'>
+          <Link className='dashSidebarLink'> get Patient Test</Link>
         </div>
 
-        <div className='col-9  col-md-10  p-0'>
+        <div className='  col-9 col-md-8    col-lg-10  p-0'>
         <Table striped bordered  className=' '>
       <thead>
         <tr>
@@ -46,9 +48,14 @@ const [doctors, setDoctors] = useState([]);
           <td>1</td>
           <td>Mark</td>
           <td>Otto</td>
+          <td><RiDeleteBin6Line className='dashDelete'  /></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Mark</td>
+          <td>Otto</td>
           <td><RiDeleteBin6Line className='dashDelete' /></td>
         </tr>
-        
       </tbody>
     </Table>
         </div>
