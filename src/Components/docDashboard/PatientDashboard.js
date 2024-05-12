@@ -1,20 +1,21 @@
 /* eslint-disable array-callback-return */
-import { Link, useNavigate } from 'react-router-dom';
+import './PatientDashboard.css'
+import { Link } from 'react-router-dom';
 import DocNavBar from '../DocNavBar/DocNavBar';
 import  './docDashboard.css';
 import Table from 'react-bootstrap/Table';
 
 import React, { useEffect, useState } from 'react'
-import { RiDeleteBin6Line } from "react-icons/ri";
-import axios from 'axios';
+// import { RiDeleteBin6Line } from "react-icons/ri";
+
 import Cookie from "cookie-universal"
 
 
 const PatientDashboard = () => {
 
-const [doctors, setDoctors] = useState({});
+// const [doctors, setDoctors] = useState({});
 const [patients, setPatients] = useState([]);
-const [patientsDetails, setPatientsDetails] = useState({});
+// const [patientsDetails, setPatientsDetails] = useState({});
 
 
 
@@ -107,12 +108,12 @@ useEffect(() => {
 // }, [doctors]);
 
   return (
-    <div className='docdashboard '>
+    <div className='docdashboard  patientdashboard'>
         <DocNavBar/>
       
 
         
-        <Table striped bordered  className=' '>
+        <Table striped bordered  className='table '>
       <thead>
         <tr>
           <th>#</th>
@@ -155,7 +156,7 @@ useEffect(() => {
            <td>{item.Patient_gender}</td>
            <td>{item.CKD_Test_number}</td>
            
-           <td><Link  to={`/patientdetails/${item.Patient_age}`} >Details</Link></td>
+           <td><Link className='paDetailsbtn'  to={`/patientdetails/${item.Patient_age}`} >Details</Link></td>
          </tr>
           
          )})}

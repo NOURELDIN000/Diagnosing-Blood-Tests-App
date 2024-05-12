@@ -56,13 +56,13 @@ const DocNavBar = () => {
 
   return (
     <div>
-       <Navbar expand="lg" className="bg-body-tertiary docNav">
+       <Navbar expand="lg" className="bg-body-tertiary docNav ">
       <Container>
         <Navbar.Brand href="#home">appName</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-          <Link className='dashLogout  text-decoration-none me-1' to={'/doctordashboard'}>
+          <Link className='dashboardbtn  text-decoration-none me-2' to={'/doctordashboard'}>
              dashBoard
               </Link>
             <Link className='dashLogout  text-decoration-none ' onClick={handleLogOut} >

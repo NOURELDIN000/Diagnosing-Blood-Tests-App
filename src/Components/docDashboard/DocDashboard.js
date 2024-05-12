@@ -115,13 +115,13 @@ useEffect(() => {
         </div>
 
         <div className='  col-9 col-md-8    col-lg-10  p-0'>
-        <Table striped bordered  className=' '>
+        <Table striped bordered  className=''>
       <thead>
         <tr>
-          <th>#</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Delete</th>
+          <th>Doc_id</th>
+          <th>Doc_name</th>
+          <th>Doc_email</th>
+          {/* <th>Delete</th> */}
         </tr>
       </thead>
       <tbody>
@@ -138,7 +138,7 @@ useEffect(() => {
           <td>{patientsDetails.doc_id?.user_id}</td>
           <td>{doctors.name}</td>
           <td>{doctors.email}</td>
-          <td><RiDeleteBin6Line className='dashDelete'  /></td>
+     
         </tr>
         
 

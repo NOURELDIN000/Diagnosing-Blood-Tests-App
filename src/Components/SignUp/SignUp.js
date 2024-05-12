@@ -99,8 +99,14 @@ const SignUp = () => {
         <div className="mb-5">
           <h1>Create an account</h1>
 
-          <p>Just one step to get started.</p>
+       <div>
+        
+       <p>Just one step to get started. <Link to={'/doctorRegisteration'}>Doctor Form</Link></p>
+       </div>
+       
+       
         </div>
+       
 
         <FloatingLabel
           className="mb-3 "

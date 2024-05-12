@@ -1,0 +1,32 @@
+
+/* .patientdashboard{
+    overflow-x: scroll;
+} */
+
+
+.table{
+    width: 100%;
+}
+
+.paDetailsbtn{
+    text-decoration: none;
+    color: #0D6EFD;
+}
+
+/* .paDetailsbtn:hover{
+  
+} */
+
+
+
+@media screen and (max-width:565px)  {
+    /* .table{
+        min-width: auto ;
+    } */
+
+.patientdashboard{
+    overflow-x: scroll;
+}
+
+
+}

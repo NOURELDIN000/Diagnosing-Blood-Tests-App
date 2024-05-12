@@ -20,3 +20,30 @@
     color: #Dc3545;
     border: 1px solid #Dc3545;
 }
+
+.dashboardbtn{
+    padding: 5px 20px;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    display: inline-block;
+    background-color: #3daed2  ;
+    color: #fff;  
+    transition: .3s ease-in-out;
+    width: 130px;
+    text-align: center;
+    border: 1px solid #3daed2  ;
+}
+
+.dashboardbtn:hover{
+    background-color: #fff;
+    color: #3daed2  ;
+    
+}
+
+
+
+@media screen and (max-width:992px) {
+    .dashboardbtn{
+    margin-bottom: 7px;
+    }
+}

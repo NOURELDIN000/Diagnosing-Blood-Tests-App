@@ -17,6 +17,7 @@ const PatientDetails = () => {
     const [patientsDetails, setPatientsDetails] = useState({});
 
     const params = useParams();
+    const { patientid } = params;
 
     const baseUrl = "https://bload-test.icanforsoftware.com/api/" 
 
@@ -29,7 +30,7 @@ const PatientDetails = () => {
     useEffect(() => { 
         const fetchData = async () => {
             
-                const response = await fetch(`${baseUrl}test/info/${params.patientid}?api_password=AHMED$2024`, {
+                const response = await fetch(`${baseUrl}test/info/${patientid}?api_password=AHMED$2024`, {
                     headers: {
                         Authorization: 'Bearer ' + token
                     }
@@ -40,8 +41,8 @@ const PatientDetails = () => {
                     setPatientsDetails(data);
         };
       
-        fetchData(params.patientid);
-      }, [ token]);
+        fetchData();
+      }, [ patientid,token]);
 
 
     
@@ -72,7 +73,7 @@ const PatientDetails = () => {
         <div className='docdashboard '>
             <DocNavBar/>
           
-            <Table striped bordered  className=' '>
+            <Table striped bordered  className='w-100 '>
           <thead>
             <tr>
              
@@ -97,7 +98,7 @@ const PatientDetails = () => {
               <td>{patientsDetails.patient_info?.id}</td>
               <td>{patientsDetails.patient_info?.name}</td>
            
-           <td>{patientsDetails.user_test?.[0]?.analysis_type}</td>
+           <td>{patientsDetails.user_test?.[0]?.analysis_type }</td>
            <td>{patientsDetails.user_test?.[0]?.analysis_result}</td>
 
            {/* {patientsDetails.user_test.map((i)=>{

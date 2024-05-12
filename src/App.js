@@ -17,8 +17,6 @@ import RequireAuth from "./Components/RequireAuth/RequireAuth";
 import DoctorRegisteration from "./Components/DoctorRegisteration/DoctorRegisteration";
 import DocLogin from "./Components/docLogin/DocLogin";
 import DocDashboard from "./Components/docDashboard/DocDashboard";
-import UserProvider from "./Components/Auth/Context";
-import DocProvider from "./Components/Auth/DocAuth";
 import { useState } from "react";
 import DocRequireAuth from "./Components/RequireAuth/DocRequireAuth";
 import PatientDetails from "./Components/PatientDetails/PatientDetails";
@@ -43,7 +41,7 @@ function App() {
           <Route element={<DocRequireAuth/>}>
 
           <Route path="/doctordashboard" element={<DocDashboard />} />
-          <Route path="/patientdetails:patientid" element={<PatientDetails />} />
+          <Route path="/patientdetails/:patientid" element={<PatientDetails />} />
           <Route path="/patientdashboard" element={<PatientDashboard />} />
           </Route>
 

@@ -125,6 +125,8 @@ const DoctorRegisteration = () => {
           <p>Just one step to get started.</p>
         </div>
 
+        <Link to={'/'}>Patient Form</Link>
+
         <FloatingLabel
           className="mb-3 "
           controlId="floatingTextOne"
