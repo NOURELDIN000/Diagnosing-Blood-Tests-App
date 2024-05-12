@@ -8,6 +8,8 @@ import Footer from "../Footer/Footer";
 import { User } from "../Auth/Context";
 import Alert from 'react-bootstrap/Alert';
 
+import { IoMdClose } from "react-icons/io";
+
 const Home = ({showAlert, setShowAlert}) => {
 
 
@@ -25,11 +27,13 @@ setTimeout(() => {
       <NavBar />
 
   
-
-      { showAlert && <Alert variant="success" style={{zIndex:"3", textAlign:"center", position:"absolute", width:"100%"}}>
+{/* <IoMdClose/> */}
+      { showAlert && <div style={{position:"relative"}}> <Alert variant="success" style={{zIndex:"3", textAlign:"center", position:"absolute", width:"100%"}}>
             You have logged successfully
-          </Alert> }
-      <Carousel fade className="main-carosuel" style={{position:"relative"}}>
+          </Alert>      <IoMdClose style={{ position: "absolute"  ,right:"17px", bottom:"-25px" ,zIndex:"3", cursor:"pointer" }} onClick={()=> {setShowAlert(false)}} />
+ </div>
+ }
+      <Carousel fade className="main-carosuel" >
         <Carousel.Item>
           <div className="carosuel-img">
             
@@ -118,7 +122,7 @@ setTimeout(() => {
           </div>
         </div>
       </section>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

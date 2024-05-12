@@ -1,4 +1,4 @@
-
+import './DoctorRegisteration.css'
 import { Link } from "react-router-dom";
 import React, {  useState } from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
@@ -122,10 +122,10 @@ const DoctorRegisteration = () => {
         <div className="mb-5">
           <h1>Create an account</h1>
 
-          <p>Just one step to get started.</p>
+          <p>Just one step to get started. ( <Link className="patientformbtn" to={'/'}>Go To Patient Form</Link>)</p>
+      
         </div>
 
-        <Link to={'/'}>Patient Form</Link>
 
         <FloatingLabel
           className="mb-3 "

@@ -33,15 +33,15 @@ const Settings = () => {
   const { selectedImage } = useContext(ImageContext);
 
   return (
-    <div>
+    <>
       <NavBar />
-      <div className="img-profile  d-flex justify-content-center align-items-center">
+      {/* <div className="img-profile  d-flex justify-content-center align-items-center">
         {selectedImage ? (
           <img src={selectedImage} alt="" />
         ) : (
           <img src="./images/log.jpg" alt="" />
         )}
-      </div>
+      </div> */}
       <div className="container mt-5">
         {/* <div className="language-div d-flex align-items-center">
           <div className=" fw-bold ms-2">Language</div>
@@ -57,13 +57,14 @@ const Settings = () => {
           </div>
         </div> */}
 
-        <div className="language-div d-flex align-items-center city-div">
-          <div className=" fw-bold ms-2">City</div>
+        <div className="language-div d-flex align-items-center city-div ">
+          <div className=" fw-bold ms-2 ">City</div>
           <div className="ms-auto ">
             <select
               className="form-select"
               value={selectedCity}
               onChange={handleCityChange}
+              
             >
               <option value="Cairo">Cairo</option>
               <option value="Alexandria">Alexandria</option>
@@ -92,7 +93,7 @@ const Settings = () => {
             </select>
           </div>
         </div>
-        <div className="profile-btns">
+        {/* <div className="profile-btns">
           <button style={{ color: "red" }}>
             {" "}
             <AiOutlineLogout
@@ -115,10 +116,10 @@ const Settings = () => {
               <BiSolidChevronRight style={{ color: "#000" }} />
             </span>
           </button>
-        </div>
+        </div> */}
       </div>
-      <Footer/>
-    </div>
+      <Footer bottom={"0px"} />
+    </>
   );
 };
 

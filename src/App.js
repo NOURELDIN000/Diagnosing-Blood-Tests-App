@@ -21,6 +21,7 @@ import { useState } from "react";
 import DocRequireAuth from "./Components/RequireAuth/DocRequireAuth";
 import PatientDetails from "./Components/PatientDetails/PatientDetails";
 import PatientDashboard from "./Components/docDashboard/PatientDashboard";
+import DoctorReport from "./Components/DoctorReport/DoctorReport";
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
           <Route path="/doctordashboard" element={<DocDashboard />} />
           <Route path="/patientdetails/:patientid" element={<PatientDetails />} />
           <Route path="/patientdashboard" element={<PatientDashboard />} />
+          <Route path="/report/:docid/:testid/:patientid" element={<DoctorReport />} />
           </Route>
 
 

@@ -118,7 +118,7 @@ setLoading(true)
         <div className="container ">
           <div className="row d-flex">
             <div className="col-md-6 ">
-              <div className="img-profile   ">
+              {/* <div className="img-profile   ">
                 {selectedImage ? (
                   <img src={selectedImage} alt="" />
                 ) : (
@@ -144,19 +144,19 @@ setLoading(true)
                   style={{ display: "none" }}
                   onChange={handleFileSelect}
                 />
-              </div>
+              </div> */}
 
-              <div className="text-center profile-info">
+              <div className="text-center profile-info ">
                 <h3 style={{ marginTop: "15px" }}>{userName} </h3>
                 <p style={{ marginTop: "15px" }}>{userEmail}</p>
-                <div>
+                {/* <div>
                   <button
                     className="main-btn rounded-pill border-0 "
                     onClick={() => navigate("/edit/profile")}
                   >
                     Edit Profile
                   </button>
-                </div>
+                </div> */}
               </div>
               {/* <div className='divider'></div> */}
 
@@ -173,7 +173,7 @@ setLoading(true)
                 </button>
               </div>
               <div className="profile-btns">
-                <button>
+                {/* <button>
                   {" "}
                   <IoInformationSharp
                     style={{
@@ -186,7 +186,7 @@ setLoading(true)
                   <span>
                     <BiSolidChevronRight />
                   </span>
-                </button>
+                </button> */}
               </div>
               <div className="profile-btns">
                 <button style={{ color: "red", marginBottom: "80px" }} onClick={handleLogOut}>
@@ -220,7 +220,7 @@ setLoading(true)
           </div>
         </div>
       </div>
-      <Footer />
+      <Footer bottom={"-350px"}/>
     </>
   );
 };

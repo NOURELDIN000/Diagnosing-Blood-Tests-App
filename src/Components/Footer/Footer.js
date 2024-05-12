@@ -8,9 +8,15 @@ import { TfiYoutube } from "react-icons/tfi";
 import { LuInstagram } from "react-icons/lu";
 import { Link } from 'react-router-dom';
 
-const Footer = () => {
+const Footer = ({bottom}) => {
+
+  // const footerStyle = {
+  //   bottom: bottom || 50 // Default to 0 if no value provided
+  // };
+
+
   return (
-    <div className='footer'>
+    <div className='footer position-absolute w-100 ' style={{bottom:bottom}}>
       <ul className='links   list-unstyled d-flex justify-content-center'>
         <li><Link to={'/'}>Register</Link></li>
         <li>  <a href='#/'> Forum</a>    </li>

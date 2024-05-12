@@ -1,0 +1,32 @@
+.textarea, .textarea:focus{
+    border: 1px solid #333;
+    border-radius: 5px;
+    
+    box-shadow: none;
+    outline: none;
+}
+
+.textarea:focus{
+    border: 1px solid #3daed2;
+}
+
+
+.main .reportbtn
+{
+  color: #fff;
+  background-color: #Dc3545;
+  width: 50%;
+  margin-top: 30px;
+  padding: 15px 0;
+  letter-spacing: 1px;
+  border: 1px solid#Dc3545;
+  border-radius: 10px;
+ 
+}
+
+
+
+.main .reportbtn:hover
+ {
+  opacity: 0.9;
+}

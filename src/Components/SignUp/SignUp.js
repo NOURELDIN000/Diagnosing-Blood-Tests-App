@@ -101,7 +101,7 @@ const SignUp = () => {
 
        <div>
         
-       <p>Just one step to get started. <Link to={'/doctorRegisteration'}>Doctor Form</Link></p>
+       <p>Just one step to get started. (<Link className="docformbtn" to={'/doctorRegisteration'}>Go To Doctor Form</Link>)</p>
        </div>
        
        

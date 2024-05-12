@@ -113,6 +113,14 @@
   color: #333;
 }
 
+
+.docformbtn{
+  text-decoration: none;
+  color: #0d6efd;
+}
+
+
+
 @media screen and (min-width: 320px) and (max-width: 480px) {
   .main {
     width: 100%;
