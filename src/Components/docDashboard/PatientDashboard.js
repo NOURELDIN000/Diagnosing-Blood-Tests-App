@@ -10,7 +10,7 @@ import axios from 'axios';
 import Cookie from "cookie-universal"
 
 
-const DocDashboard = () => {
+const PatientDashboard = () => {
 
 const [doctors, setDoctors] = useState({});
 const [patients, setPatients] = useState([]);
@@ -53,7 +53,7 @@ useEffect(() => {
           const data = await response.json();
           console.log(data.doctor); 
           console.log(data.patients); 
-              setDoctors(data.doctor);
+              setPatients(data.patients);
   };
 
   fetchData();
@@ -63,34 +63,34 @@ useEffect(() => {
 
 
 
-useEffect(() => { 
-  const fetchPatientId = async (id) => {
+// useEffect(() => { 
+//   const fetchPatientId = async (id) => {
       
-          const res = await fetch(`${baseUrl}test/info/${id}?api_password=AHMED$2024`, {
-              headers: {
-                  Authorization: 'Bearer ' + token
-              }
-          });
+//           const res = await fetch(`${baseUrl}test/info/${id}?api_password=AHMED$2024`, {
+//               headers: {
+//                   Authorization: 'Bearer ' + token
+//               }
+//           });
 
-          const data = await res.json();
-          console.log(data); 
-              setPatientsDetails(data);
-              // let doc_id = data.doc_id?.user_id
-              // let patientName = data.patient_info?.name
-              // let analysisType = data.user_test[0]?.analysis_type
-              // let analysisResult = data.user_test[0]?.analysis_result
-              // console.log(doc_id)
-              // console.log(patientName)
-              // console.log(analysisType)
-              // console.log(analysisResult)
-              // cookie.set("docId", doc_id)
-              // cookie.set("patientName",patientName)
-              // cookie.set(  "analysisType" ,analysisType)
-              // cookie.set(  "analysisResult" ,analysisResult)
-  };
+//           const data = await res.json();
+//           console.log(data); 
+//               setPatientsDetails(data);
+//               // let doc_id = data.doc_id?.user_id
+//               // let patientName = data.patient_info?.name
+//               // let analysisType = data.user_test[0]?.analysis_type
+//               // let analysisResult = data.user_test[0]?.analysis_result
+//               // console.log(doc_id)
+//               // console.log(patientName)
+//               // console.log(analysisType)
+//               // console.log(analysisResult)
+//               // cookie.set("docId", doc_id)
+//               // cookie.set("patientName",patientName)
+//               // cookie.set(  "analysisType" ,analysisType)
+//               // cookie.set(  "analysisResult" ,analysisResult)
+//   };
 
-  fetchPatientId(30);
-}, [token]);
+//   fetchPatientId(30);
+// }, [token]);
 
 
 
@@ -109,19 +109,18 @@ useEffect(() => {
   return (
     <div className='docdashboard '>
         <DocNavBar/>
-      <div className='row d-flex'>
-        <div className='  col-3 col-md-4   col-lg-2 sidebar'>
-          <Link className='dashSidebarLink' to={'/patientdashboard'}> get Patient Test</Link>
-        </div>
+      
 
-        <div className='  col-9 col-md-8    col-lg-10  p-0'>
+        
         <Table striped bordered  className=' '>
       <thead>
         <tr>
           <th>#</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Delete</th>
+          <th>Patient_name</th>
+          <th>Patient_age</th>
+          <th>Patient_gender</th>
+          <th>CKD_test_number</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -134,30 +133,32 @@ useEffect(() => {
         <tr> */}
 
 
- <tr>
+ {/* <tr>
           <td>{patientsDetails.doc_id?.user_id}</td>
           <td>{doctors.name}</td>
           <td>{doctors.email}</td>
-          <td><RiDeleteBin6Line className='dashDelete'  /></td>
+          <td><button>Details</button></td>
         </tr>
-        
+         */}
 
 
 
 
 
-         {/* {patients.map((item, index)=> {
+         {patients.map((item, index)=> {
         return (
           
           <tr key={index}>
            <td>{index + 1}</td>
            <td>{item.patient_name}</td>
            <td>{item.Patient_age}</td>
+           <td>{item.Patient_gender}</td>
+           <td>{item.CKD_Test_number}</td>
            
-           <td><RiDeleteBin6Line className='dashDelete'  /></td>
+           <td><Link  to={`/patientdetails/${item.Patient_age}`} >Details</Link></td>
          </tr>
           
-         )})} */}
+         )})}
 
 
 
@@ -166,9 +167,8 @@ useEffect(() => {
     </Table>
         </div>
         
-      </div>
-    </div>
+      
   )
 }
 
-export default DocDashboard
+export default PatientDashboard

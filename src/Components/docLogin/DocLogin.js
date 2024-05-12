@@ -78,14 +78,14 @@ const DocLogin = () => {
         
          })
          console.log(res)
-        //  const token = res.data.data.token;
-        //  const userName = res.data.data.name;
-        //  const DocEmail = res.data.config.data.username;
-        //  doctorNow.setAuth({  DocEmail});
-        //  cookie.set('nour', token)
+         const token = res.data.data.token;
+         const DocName = res.data.data.name;
+         const DocEmail = res.data.data.email;
+         doctorNow.setAuth({ token, DocName, DocEmail});
+         cookie.set('DocBearer', token)
         
-        //  cookie.set("DocName", userName);
-        //  cookie.set("DocEmail", DocEmail);
+         cookie.set("DocName", DocName);
+         cookie.set("DocEmail", DocEmail);
         
            navigation('/doctordashboard')
         
