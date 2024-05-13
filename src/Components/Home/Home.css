@@ -82,3 +82,21 @@
   color: #fff;
   background-color: #3daed2;
 }
+
+
+.centered-alert-home {
+  width: 270px;
+  position: fixed;
+  top: 90px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  text-align: center;
+}
+
+.close-icon-home {
+  position: absolute;
+  right: 7px;
+  top: 5px;
+  cursor: pointer;
+}

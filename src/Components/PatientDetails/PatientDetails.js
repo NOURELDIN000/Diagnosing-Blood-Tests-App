@@ -1,3 +1,5 @@
+
+import './PatientDetails.css'
 import React, { useEffect, useState } from 'react'
 import DocNavBar from '../DocNavBar/DocNavBar'
 // import { RiDeleteBin6Line } from 'react-icons/ri'
@@ -72,7 +74,7 @@ const PatientDetails = () => {
 
 
 return (
-  <div className='docdashboard '>
+  <div className='docdashboard  patient-details-dash'>
          
             <DocNavBar/>
           

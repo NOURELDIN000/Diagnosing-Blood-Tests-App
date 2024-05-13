@@ -1,5 +1,3 @@
-
-
 import React, { useContext, useState } from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
@@ -11,12 +9,12 @@ import { FaGoogle } from "react-icons/fa";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
-import Cookie from "cookie-universal"
+import Alert from "react-bootstrap/Alert";
+import Cookie from "cookie-universal";
 import { Doctor } from "../Auth/DocAuth";
+import { IoMdClose } from "react-icons/io";
 
-const DocLogin = () => {
-  
+const DocLogin = ({ showAlert, setShowAlert }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -29,10 +27,9 @@ const DocLogin = () => {
 
   const doctorNow = useContext(Doctor);
 
-  const cookie = Cookie()
-  const baseUrl = "https://bload-test.icanforsoftware.com/api/" 
+  const cookie = Cookie();
+  const baseUrl = "https://bload-test.icanforsoftware.com/api/";
   // const image = useContext(ImageContext);
-
 
   // const Submit = (e) => {
   //   e.preventDefault();
@@ -49,71 +46,75 @@ const DocLogin = () => {
   //   }
   // };
 
-  async function Submit (e) {
-    let flag = true
+  async function Submit(e) {
+    let flag = true;
     e.preventDefault();
     setAccept(true);
-  
-   if (
+
+    if (
       password === "" ||
       password.length < 8 ||
       email === "" ||
       email.indexOf("@") === -1 ||
       email.indexOf("@") === 0 ||
-      email.indexOf("@") === email.length - 1 
+      email.indexOf("@") === email.length - 1
     ) {
       // navigation("/home");
-      flag = false
-    }else {flag = true}
+      flag = false;
+    } else {
+      flag = true;
+    }
 
+    if (flag) {
+      setLoading(true);
+      try {
+        let res = await axios.post(
+          `${baseUrl}login?api_password=AHMED$2024&username=new_user@gmail.com&password=12345678`,
+          {
+            username: email,
+            password: password,
+          }
+        );
+        console.log(res);
+        const token = res.data.data.token;
+        const DocName = res.data.data.name;
+        const DocEmail = res.data.data.email;
+        doctorNow.setAuth({ token, DocName, DocEmail });
+        cookie.set("DocBearer", token);
 
-    if(flag){
-      setLoading(true)
-    try{
-        let res = await axios.post(`${baseUrl}login?api_password=AHMED$2024&username=new_user@gmail.com&password=12345678`, {
-       
-        username: email,
-        password: password,
-        
-        
-         })
-         console.log(res)
-         const token = res.data.data.token;
-         const DocName = res.data.data.name;
-         const DocEmail = res.data.data.email;
-         doctorNow.setAuth({ token, DocName, DocEmail});
-         cookie.set('DocBearer', token)
-        
-         cookie.set("DocName", DocName);
-         cookie.set("DocEmail", DocEmail);
-        
-           navigation('/doctordashboard')
-        
-       } 
-       catch(err){
-         setAccept(true)
-         setEmailError(err.response.status)
-        console.log(err) 
-        
-       }
-       finally{
-        
-        setLoading(false)
-        
-       }
+        cookie.set("DocName", DocName);
+        cookie.set("DocEmail", DocEmail);
+
+        navigation("/doctordashboard");
+        setShowAlert(true);
+      } catch (err) {
+        setAccept(true);
+        setEmailError(err.response.status);
+        console.log(err);
+      } finally {
+        setLoading(false);
       }
+    }
+  }
 
-
-
-
-
-  };
-
-
+  setTimeout(() => {
+    setShowAlert(false);
+  }, 3000);
 
   return (
     <div className="login">
-      <form onSubmit={Submit} noValidate >
+      {showAlert && (
+        <div className="centered-alert-login">
+          <Alert variant="success">
+            Your account has been created successfully.
+            <IoMdClose
+              className="close-icon-login"
+              onClick={() => setShowAlert(false)}
+            />
+          </Alert>
+        </div>
+      )}
+      <form onSubmit={Submit} noValidate>
         <div className="mb-4">
           <h1>Log in</h1>
 
@@ -122,7 +123,11 @@ const DocLogin = () => {
 
         <FloatingLabel
           controlId="floatingEmail"
-          label={<><MdAlternateEmail style={{ marginRight: "5px" }} /> E-mail</>}
+          label={
+            <>
+              <MdAlternateEmail style={{ marginRight: "5px" }} /> E-mail
+            </>
+          }
           className="mb-3"
         >
           <Form.Control
@@ -143,7 +148,6 @@ const DocLogin = () => {
               setEmail(e.target.value);
             }}
           />
-          
 
           {accept && email === "" && (
             <p className="mt-3 text-danger ">Email is Required.</p>
@@ -158,26 +162,32 @@ const DocLogin = () => {
               email.endsWith("@")) && (
               <p className="mt-3 text-danger ">Please Enter a Valid Email.</p>
             )}
-            {/* {accept && emailError === 422 && (<p className="mt-3 text-danger ">The email has already been taken.</p>)} */}
-
         </FloatingLabel>
 
-        <FloatingLabel controlId="floatingPassword" label={<><LuLock style={{ marginRight: "5px" }} /> Password</>}>
+        <FloatingLabel
+          controlId="floatingPassword"
+          label={
+            <>
+              <LuLock style={{ marginRight: "5px" }} /> Password
+            </>
+          }
+        >
           <>
-          <Form.Control
-            className={
-              accept && (password === "") | (password.length < 8) | ( emailError === 401)
-                ? "is-invalid"
-                : ""
-            }
-            placeholder=""
-            type="password"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          />
-              {/* <a
+            <Form.Control
+              className={
+                accept &&
+                (password === "") | (password.length < 8) | (emailError === 401)
+                  ? "is-invalid"
+                  : ""
+              }
+              placeholder=""
+              type="password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+            {/* <a
                 href="/login"
                 style={{
                   position: "absolute",
@@ -189,8 +199,7 @@ const DocLogin = () => {
               >
                 Forgot?{" "}
               </a> */}
-            </>
-          
+          </>
 
           {password === "" && accept && (
             <p className="mt-3 text-danger">Password is Required.</p>
@@ -200,13 +209,18 @@ const DocLogin = () => {
               Password must be at least 8 characters or numbers.
             </p>
           )}
-          {accept && emailError === 401 && (<p className="mt-3 text-danger">
+          {accept && emailError === 401 && (
+            <p className="mt-3 text-danger">
               Email or Password is not correct.
-            </p>)}
+            </p>
+          )}
         </FloatingLabel>
 
-        <button className="btn" type="submit">
-          {/* Log in */}
+        <button
+          className="btn"
+          type="submit"
+         
+        >
           {loading ? "Logging in..." : "Log in"}
         </button>
 

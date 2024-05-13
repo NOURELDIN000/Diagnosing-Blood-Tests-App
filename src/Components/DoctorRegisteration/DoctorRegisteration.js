@@ -14,7 +14,7 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 
 
-const DoctorRegisteration = () => {
+const DoctorRegisteration = ({setShowAlert}) => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -106,6 +106,7 @@ const DoctorRegisteration = () => {
           .then((res) => console.log(res));
 
         navigation("/doctorlogin");
+        setShowAlert(true);
       } catch (err) {
         setAccept(true);
         setEmailError(err);
@@ -612,6 +613,7 @@ const DoctorRegisteration = () => {
               className="text-decoration-none fw-bold"
               to={"/doctorlogin"}
               style={{ color: "#000", marginLeft: "5px" }}
+              // onClick={()=>setShowAlert(true)}
             >
               Login
             </Link>

@@ -3,12 +3,6 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import Form from "react-bootstrap/Form";
-// import Button from 'react-bootstrap/Button';
-
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import { CiSearch } from "react-icons/ci";
 import { GoHomeFill } from "react-icons/go";
 import { IoPerson } from "react-icons/io5";
 import { BsChatFill } from "react-icons/bs";
@@ -17,11 +11,9 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
-  const navigate = useNavigate();
+ 
 
-  // const Search_Place_Holder = ()=>{
-  //   return <p> <CiSearch/> Search </p>
-  // }
+
 
   return (
     <Navbar

@@ -14,8 +14,9 @@ import axios from "axios";
 import { User } from "../Auth/Context";
 import Cookie from "cookie-universal"
 import ImageContext from "../ImageProfile";
+import { IoMdClose } from "react-icons/io";
 
-const Login = ({setShowAlert}) => {
+const Login = ({showAlert ,setShowAlert}) => {
   
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -88,10 +89,8 @@ const Login = ({setShowAlert}) => {
          cookie.set("userEmail", userEmail);
         //  localStorage.setItem("selectedImage", image.selectedImage);
            navigation('/home')
-         // eslint-disable-next-line no-lone-blocks
-         {<Alert variant="success">
-          success
-         </Alert>}
+           setShowAlert(true)
+        
         
        } 
        catch(err){
@@ -113,10 +112,20 @@ const Login = ({setShowAlert}) => {
 
   };
 
-
+  setTimeout(() => {
+    setShowAlert(false);
+  }, 3000);
 
   return (
     <div className="login">
+        { showAlert &&  (
+      <div className='centered-alert-login'>
+        <Alert variant="success">
+          Your account has been created successfully.
+          <IoMdClose className='close-icon-login' onClick={() => setShowAlert(false)} />
+        </Alert>
+      </div>
+    )}
       <form onSubmit={Submit} noValidate >
         <div className="mb-4">
           <h1>Log in</h1>
@@ -209,8 +218,8 @@ const Login = ({setShowAlert}) => {
             </p>)}
         </FloatingLabel>
 
-        <button className="btn" type="submit" onClick={()=>setShowAlert(true)}>
-          {/* Log in */}
+        <button className="btn" type="submit" >
+          
           {loading ? "Logging in..." : "Log in"}
         </button>
 

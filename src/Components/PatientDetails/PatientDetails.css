@@ -1,0 +1,12 @@
+@media screen and (max-width: 715px) {
+  .patient-details-dash {
+    overflow-x: scroll;
+  }
+  .docNav{
+    position: fixed;
+    width: 100%;
+}
+.table{
+  margin-top: 57px ;
+}
+}

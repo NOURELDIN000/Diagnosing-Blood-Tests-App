@@ -27,12 +27,20 @@ setTimeout(() => {
       <NavBar />
 
   
-{/* <IoMdClose/> */}
-      { showAlert && <div style={{position:"relative"}}> <Alert variant="success" style={{zIndex:"3", textAlign:"center", position:"absolute", width:"100%"}}>
+
+      {/* { <div style={{position:"relative"}}> <Alert variant="success" style={{zIndex:"3", textAlign:"center", position:"fixed", width:"100%"}}>
             You have logged successfully
           </Alert>      <IoMdClose style={{ position: "absolute"  ,right:"17px", bottom:"-25px" ,zIndex:"3", cursor:"pointer" }} onClick={()=> {setShowAlert(false)}} />
  </div>
- }
+ } */}
+  { showAlert && (
+      <div className='centered-alert-home'>
+        <Alert variant="success">
+          You have logged in successfully
+          <IoMdClose className='close-icon-home' onClick={() => setShowAlert(false)} />
+        </Alert>
+      </div>
+    )}
       <Carousel fade className="main-carosuel" >
         <Carousel.Item>
           <div className="carosuel-img">

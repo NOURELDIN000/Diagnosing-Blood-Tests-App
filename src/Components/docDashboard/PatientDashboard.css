@@ -20,13 +20,16 @@
 
 
 @media screen and (max-width:565px)  {
-    /* .table{
-        min-width: auto ;
-    } */
+    .table{
+        margin-top: 57px ;
+    }
 
 .patientdashboard{
     overflow-x: scroll;
 }
-
+.docNav{
+    position: fixed;
+    width: 100%;
+}
 
 }

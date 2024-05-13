@@ -4,11 +4,14 @@ import React, { useState } from "react";
 import Cookie from "cookie-universal";
 import axios from "axios";
 import Form from "react-bootstrap/Form";
-import { useParams } from "react-router";
+
 import FloatingLabel from "react-bootstrap/esm/FloatingLabel";
 import { IoPersonOutline } from "react-icons/io5";
-import { IoIosPaper } from "react-icons/io";
-const DoctorReport = () => {
+import { IoIosPaper, IoMdClose } from "react-icons/io";
+import Alert from 'react-bootstrap/Alert';
+
+
+const DoctorReport = ({showAlert, setShowAlert}) => {
   const [report, setReport] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -32,9 +35,22 @@ const DoctorReport = () => {
 
     async function Submit(e) {
       e.preventDefault();
-
       setAccept(true)
+let flag = true
 
+if(
+  patientId === "" ||
+  docId === "" ||
+  testId === "" ||
+  report === ""
+)
+{
+   flag =false
+} else{
+  flag = true
+}
+
+if(flag){
       try {
         setLoading(true)
        
@@ -53,6 +69,13 @@ const DoctorReport = () => {
         )
 
         console.log(res);
+        if (res.status === 200){
+          setShowAlert(true)
+          setTimeout(()=>{
+            setShowAlert(false)
+          },3000)
+        } 
+
       } catch (err) {
         setAccept(true)
         setError(err.response.status)
@@ -64,9 +87,22 @@ const DoctorReport = () => {
         
        }
     }
+  }
 
   return (
-    <div className="main mt-5">
+    <div className="main mt-5 ">
+
+{  showAlert&& (
+      <div className='centered-alert'>
+        <Alert variant="success">
+          Your Report sent successfully.
+          <IoMdClose className='close-icon' onClick={() => setShowAlert(false)} />
+        </Alert>
+      </div>
+    )}
+
+
+
       <form className="" onSubmit={Submit}>
       <FloatingLabel
         
@@ -141,7 +177,8 @@ const DoctorReport = () => {
         {report === "" && accept  && ( <p className="mt-3 text-danger">The report field is required.</p> )}
         <div className="text-center">
             
-        <button className="reportbtn" type="submit" >
+        <button className="reportbtn" type="submit" 
+        >
           
         {  loading ?  "sending Report..."  : "send Report"}
         </button>

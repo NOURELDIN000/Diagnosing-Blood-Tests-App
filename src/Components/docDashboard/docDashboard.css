@@ -65,3 +65,20 @@ th{
     }
   }
   
+  .centered-alert {
+    width: 270px;
+    position: fixed;
+    top: 40px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    text-align: center;
+  }
+  
+  .close-icon {
+    position: absolute;
+    right: 7px;
+    top: 5px;
+    cursor: pointer;
+  }
+  

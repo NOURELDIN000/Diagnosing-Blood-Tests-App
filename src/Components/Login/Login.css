@@ -81,6 +81,28 @@
   color: #333;
 }
 
+
+.centered-alert-login {
+  width: 350px;
+  position: fixed;
+  top: 40px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  text-align: center;
+}
+
+.close-icon-login {
+  position: absolute;
+  right: 7px;
+  top: 5px;
+  cursor: pointer;
+}
+
+
+
+
+
 @media screen and (min-width: 320px) and (max-width: 480px) {
   .login {
     width: 100%;

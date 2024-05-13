@@ -8,9 +8,11 @@ import React, { useEffect, useState } from 'react'
 import { RiDeleteBin6Line } from "react-icons/ri";
 import axios from 'axios';
 import Cookie from "cookie-universal"
+import Alert from 'react-bootstrap/Alert';
+import { IoMdClose } from 'react-icons/io';
 
 
-const DocDashboard = () => {
+const DocDashboard = ({showAlert, setShowAlert}) => {
 
 const [doctors, setDoctors] = useState({});
 const [patients, setPatients] = useState([]);
@@ -95,7 +97,10 @@ useEffect(() => {
 
 
 
-
+setTimeout(()=>{
+  setShowAlert(false)
+}
+  ,3000)
 
 
 // function handleDelete(id) {
@@ -108,7 +113,21 @@ useEffect(() => {
 
   return (
     <div className='docdashboard '>
-        <DocNavBar/>
+       
+        {/* { <div style={{position:"relative"}}> <Alert variant="success" style={{zIndex:"3", textAlign:"center", position:"absolute",display:"inline-block",}}>
+            You have logged in successfully
+          </Alert>      <IoMdClose style={{ position: "absolute",  left:"220px", bottom:"-25px" ,zIndex:"3", cursor:"pointer" }} onClick={()=> {setShowAlert(false)}} />
+ </div>
+ } */}
+  {  showAlert&& (
+      <div className='centered-alert'>
+        <Alert variant="success">
+          You have logged in successfully.
+          <IoMdClose className='close-icon' onClick={() => setShowAlert(false)} />
+        </Alert>
+      </div>
+    )}
+  <DocNavBar/>
       <div className='row d-flex'>
         <div className='  col-3 col-md-4   col-lg-2 sidebar'>
           <Link className='dashSidebarLink' to={'/patientdashboard'}> get Patient Test</Link>

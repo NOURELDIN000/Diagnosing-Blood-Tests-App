@@ -36,23 +36,23 @@ function App() {
 
 
 
-          <Route path="/doctorRegisteration" element={<DoctorRegisteration />} />
-          <Route path="/doctorlogin" element={<DocLogin />} />
+          <Route path="/doctorRegisteration" element={<DoctorRegisteration setShowAlert={setShowAlert} />} />
+          <Route path="/doctorlogin" element={<DocLogin showAlert={showAlert} setShowAlert={setShowAlert}  />} />
 
           <Route element={<DocRequireAuth/>}>
 
-          <Route path="/doctordashboard" element={<DocDashboard />} />
+          <Route path="/doctordashboard" element={<DocDashboard showAlert={showAlert} setShowAlert={setShowAlert}  />} />
           <Route path="/patientdetails/:patientid" element={<PatientDetails />} />
           <Route path="/patientdashboard" element={<PatientDashboard />} />
-          <Route path="/report/:docid/:testid/:patientid" element={<DoctorReport />} />
+          <Route path="/report/:docid/:testid/:patientid" element={<DoctorReport showAlert={showAlert} setShowAlert={setShowAlert}  />} />
           </Route>
 
 
 
 
 
-          <Route path="/" element={<SignUp />} />
-          <Route path="/login" element={<Login  setShowAlert={setShowAlert} />} />
+          <Route path="/" element={<SignUp   setShowAlert={setShowAlert} />} />
+          <Route path="/login" element={<Login  showAlert={showAlert} setShowAlert={setShowAlert} />} />
 
             <Route element={<RequireAuth />}>
               <Route path="/home" element={<Home  showAlert={showAlert} setShowAlert={setShowAlert}   />} />
