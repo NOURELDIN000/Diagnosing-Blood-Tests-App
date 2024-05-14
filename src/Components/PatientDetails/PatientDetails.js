@@ -47,7 +47,9 @@ const PatientDetails = () => {
         fetchData();
       }, [ patientid,token]);
 
-
+      const getReportLink = (testId) => {
+        return `/report/${patientsDetails.doc_id?.id}/${testId}/${patientsDetails.patient_info?.id}`;
+    };
     
     // useEffect(() => { 
       
@@ -101,7 +103,7 @@ return (
             <tr> */}
     
     
-     <tr>
+     {/* <tr>
         
               <td>{patientsDetails.patient_info?.id}</td>
               <td>{patientsDetails.patient_info?.name}</td>
@@ -114,11 +116,7 @@ return (
            <td>{patientsDetails.user_test?.[0]?.analysis_result}</td>
            <td> <Link className='text-decoration-none text-danger'  to={`/report/${patientsDetails.doc_id?.id}/${patientsDetails.user_test?.[0]?.id }/${patientsDetails.patient_info?.id}`}>Report </Link></td>
 
-           {/* {patientsDetails.user_test.map((i)=>{
-            return(
-              <td>{patientsDetails.user_test?.[0]?.analysis_type}</td>
-            )
-           })} */}
+          
               
               
             </tr>
@@ -177,25 +175,26 @@ return (
            <td>{patientsDetails.user_test?.[5]?.analysis_result}</td>
            <td> <Link className='text-decoration-none text-danger'  to={`/report/${patientsDetails.doc_id?.id}/${patientsDetails.user_test?.[5]?.id }/${patientsDetails.patient_info?.id}`}>Report </Link></td>
 
-            </tr>
+            </tr> */}
             
     
     
     
     
     
-             {/* {patients.map((item, index)=> {
-            return (
-              
-              <tr key={index}>
-               <td>{index + 1}</td>
-               <td>{item.patient_name}</td>
-               <td>{item.Patient_age}</td>
-               
-               <td><RiDeleteBin6Line className='dashDelete'  /></td>
-             </tr>
-              
-             )})} */}
+            {patientsDetails.user_test && patientsDetails.user_test.map((test, index) => (
+                        <tr key={index}>
+                            <td>{patientsDetails.patient_info?.id}</td>
+                            <td>{patientsDetails.patient_info?.name}</td>
+                            <td>{test.created_at}</td>
+                            <td><img src={test.analysis_test} alt="" /></td>
+                            <td>{test.analysis_type}</td>
+                            <td>{test.analysis_result}</td>
+                            <td>
+                                <Link className='text-decoration-none text-danger' to={getReportLink(test.id)}>Report</Link>
+                            </td>
+                        </tr>
+                    ))}
     
     
     

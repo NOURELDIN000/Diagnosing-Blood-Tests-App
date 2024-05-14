@@ -17,7 +17,7 @@ const Home = ({showAlert, setShowAlert}) => {
 
 setTimeout(() => {
   setShowAlert(false); 
-}, 3000)
+}, 5000)
 
 
   const userNow = useContext(User);

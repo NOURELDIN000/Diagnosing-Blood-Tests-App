@@ -14,7 +14,7 @@ import Cookie from "cookie-universal";
 import { Doctor } from "../Auth/DocAuth";
 import { IoMdClose } from "react-icons/io";
 
-const DocLogin = ({ showAlert, setShowAlert }) => {
+const DocLogin = ({ setShowAlert,showRegisterAlert ,setShowRegisterAlert }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -98,18 +98,18 @@ const DocLogin = ({ showAlert, setShowAlert }) => {
   }
 
   setTimeout(() => {
-    setShowAlert(false);
-  }, 3000);
+    setShowRegisterAlert(false);
+  }, 5000);
 
   return (
     <div className="login">
-      {showAlert && (
+      {showRegisterAlert && (
         <div className="centered-alert-login">
           <Alert variant="success">
             Your account has been created successfully.
             <IoMdClose
               className="close-icon-login"
-              onClick={() => setShowAlert(false)}
+              onClick={() => setShowRegisterAlert(false)}
             />
           </Alert>
         </div>

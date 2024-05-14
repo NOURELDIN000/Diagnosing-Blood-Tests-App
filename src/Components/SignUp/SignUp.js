@@ -14,7 +14,7 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 
 
-const SignUp = ({setShowAlert}) => {
+const SignUp = ({setShowRegisterAlert}) => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -83,7 +83,7 @@ const SignUp = ({setShowAlert}) => {
           .then((res) => console.log(res));
 
         navigation("/login");
-        setShowAlert(true);
+        setShowRegisterAlert(true);
       } catch (err) {
         setAccept(true);
         setEmailError(err);

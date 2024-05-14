@@ -27,7 +27,8 @@ import DoctorsList from "./Components/DoctorsList/DoctorsList";
 
 function App() {
 
-  const [showAlert, setShowAlert] = useState()
+  const [showAlert, setShowAlert] = useState();
+  const [showRegisterAlert, setShowRegisterAlert] = useState()
 
 
   return (
@@ -38,8 +39,8 @@ function App() {
 
 
 
-          <Route path="/doctorRegisteration" element={<DoctorRegisteration setShowAlert={setShowAlert} />} />
-          <Route path="/doctorlogin" element={<DocLogin showAlert={showAlert} setShowAlert={setShowAlert}  />} />
+          <Route path="/doctorRegisteration" element={<DoctorRegisteration setShowRegisterAlert={setShowRegisterAlert} /> } />
+          <Route path="/doctorlogin" element={<DocLogin showRegisterAlert={showRegisterAlert} setShowAlert={setShowAlert}   setShowRegisterAlert={setShowRegisterAlert}  />} />
 
           <Route element={<DocRequireAuth/>}>
 
@@ -53,8 +54,8 @@ function App() {
 
 
 
-          <Route path="/" element={<SignUp   setShowAlert={setShowAlert} />} />
-          <Route path="/login" element={<Login  showAlert={showAlert} setShowAlert={setShowAlert} />} />
+          <Route path="/" element={<SignUp   setShowRegisterAlert={setShowRegisterAlert} />} />
+          <Route path="/login" element={<Login  showRegisterAlert={showRegisterAlert} setShowAlert={setShowAlert}   setShowRegisterAlert={setShowRegisterAlert} />} />
 
             <Route element={<RequireAuth />}>
               <Route path="/home" element={<Home  showAlert={showAlert} setShowAlert={setShowAlert}   />} />

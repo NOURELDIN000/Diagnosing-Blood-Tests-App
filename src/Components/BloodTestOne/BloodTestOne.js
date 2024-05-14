@@ -187,10 +187,13 @@ const BloodTestOne = () => {
 
   
 
+  
+
       <div className="d-flex justify-content-center align-items-center show-img" style={{  backgroundRepeat: 'no-repeat', backgroundSize: 'cover' , backgroundPosition:'center' }}>
         {/* {selectedImage && <img src={selectedImage} alt="file" style={{}} />}  */}
       
       </div>
+      
       <input
         type="file"
         // accept="image/*"
@@ -213,16 +216,16 @@ const BloodTestOne = () => {
 
    { imageSelected  && (<div className="d-flex  justify-content-center ">
 
-        <button className="main-btn rounded-pill border-0  img-btn-two     Done-btn position-relative" onClick={()=>navigate("/testone/result")}>
-        <Lottie
+        <button className="main-btn rounded-pill border-0  img-btn-two     Done-btn position-relative" >
+        {/* <Lottie
               
               loop={false}
               style={{ height: 24, left:'20px'}}
               animationData={doneAnimation}
               className="done-animation position-absolute"
               
-            />
-          Done
+            /> */}
+          Start
         </button>
       </div> )}
 </div>

@@ -10,15 +10,17 @@
 }
 
 
+
 .show-img {
   /* border:5px solid #000; */
   height: 500px;
   margin-top: 20px;
   width: 500px;
+  
   margin-left: auto;
   margin-right: auto;
   background-image: url("../../../public/images/ay2.jpg");
-  
+
   /* overflow: hidden; */
 }
 

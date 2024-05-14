@@ -100,7 +100,7 @@ useEffect(() => {
 setTimeout(()=>{
   setShowAlert(false)
 }
-  ,3000)
+  ,5000)
 
 
 // function handleDelete(id) {

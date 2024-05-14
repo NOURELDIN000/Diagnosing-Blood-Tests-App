@@ -16,7 +16,7 @@ import Cookie from "cookie-universal"
 import ImageContext from "../ImageProfile";
 import { IoMdClose } from "react-icons/io";
 
-const Login = ({showAlert ,setShowAlert}) => {
+const Login = ({ setShowAlert, showRegisterAlert ,setShowRegisterAlert}) => {
   
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -113,16 +113,16 @@ const Login = ({showAlert ,setShowAlert}) => {
   };
 
   setTimeout(() => {
-    setShowAlert(false);
-  }, 3000);
+    setShowRegisterAlert(false);
+  }, 5000);
 
   return (
     <div className="login">
-        { showAlert &&  (
+        { showRegisterAlert &&  (
       <div className='centered-alert-login'>
         <Alert variant="success">
           Your account has been created successfully.
-          <IoMdClose className='close-icon-login' onClick={() => setShowAlert(false)} />
+          <IoMdClose className='close-icon-login' onClick={() => setShowRegisterAlert(false)} />
         </Alert>
       </div>
     )}
