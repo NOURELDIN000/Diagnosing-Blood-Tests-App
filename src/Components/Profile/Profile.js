@@ -161,7 +161,9 @@ setLoading(true)
               {/* <div className='divider'></div> */}
 
               <div className="profile-btns">
-                <button>
+                <button
+                onClick={()=>navigate('/uploadedtests')}
+                >
                   {" "}
                   <TfiUpload
                     style={{ marginRight: "5px", fontSize: "22px" }}

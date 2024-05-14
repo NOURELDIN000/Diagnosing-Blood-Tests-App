@@ -22,6 +22,8 @@ import DocRequireAuth from "./Components/RequireAuth/DocRequireAuth";
 import PatientDetails from "./Components/PatientDetails/PatientDetails";
 import PatientDashboard from "./Components/docDashboard/PatientDashboard";
 import DoctorReport from "./Components/DoctorReport/DoctorReport";
+import UploadedTests from "./Components/uploadedTests/UploadedTests";
+import DoctorsList from "./Components/DoctorsList/DoctorsList";
 
 function App() {
 
@@ -60,6 +62,8 @@ function App() {
               <Route path="/testone/result" element={<BloodTestOneResult />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/uploadedtests" element={<UploadedTests />} />
+              <Route path="/doctorslist" element={<DoctorsList />} />
               <Route path="/edit/profile" element={<EditProfile />} />
               <Route path="/chat" element={<ChatBot />} />
             </Route>

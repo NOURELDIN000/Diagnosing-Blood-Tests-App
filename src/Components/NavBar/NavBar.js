@@ -16,6 +16,9 @@ const NavBar = () => {
 
 
   return (
+    <div>
+      
+   
     <Navbar
       expand="lg"
       className="Navbar d-flex align-items-center justify-content-center sticky-top"
@@ -71,6 +74,7 @@ const NavBar = () => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+    </div>
   );
 };
 

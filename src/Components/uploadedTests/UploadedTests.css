@@ -1,0 +1,33 @@
+
+
+.uploaded-dashboard{
+overflow-x: hidden;
+}
+
+
+.uploaded-table{
+    margin-top: 50px;
+    width: 100%;
+}
+
+.uploaded-h3{
+    margin-top: 250px;
+}
+
+
+
+@media screen and (max-width:942px) {
+    .uploaded-dashboard{
+        overflow-x: scroll;
+        }
+        
+    .Navbar{
+        position: fixed;
+        width: 100%;
+    }
+    .uploaded-table{
+        margin-top: 100px;
+    }
+
+   
+}
