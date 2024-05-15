@@ -1,15 +1,16 @@
-import { useNavigate } from "react-router";
+
 import NavBar from "../NavBar/NavBar";
 import "./BloodTestOne.css";
-import Lottie from "lottie-react";
-import doneAnimation from "../../animation/done.json"
+// import Lottie from "lottie-react";
+// import doneAnimation from "../../animation/done.json"
 import React, {  useEffect, useRef, useState } from "react";
 
 const BloodTestOne = () => {
+  // const [testImage, setTestImage] = useState();
   const inputRef = useRef(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [imageSelected, setImageSelected] = useState(false);
-  const navigate = useNavigate();
+
   
 
 
@@ -187,10 +188,14 @@ const BloodTestOne = () => {
 
   
 
+  <div className="div-show-img  d-flex justify-content-center align-items-center show-img">
+    
   
 
-      <div className="d-flex justify-content-center align-items-center show-img" style={{  backgroundRepeat: 'no-repeat', backgroundSize: 'cover' , backgroundPosition:'center' }}>
+     
         {/* {selectedImage && <img src={selectedImage} alt="file" style={{}} />}  */}
+        <img  src="./images/ay2.jpg" width="100%" height="100%"   alt=""/>
+      
       
       </div>
       

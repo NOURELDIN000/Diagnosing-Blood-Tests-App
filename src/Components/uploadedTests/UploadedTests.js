@@ -1,8 +1,18 @@
 import "./UploadedTests.css";
 import React, { useEffect, useState } from "react";
 import Cookie from "cookie-universal";
-import NavBar from "../NavBar/NavBar";
 import Table from "react-bootstrap/esm/Table";
+import Container from "react-bootstrap/esm/Container";
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import { Link } from "react-router-dom";
+import { BsChatFill } from "react-icons/bs";
+import { IoPerson, IoSettingsSharp } from "react-icons/io5";
+import { GoHomeFill } from "react-icons/go";
+
+
+
+
 const UploadedTests = () => {
   const [uploadedTest, setUploadedTest] = useState({});
 
@@ -42,7 +52,57 @@ const UploadedTests = () => {
 
   return (
     <div className="uploaded-dashboard">
-      <NavBar className="uploaded-nav" />
+     
+
+
+      <Navbar
+      expand="lg"
+      className="uploaded-nav  d-flex align-items-center justify-content-center "
+    >
+      <Container>
+        <Navbar.Brand href="#home" style={{ color: "#fff" }}>
+          App Name
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ms-auto">
+            <Nav.Link>
+              <Link to={"/home"}>
+                <GoHomeFill />
+              </Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link to={"/profile"}>
+                <IoPerson />
+              </Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link to={"/chat"}>
+                <BsChatFill />
+              </Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link to={"/settings"}>
+                <IoSettingsSharp />
+              </Link>
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+
+
+
+
+
+
+
+
+
+
+
+
+
       {uploadedTest.user_tests?.[0]?.test_result ? (
         <Table striped bordered className=" uploaded-table">
           <thead>

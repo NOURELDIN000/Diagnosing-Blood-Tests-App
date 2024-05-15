@@ -9,18 +9,25 @@
    
 }
 
+.div-show-img{
+  height: 500px;
 
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+}
 
 .show-img {
   /* border:5px solid #000; */
-  height: 500px;
+  /* height: 500px; */
   margin-top: 20px;
-  width: 500px;
+  /* width: 500px; */
   
   margin-left: auto;
   margin-right: auto;
-  background-image: url("../../../public/images/ay2.jpg");
-
+  /* background-image: url("../../../public/images/ay2.jpg"); */
+z-index: 5;
   /* overflow: hidden; */
 }
 

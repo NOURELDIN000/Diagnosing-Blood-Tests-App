@@ -7,18 +7,11 @@ import { GoHomeFill } from "react-icons/go";
 import { IoPerson } from "react-icons/io5";
 import { BsChatFill } from "react-icons/bs";
 import { IoSettingsSharp } from "react-icons/io5";
-import { useNavigate } from "react-router";
+
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
- 
-
-
-
   return (
-    <div>
-      
-   
     <Navbar
       expand="lg"
       className="Navbar d-flex align-items-center justify-content-center sticky-top"
@@ -74,7 +67,6 @@ const NavBar = () => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-    </div>
   );
 };
 
