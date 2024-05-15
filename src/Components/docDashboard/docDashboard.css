@@ -47,6 +47,35 @@ th{
 
 
 
+.centered-alert-doc-dash {
+    width: 270px;
+    position: fixed;
+    top: 40px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    text-align: center;
+   
+  }
+  
+  .close-icon-doc-dash {
+    position: absolute;
+    right: 7px;
+    top: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: .2s;
+  }
+  
+  .close-icon-doc-dash:hover{
+    rotate: 180deg;
+  }
+
+
+
+
+
+
 
 /* @media screen and (max-width:932px) {
    
@@ -65,20 +94,4 @@ th{
     }
   }
   
-  .centered-alert {
-    width: 270px;
-    position: fixed;
-    top: 40px;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 3;
-    text-align: center;
-  }
-  
-  .close-icon {
-    position: absolute;
-    right: 7px;
-    top: 5px;
-    cursor: pointer;
-  }
-  
+ 

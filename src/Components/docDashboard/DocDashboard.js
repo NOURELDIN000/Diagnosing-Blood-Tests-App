@@ -119,11 +119,11 @@ setTimeout(()=>{
           </Alert>      <IoMdClose style={{ position: "absolute",  left:"220px", bottom:"-25px" ,zIndex:"3", cursor:"pointer" }} onClick={()=> {setShowAlert(false)}} />
  </div>
  } */}
-  {  showAlert&& (
-      <div className='centered-alert'>
-        <Alert variant="success">
+  {   (
+      <div className='centered-alert-doc-dash'>
+        <Alert variant="success" style={{color:"#fff", background:"#75b798"}}>
           You have logged in successfully.
-          <IoMdClose className='close-icon' onClick={() => setShowAlert(false)} />
+          <IoMdClose className='close-icon-doc-dash' onClick={() => setShowAlert(false)} />
         </Alert>
       </div>
     )}

@@ -1,11 +1,17 @@
-
+import Alert from 'react-bootstrap/Alert';
+import { IoMdClose } from "react-icons/io";
 import NavBar from "../NavBar/NavBar";
 import "./BloodTestOne.css";
 // import Lottie from "lottie-react";
 // import doneAnimation from "../../animation/done.json"
 import React, {  useEffect, useRef, useState } from "react";
+import { Link } from 'react-router-dom';
 
 const BloodTestOne = () => {
+
+const [showNegativeTestAlert, setShowNegativeTestAlert] = useState(false);
+const [showPositiveTestAlert, setShowPositiveTestAlert] = useState(false);
+
   // const [testImage, setTestImage] = useState();
   const inputRef = useRef(null);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -186,7 +192,28 @@ const BloodTestOne = () => {
     <div className="main-blood-test-one"> 
       <NavBar />
 
-  
+  { showNegativeTestAlert &&   <div className="alert-overlay">
+      <div className="centered-alert-container">
+      <Alert variant="success" className="centered-alert" style={{color:"#fff", background:"#75b798"}}>
+        <span className="fw-bold">Success</span> NOT CKD.
+        <IoMdClose className="close-icon" onClick={() => setShowNegativeTestAlert(false)} />
+      </Alert>
+    </div>
+    </div> }
+
+
+   {   <div className="alert-overlay">
+      <div className="centered-alert-container">
+      <Alert variant="danger" className="centered-alert" style={{color:"#fff", background:"#db4e5b"}}>
+        <span className="fw-bold">Warning !</span>  CKD.
+        <IoMdClose className="close-icon " onClick={() => setShowPositiveTestAlert(false)} />
+        <div className='mt-4 mb-1'>
+          
+        <Link className='visit-doc-btn ' to={'/doctorslist'}>Visit Doctor</Link>
+        </div>
+      </Alert>
+    </div>
+    </div> }
 
   <div className="div-show-img  d-flex justify-content-center align-items-center show-img">
     

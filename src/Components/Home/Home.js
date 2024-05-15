@@ -35,8 +35,8 @@ setTimeout(() => {
  } */}
   { showAlert && (
       <div className='centered-alert-home'>
-        <Alert variant="success">
-          You have logged in successfully
+        <Alert variant="success" style={{color:"#fff",  background:"#75b798"}}>
+          You have logged in successfully.
           <IoMdClose className='close-icon-home' onClick={() => setShowAlert(false)} />
         </Alert>
       </div>
