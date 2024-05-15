@@ -7,7 +7,6 @@ import Home from "./Components/Home/Home";
 import SignUp from "./Components/SignUp/SignUp";
 import Login from "./Components/Login/Login";
 import BloodTestOne from "./Components/BloodTestOne/BloodTestOne";
-import BloodTestOneResult from "./Components/BloodTestOneResult/BloodTestOneResult";
 import Profile from "./Components/Profile/Profile";
 import EditProfile from "./Components/EditProfile/EditProfile";
 import Settings from "./Components/Settings/Settings";
@@ -60,7 +59,6 @@ function App() {
             <Route element={<RequireAuth />}>
               <Route path="/home" element={<Home  showAlert={showAlert} setShowAlert={setShowAlert}   />} />
               <Route path="/testone" element={<BloodTestOne />} />
-              <Route path="/testone/result" element={<BloodTestOneResult />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/uploadedtests" element={<UploadedTests />} />

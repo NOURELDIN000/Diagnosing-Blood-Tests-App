@@ -156,7 +156,7 @@ useEffect(() => {
            <td>{item.Patient_gender}</td>
            <td>{item.CKD_Test_number}</td>
            
-           <td><Link className='paDetailsbtn'  to={`/patientdetails/${item.Patient_age}`} >Details</Link></td>
+           <td><Link className='paDetailsbtn'  to={`/patientdetails/${item.id}`} >Details</Link></td>
          </tr>
           
          )})}

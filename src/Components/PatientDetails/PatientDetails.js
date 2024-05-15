@@ -87,9 +87,10 @@ return (
               <th>user_id</th>
               <th>user_name</th>
               <th>Date</th>
-              <th>analysis_test</th>
-              <th>analysis_type</th>
-              <th>analysis_result</th>
+              <th>Test_id</th>
+              <th>Analysis_test</th>
+              <th>Analysis_type</th>
+              <th>Analysis_result</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -187,6 +188,7 @@ return (
                             <td>{patientsDetails.patient_info?.id}</td>
                             <td>{patientsDetails.patient_info?.name}</td>
                             <td>{test.created_at}</td>
+                            <td>{test.id}</td>
                             <td><img src={test.analysis_test} alt="" /></td>
                             <td>{test.analysis_type}</td>
                             <td>{test.analysis_result}</td>
