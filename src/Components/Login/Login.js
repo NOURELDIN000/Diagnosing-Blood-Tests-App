@@ -13,7 +13,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { User } from "../Auth/Context";
 import Cookie from "cookie-universal"
-import ImageContext from "../ImageProfile";
 import { IoMdClose } from "react-icons/io";
 
 const Login = ({ setShowAlert, showRegisterAlert ,setShowRegisterAlert}) => {
@@ -118,9 +117,9 @@ const Login = ({ setShowAlert, showRegisterAlert ,setShowRegisterAlert}) => {
 
   return (
     <div className="login">
-        { showRegisterAlert &&  (
+        {  showRegisterAlert && (
       <div className='centered-alert-login'>
-        <Alert variant="success">
+        <Alert variant="success" style={{color:"#fff",  background:"#75b798"}}>
           Your account has been created successfully.
           <IoMdClose className='close-icon-login' onClick={() => setShowRegisterAlert(false)} />
         </Alert>

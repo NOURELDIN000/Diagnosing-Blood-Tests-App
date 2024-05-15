@@ -73,7 +73,7 @@ if(flag){
           setShowAlert(true)
           setTimeout(()=>{
             setShowAlert(false)
-          },3000)
+          },5000)
         } 
 
       } catch (err) {
@@ -92,11 +92,11 @@ if(flag){
   return (
     <div className="main mt-5 ">
 
-{  showAlert&& (
-      <div className='centered-alert'>
-        <Alert variant="success">
+{ showAlert && (
+      <div className='centered-alert-login'>
+        <Alert variant="success" style={{color:"#fff",  background:"#75b798"}}>
           Your Report sent successfully.
-          <IoMdClose className='close-icon' onClick={() => setShowAlert(false)} />
+          <IoMdClose className='close-icon-login' onClick={() => setShowAlert(false)} />
         </Alert>
       </div>
     )}

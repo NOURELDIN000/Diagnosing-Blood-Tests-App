@@ -68,22 +68,30 @@ z-index: 5;
   transform: translate(-50%, -50%);
 }
 
-.centered-alert {
+.centered-alert-ckd {
   /* display: flex;
   align-items: center;
   justify-content: space-between; */
   padding: 1rem 1.5rem;
   border-radius: 0.25rem;
+  width: 270px;
+  text-align: center;
 }
 
-.close-icon {
-  cursor: pointer;
+.close-icon-ckd{
+  /* cursor: pointer;
   font-size: 1.5rem;
   margin-left: 1rem;
-  transition: 0.2s;
+  transition: 0.2s; */
+  position: absolute;
+  right: 7px;
+  top: 5px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: .2s;
 }
 
-.close-icon:hover{
+.close-icon-ckd:hover{
   /* transform: rotate(45deg); */
   rotate: 180deg;
   

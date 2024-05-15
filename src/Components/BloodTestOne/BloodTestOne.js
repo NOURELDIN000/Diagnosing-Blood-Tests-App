@@ -192,21 +192,21 @@ const [showPositiveTestAlert, setShowPositiveTestAlert] = useState(false);
     <div className="main-blood-test-one"> 
       <NavBar />
 
-  { showNegativeTestAlert &&   <div className="alert-overlay">
+  {  showNegativeTestAlert &&   <div className="alert-overlay">
       <div className="centered-alert-container">
-      <Alert variant="success" className="centered-alert" style={{color:"#fff", background:"#75b798"}}>
+      <Alert variant="success" className="centered-alert-ckd" style={{color:"#fff", background:"#75b798"}}>
         <span className="fw-bold">Success</span> NOT CKD.
-        <IoMdClose className="close-icon" onClick={() => setShowNegativeTestAlert(false)} />
+        <IoMdClose className="close-icon-ckd" onClick={() => setShowNegativeTestAlert(false)} />
       </Alert>
     </div>
     </div> }
 
 
-   {   <div className="alert-overlay">
+   {  showPositiveTestAlert && <div className="alert-overlay">
       <div className="centered-alert-container">
-      <Alert variant="danger" className="centered-alert" style={{color:"#fff", background:"#db4e5b"}}>
+      <Alert variant="danger" className="centered-alert-ckd" style={{color:"#fff", background:"#db4e5b"}}>
         <span className="fw-bold">Warning !</span>  CKD.
-        <IoMdClose className="close-icon " onClick={() => setShowPositiveTestAlert(false)} />
+        <IoMdClose className="close-icon-ckd " onClick={() => setShowPositiveTestAlert(false)} />
         <div className='mt-4 mb-1'>
           
         <Link className='visit-doc-btn ' to={'/doctorslist'}>Visit Doctor</Link>

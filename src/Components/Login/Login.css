@@ -47,7 +47,7 @@
   padding: 15px 0;
 }
 
-.login button.btn{
+.login button.btn {
   letter-spacing: 1px;
 }
 
@@ -58,7 +58,7 @@
 .login button.btn:hover,
 .login a.btn:hover {
   color: #fff;
-  opacity: .9;
+  opacity: 0.9;
   background-color: #3daed2;
 }
 
@@ -81,11 +81,10 @@
   color: #333;
 }
 
-
 .centered-alert-login {
   width: 350px;
   position: fixed;
-  top: 40px;
+  top: 47px;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 3;
@@ -97,11 +96,13 @@
   right: 7px;
   top: 5px;
   cursor: pointer;
+  font-size: 1.2rem;
+  transition: 0.2s;
 }
 
-
-
-
+.close-icon-login:hover {
+  rotate: 180deg;
+}
 
 @media screen and (min-width: 320px) and (max-width: 480px) {
   .login {
@@ -132,7 +133,6 @@
     width: 40%;
   }
 }
-
 
 /* forgot style */
 /* <a href="/login" style={{position:'absolute', right:'0px' , top:'25px' ,color:'#3b9bce' ,textDecoration:'none'}}>Forgot? */
