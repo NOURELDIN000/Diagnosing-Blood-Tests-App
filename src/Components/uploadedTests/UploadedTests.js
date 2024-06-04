@@ -60,8 +60,8 @@ const UploadedTests = () => {
       className="uploaded-nav  d-flex align-items-center justify-content-center "
     >
       <Container>
-        <Navbar.Brand href="#home" style={{ color: "#fff" }}>
-          App Name
+        <Navbar.Brand href="#home" style={{ color: "#fff", fontWeight:"bold", letterSpacing:"1px",fontSize:"30px" }}>
+          Medic
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -91,11 +91,29 @@ const UploadedTests = () => {
       </Container>
     </Navbar>
 
+<div className="container text-center" style={{marginTop:"100px"}}>
+  
+<div className="row ">
+  
+<div className=" col-sm-6   col-md-4 col-lg-3   d-flex align-items-center justify-content-center">
+  
+<h4 className="fw-bold">Patient_id:</h4> <h4 style={{fontSize:"23px", marginLeft:"10px"}}>{uploadedTest.user_Data?.id}</h4>
+</div>
+<div className=" col-sm-6 col-md-4 col-lg-3  d-flex align-items-center justify-content-center">
+  
+<h4 className="fw-bold">Patient_name:</h4> <h4 style={{fontSize:"23px", marginLeft:"10px"}}>{uploadedTest.user_Data?.name}</h4>
+</div>
+<div className=" col-sm-6  col-md-4  col-lg-3 d-flex align-items-center justify-content-center">
+  
+<h4 className="fw-bold">Patient_age:</h4> <h4 style={{fontSize:"23px", marginLeft:"10px"}}>{uploadedTest.user_Data?.age}</h4>
+</div>
+<div className=" col-sm-6 col-md-12 col-lg-3 d-flex align-items-center justify-content-center">
+  
+<h4 className="fw-bold">Patient_gender:</h4> <h4 style={{fontSize:"23px", marginLeft:"10px"}}>{uploadedTest.user_Data?.female === 1 ? "Female" : "Male"}</h4>
+</div>
+</div>
 
-
-
-
-
+</div>
 
 
 
@@ -104,13 +122,10 @@ const UploadedTests = () => {
 
 
       {uploadedTest.user_tests?.[0]?.test_result ? (
-        <Table striped bordered className=" uploaded-table">
+        <Table striped bordered className=" uploaded-table text-center">
           <thead>
             <tr>
-              <th>Patient_id</th>
-              <th>Patient_name</th>
-              <th>Patient_age</th>
-              <th>Patient_gender</th>
+              
 
               <th>Analysis_test</th>
               <th>Date</th>
@@ -228,21 +243,25 @@ const UploadedTests = () => {
 
             {uploadedTest.user_tests.map((test, index) => (
               <tr key={index}>
-                <td>{uploadedTest.user_Data?.id}</td>
-                <td>{uploadedTest.user_Data?.name}</td>
-                <td>{uploadedTest.user_Data?.age}</td>
-                <td>
-                  {uploadedTest.user_Data?.female === 1 ? "Female" : "Male"}
-                </td>
+            
                 {/* <td><img src={getTestImagePath(test.analysis_test)} alt="Test_image" width="100px" height="100px" onClick={() => openImage(test.analysis_test)} /></td> */}
                 <td>
                  
-                  <img
-                    src="/images/1.jpg"
+                <img
+                  //  src={`C:\hany\GradProV1\public\Analysis_Test_Images\${test.analysis_test}`}
+                  // src={`C:\\hany\\GradProV1\\public\\Analysis_Test_Images\\${test.analysis_test}`}
+                  src={`hany/GradProV1/public/Analysis_Test_Images/${test.analysis_test}`}
                     alt="Test_image"
                     width="100px"
                     height="100px"
                   />
+
+                  {/* <img
+                   src={`/Analysis_Test_Images/${test.analysis_test}`}
+                    alt="Test_image"
+                    width="100px"
+                    height="100px"
+                  /> */}
                 </td>
                 <td>{test.date}</td>
                 <td>{test.test_type}</td>
