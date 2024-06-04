@@ -116,7 +116,7 @@ useEffect(() => {
         <Table striped bordered  className='table '>
       <thead>
         <tr>
-          <th>#</th>
+          <th>Patient_id</th>
           <th>Patient_name</th>
           <th>Patient_age</th>
           <th>Patient_gender</th>
@@ -150,7 +150,7 @@ useEffect(() => {
         return (
           
           <tr key={index}>
-           <td>{index + 1}</td>
+           <td>{item.id}</td>
            <td>{item.patient_name}</td>
            <td>{item.Patient_age}</td>
            <td>{item.Patient_gender}</td>

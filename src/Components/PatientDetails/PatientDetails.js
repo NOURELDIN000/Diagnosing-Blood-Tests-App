@@ -74,6 +74,8 @@ const PatientDetails = () => {
   
 // console.log(patientsDetails.user_test?.[0]?.analysis_test)
 
+// console.log(`https://srv778-files.hstgr.io/4bc880204b0a599a/files/public_html/bload-test/public/Analysis_Test_Images/${patientsDetails.user_test?.[0]?.analysis_test}`)
+// console.log(`https://bload-test.icanforsoftware.com/api/Analysis_Test_Images/${patientsDetails.user_test?.[0]?.analysis_test}`)
 
 return (
   <div className='docdashboard  patient-details-dash'>
@@ -84,8 +86,8 @@ return (
           <thead>
             <tr>
              
-              <th>user_id</th>
-              <th>user_name</th>
+              <th>Patient_id</th>
+              <th>Patient_name</th>
               <th>Date</th>
               <th>Test_id</th>
               <th>Analysis_test</th>
@@ -182,14 +184,13 @@ return (
     
     
     
-    
             {patientsDetails.user_test && patientsDetails.user_test.map((test, index) => (
                         <tr key={index}>
                             <td>{patientsDetails.patient_info?.id}</td>
                             <td>{patientsDetails.patient_info?.name}</td>
                             <td>{test.created_at}</td>
                             <td>{test.id}</td>
-                            <td><img src={test.analysis_test} alt="" /></td>
+                            <td><img src={test.analysis_test} alt="Test_image" /></td>
                             <td>{test.analysis_type}</td>
                             <td>{test.analysis_result}</td>
                             <td>

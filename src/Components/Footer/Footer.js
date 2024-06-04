@@ -31,7 +31,7 @@ const Footer = ({bottom}) => {
         <li><a href='#/'> <LuInstagram/></a> </li>
         
       </ul>
-      <p>&copy; 2024. appName. All rights reserved.</p>
+      <p>&copy; 2024. Medic. All rights reserved.</p>
     </div>
   )
 };

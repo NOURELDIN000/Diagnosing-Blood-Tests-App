@@ -1,14 +1,14 @@
+import './BloodTestTwo.css';
 import Alert from 'react-bootstrap/Alert';
 import { IoMdClose } from "react-icons/io";
 import NavBar from "../NavBar/NavBar";
-import "./BloodTestOne.css";
 // import Lottie from "lottie-react";
 // import doneAnimation from "../../animation/done.json"
 import React, {  useEffect, useRef, useState } from "react";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Cookie from "cookie-universal";
-const BloodTestOne = () => {
+const BloodTestTwo = () => {
 
 const [showNegativeTestAlert, setShowNegativeTestAlert] = useState(false);
 const [showPositiveTestAlert, setShowPositiveTestAlert] = useState(false);
@@ -341,7 +341,7 @@ const startTest = async () => {
   );
 };
 
-export default BloodTestOne;
+export default BloodTestTwo;
 
 
 

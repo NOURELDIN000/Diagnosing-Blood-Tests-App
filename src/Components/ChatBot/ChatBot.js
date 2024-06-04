@@ -5,7 +5,13 @@ import { Comment } from "react-loader-spinner";
 import "./ChatBot.css";
 import NavBar from "../NavBar/NavBar";
 
-const API_KEY = "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";
+
+const API_KEY = "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";
+
+
+// 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
+
+
 
 export default function ChatBot() {
   const [isTyping, setIsTyping] = useState(false);

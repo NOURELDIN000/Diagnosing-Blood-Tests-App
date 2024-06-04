@@ -58,7 +58,7 @@ const DocNavBar = () => {
     <div>
        <Navbar expand="lg" className="bg-body-tertiary docNav ">
       <Container >
-        <Navbar.Brand href="#home">appName</Navbar.Brand>
+        <Navbar.Brand href="#home"  style={{ color: "#000", fontWeight:"bold", letterSpacing:"1px",fontSize:"30px" }}>Medic</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">

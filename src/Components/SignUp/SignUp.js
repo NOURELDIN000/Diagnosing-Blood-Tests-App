@@ -367,7 +367,7 @@ const SignUp = ({ setShowRegisterAlert }) => {
 
         {/* style={{ position: "relative" }} */}
 
-        <div className="  d-flex justify-content-between ">
+        <div className="  d-flex justify-content-between   ">
           <div className=" ">
             <label htmlFor="gender" className="form-label  m-0 p-0">
               Gender:
@@ -403,7 +403,7 @@ const SignUp = ({ setShowRegisterAlert }) => {
         </div>
 
         {gender === "" && accept && (
-          <p className="text-danger mt-1">Gender is Required.</p>
+          <p className="text-danger mt-2 text-end me-4">Gender is Required.</p>
         )}
 
         <button className="btn" type="submit">

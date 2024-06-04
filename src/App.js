@@ -9,7 +9,7 @@ import Login from "./Components/Login/Login";
 import BloodTestOne from "./Components/BloodTestOne/BloodTestOne";
 import Profile from "./Components/Profile/Profile";
 import EditProfile from "./Components/EditProfile/EditProfile";
-import Settings from "./Components/Settings/Settings";
+// import Settings from "./Components/Settings/Settings";
 import { ImageProvider } from "./Components/ImageProfile";
 import ChatBot from "./Components/ChatBot/ChatBot";
 import RequireAuth from "./Components/RequireAuth/RequireAuth";
@@ -23,6 +23,7 @@ import PatientDashboard from "./Components/docDashboard/PatientDashboard";
 import DoctorReport from "./Components/DoctorReport/DoctorReport";
 import UploadedTests from "./Components/uploadedTests/UploadedTests";
 import DoctorsList from "./Components/DoctorsList/DoctorsList";
+import BloodTestTwo from "./Components/BloodTestTwo/BloodTestTwo";
 
 function App() {
 
@@ -59,7 +60,8 @@ function App() {
             <Route element={<RequireAuth />}>
               <Route path="/home" element={<Home  showAlert={showAlert} setShowAlert={setShowAlert}   />} />
               <Route path="/testone" element={<BloodTestOne />} />
-              <Route path="/settings" element={<Settings />} />
+              <Route path="/testtwo" element={<BloodTestTwo />} />
+              {/* <Route path="/settings" element={<Settings />} /> */}
               <Route path="/profile" element={<Profile />} />
               <Route path="/uploadedtests" element={<UploadedTests />} />
               <Route path="/doctorslist" element={<DoctorsList />} />

@@ -17,8 +17,8 @@ const NavBar = () => {
       className="Navbar d-flex align-items-center justify-content-center sticky-top"
     >
       <Container>
-        <Navbar.Brand href="#home" style={{ color: "#fff" }}>
-          App Name
+        <Navbar.Brand href="#home" style={{ color: "#fff", fontWeight:"bold", letterSpacing:"1px",fontSize:"30px" }}>
+          Medic
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -38,11 +38,11 @@ const NavBar = () => {
                 <BsChatFill />
               </Link>
             </Nav.Link>
-            <Nav.Link>
+            {/* <Nav.Link>
               <Link to={"/settings"}>
                 <IoSettingsSharp />
               </Link>
-            </Nav.Link>
+            </Nav.Link> */}
             {/* <CiSearch style={{position:'absolute' , right:'300px' ,bottom:'20px' ,fontSize:'20px' ,color:'#fff'}} /> */}
             {/* <Form className="search">
               <div style={{ position: "relative" }}>
