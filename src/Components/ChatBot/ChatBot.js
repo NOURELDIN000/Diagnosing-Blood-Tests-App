@@ -5,13 +5,17 @@ import { Comment } from "react-loader-spinner";
 import "./ChatBot.css";
 import NavBar from "../NavBar/NavBar";
 
+// "https://integrate.api.nvidia.com/v1/chat/completions";
 
-const API_KEY = "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";
+// https://integrate.api.nvidia.com/v1
+// const API_URL =  "https://integrate.api.nvidia.com/v1/chat/completions";
 
 
-// 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
+const API_KEY = "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";
 
+// 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
 
+// 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
 
 export default function ChatBot() {
   const [isTyping, setIsTyping] = useState(false);
@@ -66,6 +70,8 @@ export default function ChatBot() {
       model: "gpt-3.5-turbo",
       messages: [systemMessage, ...apiMessages],
     };
+
+    // https://api.openai.com/v1/chat/completions
 
     const res = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",

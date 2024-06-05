@@ -41,7 +41,7 @@ const Home = ({ showAlert, setShowAlert }) => {
           </Alert>
         </div>
       )}
-      <Carousel fade className="main-carosuel">
+      <Carousel fade className="main-carosuel" style={{position:"relative"}}>
         <Carousel.Item>
           <div className="carosuel-img">
             <img
@@ -51,9 +51,9 @@ const Home = ({ showAlert, setShowAlert }) => {
               style={{ width: "100%" }}
             />
           </div>
-          {/* <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          {/* <Carousel.Caption  style={{position:"absolute", bottom:"280px"}}>
+            <h1 className="fw-bold">We Care About Your Health</h1>
+            <p>We Care About Your Health.</p>
           </Carousel.Caption> */}
         </Carousel.Item>
         <Carousel.Item>
@@ -65,9 +65,8 @@ const Home = ({ showAlert, setShowAlert }) => {
               style={{ width: "100%" }}
             />
           </div>
-          {/* <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          {/* <Carousel.Caption  style={{position:"absolute", bottom:"280px", backgroundColor: "rgba(0, 0, 0, 0.7)",bordedRadiuos:"10px"}}>
+          <h1 className="fw-bold" style={{}}>We Care About Your Health</h1>
           </Carousel.Caption> */}
         </Carousel.Item>
       </Carousel>
@@ -82,31 +81,29 @@ const Home = ({ showAlert, setShowAlert }) => {
         <div className="row justify-content-lg-center ">
           <div className="col-md-6 col-lg-4 ">
             <div className="choose-card">
-              <img src="./images/1.jpg" style={{ width: "100%" }} alt="" />
+              {/* <img src="./images/1.jpg" style={{ width: "100%" }} alt="" /> */}
               <div className="card-text">
-                <h5> Illness Name </h5>
+                <h3 className="text-center fw-bold"> CKD disease </h3>
                 <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry.{" "}
+                Kidney disease, also known as renal disease, refers to a condition where the kidneys lose their ability to effectively filter waste and excess fluids from the blood, leading to an accumulation of harmful substances in the body. This can progress to chronic kidney disease (CKD) or acute kidney injury (AKI) and can result from various causes, including diabetes, high blood pressure, infections, and genetic factors.
                 </p>
               </div>
               <div className="d-flex justify-content-end">
-                <Link to={"/testone"}>choose a Test</Link>
+                <Link className="choose-btn" to={"/testone"}>choose a Test</Link>
               </div>
             </div>
           </div>
           <div className="col-md-6  col-lg-4">
             <div className="choose-card">
-              <img src="./images/1.jpg" style={{ width: "100%" }} alt="" />
+              {/* <img src="./images/1.jpg" style={{ width: "100%" }} alt="" /> */}
               <div className="card-text">
-                <h5> Illness Name </h5>
+              <h3 className="text-center fw-bold"> Liver disease </h3>
                 <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry.{" "}
+                Liver disease refers to any condition that impairs the liver's function, causing it to lose its ability to process nutrients, filter toxins, and produce vital proteins. This can include conditions such as hepatitis, fatty liver disease, cirrhosis, and liver cancer, and can result from factors like infections, alcohol abuse, obesity, and genetic disorders.
                 </p>
               </div>
               <div className="d-flex justify-content-end">
-                <Link to={"/testtwo"}>choose a Test</Link>
+                <Link className="choose-btn" to={"/testtwo"}>choose a Test</Link>
               </div>
             </div>
           </div>

@@ -45,7 +45,8 @@ const DoctorRegisteration = ({setShowRegisterAlert}) => {
   
   const navigation = useNavigate();
 
-  const baseUrl = "https://bload-test.icanforsoftware.com/api/";
+  // const baseUrl = "https://bload-test.icanforsoftware.com/api/";
+  const baseUrl = "http://127.0.0.1:8000/api/";
 
   async function Submit(e) {
     let flag = true;

@@ -147,8 +147,15 @@ setLoading(true)
               </div> */}
 
               <div className="text-center profile-info ">
-                <h3 style={{ marginTop: "15px" }}>{userName} </h3>
-                <p style={{ marginTop: "15px" }}>{userEmail}</p>
+                
+                  
+         <div className="text-center  d-flex justify-content-center align-items-center " style={{marginRight:"99px"}}>
+         <h3 style={{ fontWeight:"bold",marginRight:"10px" }}>Name:  </h3> <h3>{userName} </h3>
+         </div>  
+         <div className="text-center  d-flex justify-content-center align-items-center ">
+         <h3 style={{ fontWeight:"bold",marginRight:"10px" }}>Email:  </h3> <h5>{userEmail} </h5>
+         </div>  
+                </div>
                 {/* <div>
                   <button
                     className="main-btn rounded-pill border-0 "
@@ -157,7 +164,7 @@ setLoading(true)
                     Edit Profile
                   </button>
                 </div> */}
-              </div>
+              
               {/* <div className='divider'></div> */}
 
               <div className="profile-btns">

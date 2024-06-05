@@ -1,6 +1,6 @@
 import "./DoctorReport.css";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Cookie from "cookie-universal";
 import axios from "axios";
 import Form from "react-bootstrap/Form";
@@ -9,6 +9,7 @@ import FloatingLabel from "react-bootstrap/esm/FloatingLabel";
 import { IoPersonOutline } from "react-icons/io5";
 import { IoIosPaper, IoMdClose } from "react-icons/io";
 import Alert from 'react-bootstrap/Alert';
+import { useParams } from "react-router";
 
 
 const DoctorReport = ({showAlert, setShowAlert}) => {
@@ -23,7 +24,11 @@ const DoctorReport = ({showAlert, setShowAlert}) => {
   
   const [accept, setAccept] = useState(false);
 
-  const baseUrl = "https://bload-test.icanforsoftware.com/api/";
+  const [patientsDetails, setPatientsDetails] = useState({});
+  const params = useParams();
+  const { patientid } = params;
+  // const baseUrl = "https://bload-test.icanforsoftware.com/api/";
+  const baseUrl = "http://127.0.0.1:8000/api/";
 
   const cookie = Cookie();
 
@@ -40,7 +45,7 @@ let flag = true
 
 if(
   patientId === "" ||
-  docId === "" ||
+  // docId === "" ||
   testId === "" ||
   report === ""
 )
@@ -56,7 +61,7 @@ if(flag){
        
         let res = await axios.post(
           `${baseUrl}send/report?api_password=AHMED$2024` , {
-            docid: docId,
+            
             testid: testId,
             patientid: patientId,
               report : report
@@ -67,7 +72,7 @@ if(flag){
           }
 
         )
-
+// we shoud make testId = it's input value 
         console.log(res);
         if (res.status === 200){
           setShowAlert(true)
@@ -89,6 +94,39 @@ if(flag){
     }
   }
 
+
+  useEffect(() => { 
+    const fetchData = async () => {
+        
+            const response = await fetch(`${baseUrl}test/info/${patientid}?api_password=AHMED$2024`, {
+                headers: {
+                    Authorization: 'Bearer ' + token
+                }
+            });
+  
+            const data = await response.json();
+            console.log(data); 
+                setPatientsDetails(data);
+    };
+  
+    fetchData();
+  }, [ patientid,token]);
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <div className="main mt-5 ">
 
@@ -104,7 +142,7 @@ if(flag){
 
 
       <form className="" onSubmit={Submit}>
-      <FloatingLabel
+      {/* <FloatingLabel
         
           controlId="floatingTextThree"
           label={<> <IoPersonOutline style={{marginRight:"5px"}} />   Doctor ID </> }
@@ -118,46 +156,59 @@ if(flag){
               setDocId(e.target.value);
             }}
           />
-        </FloatingLabel>
+        </FloatingLabel> */}
 
-        {docId === "" && accept  && ( <p className="mt-3 text-danger">The doctor Id is required.</p> )}
-        <FloatingLabel
+        {/* {docId === "" && accept  && ( <p className="mt-3 text-danger">The doctor Id is required.</p> )} */}
+        {/* <FloatingLabel
            
           controlId="floatingTextThree"
           label={<>  <IoIosPaper style={{marginRight:"5px"}} />  Test ID </> }
-        >
+        > */}
           <Form.Control
             className={`  ${(error === 500 || testId === "" ) && accept ?  "is-invalid" : ""}     mt-3      "mb-3 "`}
             placeholder=""
-            type="number"
-            value={testId}
-            onChange={(e) => {
-              setTestId(e.target.value);
-            }}
+            type="hidden"
+            // value={ }
+            // onChange={(e) => {
+            //   setTestId(e.target.value);
+            // }}
           />
 
+{patientsDetails.user_test && patientsDetails.user_test.map((test) => (
+  <Form.Control
+  className={`  ${(error === 500 || testId === "" ) && accept ?  "is-invalid" : ""}     mt-3      "mb-3 "`}
+  placeholder=""
+  type="hidden"
+  value={test.id}
+  // onChange={(e) => {
+  //   setTestId(e.target.value);
+  // }}
+/>
+                        
+                    ))}
+
          
-        </FloatingLabel>
+        {/* </FloatingLabel> */}
 
-        {testId === "" && accept  && ( <p className="mt-3 text-danger">The test Id is required.</p> )}
+        {/* {testId === "" && accept  && ( <p className="mt-3 text-danger">The test Id is required.</p> )} */}
 
-        <FloatingLabel
+        {/* <FloatingLabel
             
           controlId="floatingTextThree"
           label={<> <IoPersonOutline style={{marginRight:"5px"}} />   Patient ID </> }
-        >
+        > */}
           <Form.Control
             className={`  ${(error === 500 || patientId === "" ) && accept ?  "is-invalid" : ""}     mt-3      "mb-3 "`}
             placeholder=""
-            type="number"
-            value={patientId}
-            onChange={(e) => {
-              setPatientId(e.target.value);
-            }}
+            type="hidden"
+            value={patientsDetails.patient_info?.id}
+            // onChange={(e) => {
+            //   setPatientId(e.target.value);
+            // }}
           />
 
-        </FloatingLabel>
-        {patientId === "" && accept  && ( <p className="mt-3 text-danger">The patient Id is required.</p> )}
+        {/* </FloatingLabel> */}
+        {/* {patientId === "" && accept  && ( <p className="mt-3 text-danger">The patient Id is required.</p> )} */}
 
 {error === 500 && accept  && ( <p className="mt-3 text-danger">Error in the data you entered</p> )}
 

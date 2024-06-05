@@ -16,7 +16,8 @@ import { GoHomeFill } from "react-icons/go";
 const UploadedTests = () => {
   const [uploadedTest, setUploadedTest] = useState({});
 
-  const baseUrl = "https://bload-test.icanforsoftware.com/api/";
+  // const baseUrl = "https://bload-test.icanforsoftware.com/api/";
+  const baseUrl = "http://127.0.0.1:8000/api/";
 
   const cookie = Cookie();
 
@@ -81,11 +82,11 @@ const UploadedTests = () => {
                 <BsChatFill />
               </Link>
             </Nav.Link>
-            <Nav.Link>
+            {/* <Nav.Link>
               <Link to={"/settings"}>
                 <IoSettingsSharp />
               </Link>
-            </Nav.Link>
+            </Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -127,6 +128,7 @@ const UploadedTests = () => {
             <tr>
               
 
+              <th>#</th>
               <th>Analysis_test</th>
               <th>Date</th>
               <th>Test_type</th>
@@ -245,12 +247,14 @@ const UploadedTests = () => {
               <tr key={index}>
             
                 {/* <td><img src={getTestImagePath(test.analysis_test)} alt="Test_image" width="100px" height="100px" onClick={() => openImage(test.analysis_test)} /></td> */}
+                <td>{index + 1}</td>
                 <td>
                  
                 <img
                   //  src={`C:\hany\GradProV1\public\Analysis_Test_Images\${test.analysis_test}`}
                   // src={`C:\\hany\\GradProV1\\public\\Analysis_Test_Images\\${test.analysis_test}`}
-                  src={`hany/GradProV1/public/Analysis_Test_Images/${test.analysis_test}`}
+                  src={`Analysis_Test_Images/${test.analysis_test}`}
+                  // src={`${test.analysis_test}`}
                     alt="Test_image"
                     width="100px"
                     height="100px"

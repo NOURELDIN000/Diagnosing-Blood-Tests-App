@@ -50,15 +50,20 @@
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   padding-bottom: 17px;
   margin-bottom: 35px;
+  /* height: 600px; */
+  height: 400px;
+  position: relative;
+  border-radius: 5px;
 }
 
 .card-text {
   padding-left: 10px;
 }
 
-.choose-sec h5 {
+.choose-sec h3 {
   margin-top: 10px;
-  margin-bottom: 15x;
+  padding-top: 20px;
+  margin-bottom: 15px;
 }
 
 .choose-sec p {
@@ -76,6 +81,10 @@
   margin-right: 15px;
   transition: 0.3s ease-in-out;
   font-weight: bold;
+  /* margin-bottom: 0px; */
+  position: absolute;
+  bottom: 20px;
+  
 }
 
 .choose-sec a:hover {

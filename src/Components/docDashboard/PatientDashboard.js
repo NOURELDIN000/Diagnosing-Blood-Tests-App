@@ -19,7 +19,8 @@ const [patients, setPatients] = useState([]);
 
 
 
-const baseUrl = "https://bload-test.icanforsoftware.com/api/" 
+// const baseUrl = "https://bload-test.icanforsoftware.com/api/" 
+const baseUrl = "http://127.0.0.1:8000/api/";
 
 
 const cookie = Cookie();

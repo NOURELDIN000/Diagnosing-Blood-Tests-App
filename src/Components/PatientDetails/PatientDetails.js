@@ -22,7 +22,8 @@ const PatientDetails = () => {
     const params = useParams();
     const { patientid } = params;
 
-    const baseUrl = "https://bload-test.icanforsoftware.com/api/" 
+    // const baseUrl = "https://bload-test.icanforsoftware.com/api/" 
+    const baseUrl = "http://127.0.0.1:8000/api/";
 
     const cookie = Cookie();
   
@@ -181,7 +182,7 @@ return (
             </tr> */}
             
     
-    
+            {/* ${test.analysis_test} */}
     
     
             {patientsDetails.user_test && patientsDetails.user_test.map((test, index) => (
@@ -190,7 +191,7 @@ return (
                             <td>{patientsDetails.patient_info?.name}</td>
                             <td>{test.created_at}</td>
                             <td>{test.id}</td>
-                            <td><img src={test.analysis_test} alt="Test_image" /></td>
+                            <td><img src={`/hany/GradProV1/public/Analysis_Test_Images/${test.analysis_test}`} alt="Test_image" width={100} height={100} /></td>
                             <td>{test.analysis_type}</td>
                             <td>{test.analysis_result}</td>
                             <td>

@@ -28,7 +28,8 @@ const DocLogin = ({ setShowAlert,showRegisterAlert ,setShowRegisterAlert }) => {
   const doctorNow = useContext(Doctor);
 
   const cookie = Cookie();
-  const baseUrl = "https://bload-test.icanforsoftware.com/api/";
+  // const baseUrl = "https://bload-test.icanforsoftware.com/api/";
+  const baseUrl = "http://127.0.0.1:8000/api/";
   // const image = useContext(ImageContext);
 
   // const Submit = (e) => {
