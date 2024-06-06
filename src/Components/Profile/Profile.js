@@ -146,14 +146,14 @@ setLoading(true)
                 />
               </div> */}
 
-              <div className="text-center profile-info ">
+              <div className="profile-info ">
                 
                   
-         <div className="text-center  d-flex justify-content-center align-items-center " style={{marginRight:"99px"}}>
-         <h3 style={{ fontWeight:"bold",marginRight:"10px" }}>Name:  </h3> <h3>{userName} </h3>
+         <div className="  d-flex justify-content-between align-items-center " style={{minWidth:"500px"}}>
+         <h3 style={{ fontWeight:"bold" }}>Name:  </h3> <h3 className="me-auto ms-3" >{userName} </h3>
          </div>  
-         <div className="text-center  d-flex justify-content-center align-items-center ">
-         <h3 style={{ fontWeight:"bold",marginRight:"10px" }}>Email:  </h3> <h5>{userEmail} </h5>
+         <div className=" d-flex justify-content-between align-items-center " style={{miWidth:"500px"}}>
+         <h3 style={{ fontWeight:"bold" }}>Email:  </h3> <h5 className="me-auto ms-3"  style={{}}>{userEmail} </h5>
          </div>  
                 </div>
                 {/* <div>

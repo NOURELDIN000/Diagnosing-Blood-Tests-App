@@ -191,7 +191,7 @@ return (
                             <td>{patientsDetails.patient_info?.name}</td>
                             <td>{test.created_at}</td>
                             <td>{test.id}</td>
-                            <td><img src={`/hany/GradProV1/public/Analysis_Test_Images/${test.analysis_test}`} alt="Test_image" width={100} height={100} /></td>
+                            <td><img src={`/Analysis_Test_Images/${test.analysis_test}`} alt="Test_image" width={100} height={100} /></td>
                             <td>{test.analysis_type}</td>
                             <td>{test.analysis_result}</td>
                             <td>

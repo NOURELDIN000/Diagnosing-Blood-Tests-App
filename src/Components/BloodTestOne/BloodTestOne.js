@@ -5,9 +5,17 @@ import "./BloodTestOne.css";
 // import Lottie from "lottie-react";
 // import doneAnimation from "../../animation/done.json"
 import React, {  useEffect, useRef, useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import axios from 'axios';
 import Cookie from "cookie-universal";
+
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+
+
+
+
+
 const BloodTestOne = () => {
 
 const [showNegativeTestAlert, setShowNegativeTestAlert] = useState(false);
@@ -20,6 +28,8 @@ const [showPositiveTestAlert, setShowPositiveTestAlert] = useState(false);
 
   const [loading, setLoading] = useState(false);
 
+
+// const nav = useNavigate();
 
   const handleChooseImage = () => {
     if (inputRef.current) {
@@ -268,6 +278,28 @@ const startTest = async () => {
     <div className="main-blood-test-one"> 
       <NavBar />
 
+      <DropdownButton
+    // key={'start'}
+    
+    drop={'start'}
+    title={
+      <div className="vertical-dots">
+        <span>&#183;</span>
+        <span>&#183;</span>
+        <span>&#183;</span>
+      </div>
+    }
+    className='text-end mt-2 custom-dropdown-main ' // Add custom-dropdown class here
+    style={{position:"absolute", right:"5px"}}
+  >
+    <Dropdown.Item eventKey="1" >
+      <Link className='custom-dropdown'  to={'/testone'}>CKD Test</Link>
+    </Dropdown.Item>
+    <Dropdown.Item eventKey="2" >
+      <Link className='custom-dropdown' to={'/testtwo'}>Liver Test</Link>
+    </Dropdown.Item>
+  </DropdownButton>
+
   {  showNegativeTestAlert &&   <div className="alert-overlay">
       <div className="centered-alert-container">
       <Alert variant="success" className="centered-alert-ckd" style={{color:"#fff", background:"#75b798"}}>
@@ -291,7 +323,7 @@ const startTest = async () => {
     </div>
     </div> }
 
-  <div className="div-show-img  d-flex justify-content-center align-items-center show-img">
+  <div className="div-show-img  d-flex justify-content-center align-items-center show-img  ">
     
   
 

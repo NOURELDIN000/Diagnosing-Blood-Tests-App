@@ -8,6 +8,9 @@ import React, {  useEffect, useRef, useState } from "react";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Cookie from "cookie-universal";
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+
 const BloodTestTwo = () => {
 
 const [showNegativeTestAlert, setShowNegativeTestAlert] = useState(false);
@@ -223,7 +226,7 @@ const startTest = async () => {
 
   try {
     let res = await axios.post(
-      `http://127.0.0.1:8000/api/CKD?api_password=AHMED$2024`,
+      `http://127.0.0.1:8000/api/Liver/Disease/Test?api_password=AHMED$2024`,
       formData,
       {
         headers: {
@@ -233,7 +236,7 @@ const startTest = async () => {
       }
     );
     console.log(res);
-    if (res.data.commandResult === "CKD"){
+    if (res.data.commandResult === "You have liver disease"){
       setShowPositiveTestAlert(true)
     } else{
       setShowNegativeTestAlert(true)
@@ -268,10 +271,32 @@ const startTest = async () => {
     <div className="main-blood-test-one"> 
       <NavBar />
 
+      <DropdownButton
+    // key={'start'}
+    
+    drop={'start'}
+    title={
+      <div className="vertical-dots">
+        <span>&#183;</span>
+        <span>&#183;</span>
+        <span>&#183;</span>
+      </div>
+    }
+    className='text-end mt-2 custom-dropdown-main ' // Add custom-dropdown class here
+    style={{position:"absolute", right:"5px"}}
+  >
+    <Dropdown.Item eventKey="1" >
+      <Link className='custom-dropdown'  to={'/testone'}>CKD Test</Link>
+    </Dropdown.Item>
+    <Dropdown.Item eventKey="2" >
+      <Link className='custom-dropdown' to={'/testtwo'}>Liver Test</Link>
+    </Dropdown.Item>
+  </DropdownButton>
+
   {  showNegativeTestAlert &&   <div className="alert-overlay">
       <div className="centered-alert-container">
       <Alert variant="success" className="centered-alert-ckd" style={{color:"#fff", background:"#75b798"}}>
-        <span className="fw-bold">Success</span> NOT CKD.
+        <span className="fw-bold">Success</span> You don't have liver disease.
         <IoMdClose className="close-icon-ckd" onClick={() => setShowNegativeTestAlert(false)} />
       </Alert>
     </div>
@@ -281,7 +306,7 @@ const startTest = async () => {
    {  showPositiveTestAlert && <div className="alert-overlay">
       <div className="centered-alert-container">
       <Alert variant="danger" className="centered-alert-ckd" style={{color:"#fff", background:"#db4e5b"}}>
-        <span className="fw-bold">Warning !</span>  CKD.
+        <span className="fw-bold">Warning !</span>  You have liver disease.
         <IoMdClose className="close-icon-ckd " onClick={() => setShowPositiveTestAlert(false)} />
         <div className='mt-4 mb-1'>
           

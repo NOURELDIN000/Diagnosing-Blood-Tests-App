@@ -17,9 +17,12 @@ const DoctorReport = ({showAlert, setShowAlert}) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const[docId, setDocId] = useState("");
+  // const[docId, setDocId] = useState("");
   const[testId, setTestId] = useState("");
   const[patientId, setPatientId] = useState("");
+
+  // const testId = "";
+  // const patientId = "";
 
   
   const [accept, setAccept] = useState(false);
@@ -107,7 +110,21 @@ if(flag){
             const data = await response.json();
             console.log(data); 
                 setPatientsDetails(data);
+
+ // Assuming the first test id is what you need
+ if (data.user_test && data.user_test.length > 0) {
+  setTestId(data.user_test[0].id);
+}
+
+// Setting patient id
+if (data.patient_info && data.patient_info.id) {
+  setPatientId(data.patient_info.id);
+}
+
+
     };
+
+    
   
     fetchData();
   }, [ patientid,token]);
@@ -179,7 +196,7 @@ if(flag){
   className={`  ${(error === 500 || testId === "" ) && accept ?  "is-invalid" : ""}     mt-3      "mb-3 "`}
   placeholder=""
   type="hidden"
-  value={test.id}
+  // value={test.id}
   // onChange={(e) => {
   //   setTestId(e.target.value);
   // }}
@@ -201,11 +218,12 @@ if(flag){
             className={`  ${(error === 500 || patientId === "" ) && accept ?  "is-invalid" : ""}     mt-3      "mb-3 "`}
             placeholder=""
             type="hidden"
-            value={patientsDetails.patient_info?.id}
+            // value={patientsDetails.patient_info?.id}
             // onChange={(e) => {
             //   setPatientId(e.target.value);
             // }}
           />
+          
 
         {/* </FloatingLabel> */}
         {/* {patientId === "" && accept  && ( <p className="mt-3 text-danger">The patient Id is required.</p> )} */}

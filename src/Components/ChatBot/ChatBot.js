@@ -11,7 +11,7 @@ import NavBar from "../NavBar/NavBar";
 // const API_URL =  "https://integrate.api.nvidia.com/v1/chat/completions";
 
 
-const API_KEY = "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";
+const API_KEY = "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";
 
 // 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
 

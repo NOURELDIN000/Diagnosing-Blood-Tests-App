@@ -112,7 +112,71 @@ z-index: 5;
   letter-spacing: 1px;
 }
 
+/* custom-dropdown.css */
+.vertical-dots {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #3daed2;
+  
+}
 
+.vertical-dots span {
+  display: block;
+  line-height: 0.4em; 
+  font-size: 43px;
+}
+
+.custom-dropdown {
+  all: initial; 
+}
+
+.custom-dropdown a {
+  color: #212529; 
+  text-decoration: none; 
+  cursor: pointer;
+}
+
+
+.custom-dropdown a {
+  color: #212529; 
+  text-decoration: none; 
+  cursor: pointer;
+}
+
+/* .custom-dropdown a:hover {
+  color: #3daed2 !important;
+  
+} */
+
+a.dropdown-item:hover{
+  background-color: #3daed2 ;
+  color: #212529;
+}
+
+
+.custom-dropdown {
+  all: unset  !important; 
+}
+
+.custom-dropdown-main{
+  color: #000 !important;
+
+}
+
+.custom-dropdown-main .btn-primary{
+  background-color: #fff;
+  border:none;
+  
+}
+
+.custom-dropdown-main .btn-primary:hover{
+  background-color: #fff;
+  border:none;
+  
+}
 
 
 

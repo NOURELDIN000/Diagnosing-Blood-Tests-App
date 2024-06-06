@@ -51,10 +51,10 @@ const Home = ({ showAlert, setShowAlert }) => {
               style={{ width: "100%" }}
             />
           </div>
-          {/* <Carousel.Caption  style={{position:"absolute", bottom:"280px"}}>
-            <h1 className="fw-bold">We Care About Your Health</h1>
-            <p>We Care About Your Health.</p>
-          </Carousel.Caption> */}
+          <Carousel.Caption className="" style={{position:"absolute", bottom:"300px",    backgroundColor: "rgba(0, 0, 0, 0.4)",bordedRadiuos:"10px"}}>
+            <h1 className="fw-bold  d-inline p-0" >We Care About Your Health</h1>
+            {/* <p>We Care About Your Health.</p> */}
+          </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <div className="carosuel-img">
@@ -65,9 +65,10 @@ const Home = ({ showAlert, setShowAlert }) => {
               style={{ width: "100%" }}
             />
           </div>
-          {/* <Carousel.Caption  style={{position:"absolute", bottom:"280px", backgroundColor: "rgba(0, 0, 0, 0.7)",bordedRadiuos:"10px"}}>
-          <h1 className="fw-bold" style={{}}>We Care About Your Health</h1>
-          </Carousel.Caption> */}
+          <Carousel.Caption className="" style={{position:"absolute", bottom:"300px",    backgroundColor: "rgba(0, 0, 0, 0.4)",bordedRadiuos:"10px"}}>
+            <h1 className="fw-bold  d-inline p-0" >We Care About Your Health</h1>
+            {/* <p>We Care About Your Health.</p> */}
+          </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
 
