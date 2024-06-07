@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { BsChatFill } from "react-icons/bs";
 import { IoPerson, IoSettingsSharp } from "react-icons/io5";
 import { GoHomeFill } from "react-icons/go";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 
 
@@ -50,6 +51,40 @@ const UploadedTests = () => {
   //   // Define the logic to open the image here
   //   console.log(`Opening image: ${imageName}`);
   // };
+
+
+  // const handleDelete = (index) => {
+  //   const updatedTests = uploadedTest.user_tests.filter((_, i) => i !== index);
+  //   setUploadedTest({
+  //     ...uploadedTest,
+  //     user_tests: updatedTests,
+  //   });
+  // };
+
+
+  // const handleDelete = async (testId) => {
+  //   const response = await fetch(`${baseUrl}DeleteTest/${testId}`, {
+  //     method: 'DELETE',
+  //     headers: {
+  //       Authorization: "Bearer " + token,
+  //       'Content-Type': 'application/json'
+  //     },
+  //   });
+
+  //   if (response.ok) {
+  //     const updatedTests = uploadedTest.user_tests.filter(test => test.id !== testId);
+  //     setUploadedTest({
+  //       ...uploadedTest,
+  //       user_tests: updatedTests,
+  //     });
+  //   } else {
+  //     console.error('Failed to delete the test');
+  //   }
+  // };
+
+
+
+
 
   return (
     <div className="uploaded-dashboard">
@@ -134,6 +169,8 @@ const UploadedTests = () => {
               <th>Test_type</th>
               <th>Test_result</th>
               <th>Time</th>
+             
+              
             </tr>
           </thead>
           <tbody>
@@ -271,6 +308,7 @@ const UploadedTests = () => {
                 <td>{test.test_type}</td>
                 <td>{test.test_result}</td>
                 <td>{test.time}</td>
+                {/* <td> <RiDeleteBin6Line  style={{color:"red", cursor:"pointer"}}  /></td> */}
               </tr>
             ))}
           </tbody>

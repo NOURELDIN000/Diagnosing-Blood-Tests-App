@@ -303,7 +303,7 @@ const startTest = async () => {
   {  showNegativeTestAlert &&   <div className="alert-overlay">
       <div className="centered-alert-container">
       <Alert variant="success" className="centered-alert-ckd" style={{color:"#fff", background:"#75b798"}}>
-        <span className="fw-bold">Success</span> NOT CKD.
+        <span className="fw-bold">Success</span> You don't have CKD.
         <IoMdClose className="close-icon-ckd" onClick={() => setShowNegativeTestAlert(false)} />
       </Alert>
     </div>
@@ -313,7 +313,7 @@ const startTest = async () => {
    {  showPositiveTestAlert && <div className="alert-overlay">
       <div className="centered-alert-container">
       <Alert variant="danger" className="centered-alert-ckd" style={{color:"#fff", background:"#db4e5b"}}>
-        <span className="fw-bold">Warning !</span>  CKD.
+        <span className="fw-bold">Warning !</span>  You have CKD.
         <IoMdClose className="close-icon-ckd " onClick={() => setShowPositiveTestAlert(false)} />
         <div className='mt-4 mb-1'>
           

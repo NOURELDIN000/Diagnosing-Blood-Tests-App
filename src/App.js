@@ -11,7 +11,6 @@ import Profile from "./Components/Profile/Profile";
 import EditProfile from "./Components/EditProfile/EditProfile";
 // import Settings from "./Components/Settings/Settings";
 import { ImageProvider } from "./Components/ImageProfile";
-import ChatBot from "./Components/ChatBot/ChatBot";
 import RequireAuth from "./Components/RequireAuth/RequireAuth";
 import DoctorRegisteration from "./Components/DoctorRegisteration/DoctorRegisteration";
 import DocLogin from "./Components/docLogin/DocLogin";
@@ -24,6 +23,8 @@ import DoctorReport from "./Components/DoctorReport/DoctorReport";
 import UploadedTests from "./Components/uploadedTests/UploadedTests";
 import DoctorsList from "./Components/DoctorsList/DoctorsList";
 import BloodTestTwo from "./Components/BloodTestTwo/BloodTestTwo";
+import ChatBot2 from "./Components/ChatBot2";
+import ChatBot from "./Components/ChatBot/ChatBot";
 
 function App() {
 
@@ -66,7 +67,8 @@ function App() {
               <Route path="/uploadedtests" element={<UploadedTests />} />
               <Route path="/doctorslist" element={<DoctorsList />} />
               <Route path="/edit/profile" element={<EditProfile />} />
-              <Route path="/chat" element={<ChatBot />} />
+              <Route path="/chat2" element={<ChatBot />} />
+              <Route path="/chat" element={<ChatBot2 />} />
             </Route>
 
           

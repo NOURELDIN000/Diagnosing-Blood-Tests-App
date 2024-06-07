@@ -175,7 +175,7 @@ setLoading(true)
                   <TfiUpload
                     style={{ marginRight: "5px", fontSize: "22px" }}
                   />{" "}
-                  Uploaded analysis
+                  Uploaded Tests
                   <span>
                     <BiSolidChevronRight />
                   </span>
