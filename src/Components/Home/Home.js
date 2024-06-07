@@ -86,7 +86,7 @@ const Home = ({ showAlert, setShowAlert }) => {
               <div className="card-text">
                 <h3 className="text-center fw-bold"> CKD disease </h3>
                 <p>
-                Kidney disease, also known as renal disease, refers to a condition where the kidneys lose their ability to effectively filter waste and excess fluids from the blood, leading to an accumulation of harmful substances in the body. This can progress to chronic kidney disease (CKD) or acute kidney injury (AKI) and can result from various causes, including diabetes, high blood pressure, infections, and genetic factors.
+                Kidney disease, also known as renal disease, refers to a condition where the kidneys lose their ability to effectively filter waste and excess fluids from the blood, leading to an accumulation of harmful substances in the body. This can progress to chronic kidney disease (CKD) or acute kidney injury (AKI) and can result from various causes, including diabetes, high blood pressure, infections, and genetic factors (for more details click <Link to={'/ckddetails'}>here</Link>).
                 </p>
               </div>
               <div className="d-flex justify-content-end">
@@ -100,7 +100,7 @@ const Home = ({ showAlert, setShowAlert }) => {
               <div className="card-text">
               <h3 className="text-center fw-bold"> Liver disease </h3>
                 <p>
-                Liver disease refers to any condition that impairs the liver's function, causing it to lose its ability to process nutrients, filter toxins, and produce vital proteins. This can include conditions such as hepatitis, fatty liver disease, cirrhosis, and liver cancer, and can result from factors like infections, alcohol abuse, obesity, and genetic disorders.
+                Liver disease refers to any condition that impairs the liver's function, causing it to lose its ability to process nutrients, filter toxins, and produce vital proteins. This can include conditions such as hepatitis, fatty liver disease, cirrhosis, and liver cancer, and can result from factors like infections, alcohol abuse, obesity, and genetic disorders (for more details click <Link to={'/liverdetails'}>here</Link>).
                 </p>
               </div>
               <div className="d-flex justify-content-end">

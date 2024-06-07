@@ -25,6 +25,8 @@ import DoctorsList from "./Components/DoctorsList/DoctorsList";
 import BloodTestTwo from "./Components/BloodTestTwo/BloodTestTwo";
 import ChatBot2 from "./Components/ChatBot2";
 import ChatBot from "./Components/ChatBot/ChatBot";
+import CkdDetails from "./Components/CkdDetails/CkdDetails";
+import LiverDetails from "./Components/LiverDetails/LiverDetails";
 
 function App() {
 
@@ -69,6 +71,8 @@ function App() {
               <Route path="/edit/profile" element={<EditProfile />} />
               <Route path="/chat2" element={<ChatBot />} />
               <Route path="/chat" element={<ChatBot2 />} />
+              <Route path="/ckddetails" element={<CkdDetails />} />
+              <Route path="/liverdetails" element={<LiverDetails />} />
             </Route>
 
           

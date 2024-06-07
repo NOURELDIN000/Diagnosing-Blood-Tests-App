@@ -1,0 +1,40 @@
+
+/* .ckd-details body{
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+
+} */
+
+.ckd-details{
+    max-width: 800px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* .container {
+    max-width: 800px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  } */
+  
+  .ckd-details  h1, h2 {
+    color: #333;
+  }
+  
+  .ckd-details ul {
+    margin: 10px 0;
+    padding: 0 20px;
+  }
+  
+  .ckd-details li {
+    margin-bottom: 10px;
+  }

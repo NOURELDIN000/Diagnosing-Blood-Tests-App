@@ -51,7 +51,7 @@
   padding-bottom: 17px;
   margin-bottom: 35px;
   /* height: 600px; */
-  height: 400px;
+  height: 450px;
   position: relative;
   border-radius: 5px;
 }
@@ -70,7 +70,7 @@
   color: gray;
 }
 
-.choose-sec a {
+.choose-sec .choose-btn {
   text-decoration: none;
   color: #3daed2;
   background-color: #fff;
@@ -87,7 +87,11 @@
   
 }
 
-.choose-sec a:hover {
+.choose-sec a{
+  text-decoration: none;
+}
+
+.choose-sec .choose-btn:hover {
   color: #fff;
   background-color: #3daed2;
 }
