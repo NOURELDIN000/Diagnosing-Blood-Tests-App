@@ -1,9 +1,9 @@
 import NavBar from '../NavBar/NavBar';
-import './DoctorList.css';
+// import './DoctorList.css';
 import Cookie from "cookie-universal"
 import React, { useEffect, useState } from 'react'
 
-const DoctorsList = () => {
+const DoctorsListTwo = () => {
 
 
 
@@ -11,7 +11,7 @@ const DoctorsList = () => {
   const doctorsList = [
     {
       name: 'Ahmed Asser',
-      speciality: 'CKD',
+      speciality: 'Liver',
       location: 'Baltim',
       phone: '01227987184',
       imgUrl:
@@ -19,7 +19,7 @@ const DoctorsList = () => {
     },
     {
       name: 'Sarah Smith',
-      speciality: 'CKD',
+      speciality: 'Liver',
       location: 'Cairo',
       phone: '01234567890',
       imgUrl:
@@ -27,7 +27,7 @@ const DoctorsList = () => {
     },
     {
       name: 'John Doe',
-      speciality: 'CKD',
+      speciality: 'Liver',
       location: 'Alexandria',
       phone: '01298765432',
       imgUrl:
@@ -35,7 +35,7 @@ const DoctorsList = () => {
     },
     {
       name: 'Emily Davis',
-      speciality: 'CKD',
+      speciality: 'Liver',
       location: 'Giza',
       phone: '01211111111',
       imgUrl:
@@ -43,7 +43,7 @@ const DoctorsList = () => {
     },
     {
       name: 'Jessica Wilson',
-      speciality: 'CKD',
+      speciality: 'Liver',
       location: 'Aswan',
       phone: '01233333333',
       imgUrl:
@@ -51,7 +51,7 @@ const DoctorsList = () => {
     },
     {
       name: 'Ahmed Asser',
-      speciality: 'CKD',
+      speciality: 'Liver',
       location: 'Baltim',
       phone: '01227987184',
       imgUrl:
@@ -59,7 +59,7 @@ const DoctorsList = () => {
     },
     {
       name: 'David Clark',
-      speciality: 'CKD',
+      speciality: 'Liver',
       location: 'Mansoura',
       phone: '01244444444',
       imgUrl:
@@ -67,7 +67,7 @@ const DoctorsList = () => {
     },
     {
       name: 'Laura Lee',
-      speciality: 'CKD',
+      speciality: 'Liver',
       location: 'Suez',
       phone: '01255555555',
       imgUrl:
@@ -75,7 +75,7 @@ const DoctorsList = () => {
     },
     {
       name: 'Chris Martin',
-      speciality: 'CKD',
+      speciality: 'Liver',
       location: 'Port Said',
       phone: '01266666666',
       imgUrl:
@@ -230,4 +230,4 @@ const cookie = Cookie();
 
 }
 
-export default DoctorsList
+export default DoctorsListTwo;

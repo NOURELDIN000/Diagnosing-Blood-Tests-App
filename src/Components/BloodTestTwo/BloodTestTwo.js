@@ -310,7 +310,7 @@ const startTest = async () => {
         <IoMdClose className="close-icon-ckd " onClick={() => setShowPositiveTestAlert(false)} />
         <div className='mt-4 mb-1'>
           
-        <Link className='visit-doc-btn ' to={'/doctorslist'}>Visit Doctor</Link>
+        <Link className='visit-doc-btn ' to={"/liverdoctorslist"}>Visit Doctor</Link>
         </div>
       </Alert>
     </div>
