@@ -4,7 +4,10 @@ import React from 'react'
 
 const LiverDetails = () => {
   return (
-    <div className="container ckd-details">
+    <div className='ckd-details'>
+
+    
+    <div className="container ">
       <h1>Liver Disease</h1>
       <p>Liver disease refers to any condition that causes damage to the liver and affects its function. The liver is a vital organ responsible for numerous critical functions, including detoxification, protein synthesis, and the production of biochemicals necessary for digestion.</p>
 
@@ -75,6 +78,7 @@ const LiverDetails = () => {
       </ul>
 
       <p>Liver disease is a serious condition that can significantly impact a person's health and quality of life. Early detection and appropriate management are crucial in preventing further liver damage and complications.</p>
+    </div>
     </div>
   );
   

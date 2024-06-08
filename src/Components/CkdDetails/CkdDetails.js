@@ -4,7 +4,10 @@ import React from 'react'
 
 const CkdDetails = () => {
   return (
-    <div className="container ckd-details">
+    <div className='ckd-details'>
+
+    
+    <div className="container ">
     <h1>Chronic Kidney Disease (CKD)</h1>
     <p>Chronic Kidney Disease (CKD) is a medical condition characterized by a gradual loss of kidney function over time. It involves damage to the kidneys, which affects their ability to filter waste and excess fluids from the blood. This progressive condition can lead to a buildup of waste products in the body, causing a variety of health problems.</p>
 
@@ -71,6 +74,7 @@ const CkdDetails = () => {
     </ul>
 
     <p>CKD is a serious and potentially life-threatening condition if not managed properly. Early detection and treatment are crucial in preventing the progression to end-stage renal disease.</p>
+  </div>
   </div>
   )
 }
