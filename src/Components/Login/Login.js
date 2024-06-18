@@ -1,5 +1,5 @@
 import "./Login.css";
-import Alert from 'react-bootstrap/Alert';
+import Alert from "react-bootstrap/Alert";
 import React, { useContext, useState } from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
@@ -12,11 +12,10 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { User } from "../Auth/Context";
-import Cookie from "cookie-universal"
+import Cookie from "cookie-universal";
 import { IoMdClose } from "react-icons/io";
 
-const Login = ({ setShowAlert, showRegisterAlert ,setShowRegisterAlert}) => {
-  
+const Login = ({ setShowAlert, showRegisterAlert, setShowRegisterAlert }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -29,113 +28,95 @@ const Login = ({ setShowAlert, showRegisterAlert ,setShowRegisterAlert}) => {
 
   const userNow = useContext(User);
 
-  const cookie = Cookie()
-  // const baseUrl = "https://bload-test.icanforsoftware.com/api/" 
+  const cookie = Cookie();
+  // const baseUrl = "https://bload-test.icanforsoftware.com/api/"
   const baseUrl = "http://127.0.0.1:8000/api/";
-  // const image = useContext(ImageContext);
 
-
-  // const Submit = (e) => {
-  //   e.preventDefault();
-  //   setAccept(true);
-  //   if (
-  //     Password !== "" &&
-  //     Password.length > 8 &&
-  //     email !== "" &&
-  //     email.indexOf("@") !== -1 &&
-  //     email.indexOf("@") !== 0 &&
-  //     email.indexOf("@") !== email.length - 1
-  //   ) {
-  //     navigation("/home");
-  //   }
-  // };
-
-  async function Submit (e) {
-    let flag = true
+ 
+  async function Submit(e) {
+    let flag = true;
     e.preventDefault();
     setAccept(true);
-  
-   if (
+
+    if (
       password === "" ||
       password.length < 8 ||
       email === "" ||
       email.indexOf("@") === -1 ||
       email.indexOf("@") === 0 ||
-      email.indexOf("@") === email.length - 1 
+      email.indexOf("@") === email.length - 1
     ) {
       // navigation("/home");
-      flag = false
-    }else {flag = true}
+      flag = false;
+    } else {
+      flag = true;
+    }
 
+    if (flag) {
+      setLoading(true);
+      try {
+        let res = await axios.post(
+          `${baseUrl}login?api_password=AHMED$2024&username=new_user@gmail.com&password=12345678`,
+          {
+            username: email,
+            password: password,
+          }
+        );
+        console.log(res);
+        const token = res.data.data.token;
+        const userName = res.data.data.name;
+        const userEmail = res.data.data.email;
+        userNow.setAuth({ token, userName, userEmail });
+        cookie.set("Bearer", token);
 
-    if(flag){
-      setLoading(true)
-    try{
-        let res = await axios.post(`${baseUrl}login?api_password=AHMED$2024&username=new_user@gmail.com&password=12345678`, {
-       
-        username: email,
-        password: password,
-        
-        
-         })
-         console.log(res)
-         const token = res.data.data.token;
-         const userName = res.data.data.name;
-         const userEmail = res.data.data.email;
-         userNow.setAuth({token, userName , userEmail});
-         cookie.set('Bearer', token)
-        
-         cookie.set("userName", userName);
-         cookie.set("userEmail", userEmail);
-        //  localStorage.setItem("selectedImage", image.selectedImage);
-           navigation('/home')
-           setShowAlert(true)
-        
-        
-       } 
-       catch(err){
-         setAccept(true)
-         setEmailError(err.response.status)
-        console.log(err) 
-        
-       }
-       finally{
-        
-        setLoading(false)
-        
-       }
+        cookie.set("userName", userName);
+        cookie.set("userEmail", userEmail);
+        navigation("/home");
+        setShowAlert(true);
+      } catch (err) {
+        setAccept(true);
+        setEmailError(err.response.status);
+        console.log(err);
+      } finally {
+        setLoading(false);
       }
-
-
-
-
-
-  };
+    }
+  }
 
   setTimeout(() => {
     setShowRegisterAlert(false);
-  }, 5000);
+  }, 3000);
 
   return (
     <div className="login">
-        {  showRegisterAlert && (
-      <div className='centered-alert-login'>
-        <Alert variant="success" style={{color:"#fff",  background:"#75b798"}}>
-          Your account has been created successfully.
-          <IoMdClose className='close-icon-login' onClick={() => setShowRegisterAlert(false)} />
-        </Alert>
-      </div>
-    )}
-      <form onSubmit={Submit} noValidate >
+      {showRegisterAlert && (
+        <div className="centered-alert-login">
+          <Alert
+            variant="success"
+            style={{ color: "#fff", background: "#75b798" }}
+          >
+            Your account has been created successfully.
+            <IoMdClose
+              className="close-icon-login"
+              onClick={() => setShowRegisterAlert(false)}
+            />
+          </Alert>
+        </div>
+      )}
+      <form onSubmit={Submit} noValidate>
         <div className="mb-4">
           <h1>Log in</h1>
 
           <p>Welcome back!</p>
         </div>
-        
+
         <FloatingLabel
           controlId="floatingEmail"
-          label={<><MdAlternateEmail style={{ marginRight: "5px" }} /> E-mail</>}
+          label={
+            <>
+              <MdAlternateEmail style={{ marginRight: "5px" }} /> E-mail
+            </>
+          }
           className="mb-3"
         >
           <Form.Control
@@ -156,7 +137,6 @@ const Login = ({ setShowAlert, showRegisterAlert ,setShowRegisterAlert}) => {
               setEmail(e.target.value);
             }}
           />
-          
 
           {accept && email === "" && (
             <p className="mt-3 text-danger ">Email is Required.</p>
@@ -171,26 +151,33 @@ const Login = ({ setShowAlert, showRegisterAlert ,setShowRegisterAlert}) => {
               email.endsWith("@")) && (
               <p className="mt-3 text-danger ">Please Enter a Valid Email.</p>
             )}
-            {/* {accept && emailError === 422 && (<p className="mt-3 text-danger ">The email has already been taken.</p>)} */}
-
+          {/* {accept && emailError === 422 && (<p className="mt-3 text-danger ">The email has already been taken.</p>)} */}
         </FloatingLabel>
 
-        <FloatingLabel controlId="floatingPassword" label={<><LuLock style={{ marginRight: "5px" }} /> Password</>}>
+        <FloatingLabel
+          controlId="floatingPassword"
+          label={
+            <>
+              <LuLock style={{ marginRight: "5px" }} /> Password
+            </>
+          }
+        >
           <>
-          <Form.Control
-            className={
-              accept && (password === "") | (password.length < 8) | ( emailError === 401)
-                ? "is-invalid"
-                : ""
-            }
-            placeholder=""
-            type="password"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          />
-              {/* <a
+            <Form.Control
+              className={
+                accept &&
+                (password === "") | (password.length < 8) | (emailError === 401)
+                  ? "is-invalid"
+                  : ""
+              }
+              placeholder=""
+              type="password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+            {/* <a
                 href="/login"
                 style={{
                   position: "absolute",
@@ -202,8 +189,7 @@ const Login = ({ setShowAlert, showRegisterAlert ,setShowRegisterAlert}) => {
               >
                 Forgot?{" "}
               </a> */}
-            </>
-          
+          </>
 
           {password === "" && accept && (
             <p className="mt-3 text-danger">Password is Required.</p>
@@ -213,13 +199,14 @@ const Login = ({ setShowAlert, showRegisterAlert ,setShowRegisterAlert}) => {
               Password must be at least 8 characters or numbers.
             </p>
           )}
-          {accept && emailError === 401 && (<p className="mt-3 text-danger">
+          {accept && emailError === 401 && (
+            <p className="mt-3 text-danger">
               Email or Password is not correct.
-            </p>)}
+            </p>
+          )}
         </FloatingLabel>
 
-        <button className="btn" type="submit" >
-          
+        <button className="btn" type="submit">
           {loading ? "Logging in..." : "Log in"}
         </button>
 
@@ -282,3 +269,22 @@ const Login = ({ setShowAlert, showRegisterAlert ,setShowRegisterAlert}) => {
 };
 
 export default Login;
+
+
+
+
+
+ // const Submit = (e) => {
+  //   e.preventDefault();
+  //   setAccept(true);
+  //   if (
+  //     Password !== "" &&
+  //     Password.length > 8 &&
+  //     email !== "" &&
+  //     email.indexOf("@") !== -1 &&
+  //     email.indexOf("@") !== 0 &&
+  //     email.indexOf("@") !== email.length - 1
+  //   ) {
+  //     navigation("/home");
+  //   }
+  // };

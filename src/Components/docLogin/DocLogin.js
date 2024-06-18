@@ -14,7 +14,11 @@ import Cookie from "cookie-universal";
 import { Doctor } from "../Auth/DocAuth";
 import { IoMdClose } from "react-icons/io";
 
-const DocLogin = ({ setShowAlert,showRegisterAlert ,setShowRegisterAlert }) => {
+const DocLogin = ({
+  setShowAlert,
+  showRegisterAlert,
+  setShowRegisterAlert,
+}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -30,22 +34,6 @@ const DocLogin = ({ setShowAlert,showRegisterAlert ,setShowRegisterAlert }) => {
   const cookie = Cookie();
   // const baseUrl = "https://bload-test.icanforsoftware.com/api/";
   const baseUrl = "http://127.0.0.1:8000/api/";
-  // const image = useContext(ImageContext);
-
-  // const Submit = (e) => {
-  //   e.preventDefault();
-  //   setAccept(true);
-  //   if (
-  //     Password !== "" &&
-  //     Password.length > 8 &&
-  //     email !== "" &&
-  //     email.indexOf("@") !== -1 &&
-  //     email.indexOf("@") !== 0 &&
-  //     email.indexOf("@") !== email.length - 1
-  //   ) {
-  //     navigation("/home");
-  //   }
-  // };
 
   async function Submit(e) {
     let flag = true;
@@ -100,13 +88,16 @@ const DocLogin = ({ setShowAlert,showRegisterAlert ,setShowRegisterAlert }) => {
 
   setTimeout(() => {
     setShowRegisterAlert(false);
-  }, 5000);
+  }, 3000);
 
   return (
     <div className="login">
-      {  showRegisterAlert &&(
+      {showRegisterAlert && (
         <div className="centered-alert-login">
-          <Alert variant="success" style={{color:"#fff",  background:"#75b798"}}>
+          <Alert
+            variant="success"
+            style={{ color: "#fff", background: "#75b798" }}
+          >
             Your account has been created successfully.
             <IoMdClose
               className="close-icon-login"
@@ -217,11 +208,7 @@ const DocLogin = ({ setShowAlert,showRegisterAlert ,setShowRegisterAlert }) => {
           )}
         </FloatingLabel>
 
-        <button
-          className="btn"
-          type="submit"
-         
-        >
+        <button className="btn" type="submit">
           {loading ? "Logging in..." : "Log in"}
         </button>
 

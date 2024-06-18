@@ -13,7 +13,7 @@ import { IoMdClose } from "react-icons/io";
 const Home = ({ showAlert, setShowAlert }) => {
   setTimeout(() => {
     setShowAlert(false);
-  }, 5000);
+  }, 3000);
 
   const userNow = useContext(User);
   console.log(userNow);
@@ -22,11 +22,6 @@ const Home = ({ showAlert, setShowAlert }) => {
     <div className="home-page">
       <NavBar />
 
-      {/* { <div style={{position:"relative"}}> <Alert variant="success" style={{zIndex:"3", textAlign:"center", position:"fixed", width:"100%"}}>
-            You have logged successfully
-          </Alert>      <IoMdClose style={{ position: "absolute"  ,right:"17px", bottom:"-25px" ,zIndex:"3", cursor:"pointer" }} onClick={()=> {setShowAlert(false)}} />
- </div>
- } */}
       {showAlert && (
         <div className="centered-alert-home">
           <Alert
@@ -41,7 +36,7 @@ const Home = ({ showAlert, setShowAlert }) => {
           </Alert>
         </div>
       )}
-      <Carousel fade className="main-carosuel" style={{position:"relative"}}>
+      <Carousel fade className="main-carosuel" style={{ position: "relative" }}>
         <Carousel.Item>
           <div className="carosuel-img">
             <img
@@ -51,8 +46,16 @@ const Home = ({ showAlert, setShowAlert }) => {
               style={{ width: "100%" }}
             />
           </div>
-          <Carousel.Caption className="" style={{position:"absolute", bottom:"300px",    backgroundColor: "rgba(0, 0, 0, 0.4)",bordedRadiuos:"10px"}}>
-            <h1 className="fw-bold  d-inline p-0" >We Care About Your Health</h1>
+          <Carousel.Caption
+            className=""
+            style={{
+              position: "absolute",
+              bottom: "300px",
+              backgroundColor: "rgba(0, 0, 0, 0.4)",
+              bordedRadiuos: "10px",
+            }}
+          >
+            <h1 className="fw-bold  d-inline p-0">We Care About Your Health</h1>
             {/* <p>We Care About Your Health.</p> */}
           </Carousel.Caption>
         </Carousel.Item>
@@ -65,18 +68,20 @@ const Home = ({ showAlert, setShowAlert }) => {
               style={{ width: "100%" }}
             />
           </div>
-          <Carousel.Caption className="" style={{position:"absolute", bottom:"300px",    backgroundColor: "rgba(0, 0, 0, 0.4)",bordedRadiuos:"10px"}}>
-            <h1 className="fw-bold  d-inline p-0" >We Care About Your Health</h1>
+          <Carousel.Caption
+            className=""
+            style={{
+              position: "absolute",
+              bottom: "300px",
+              backgroundColor: "rgba(0, 0, 0, 0.4)",
+              bordedRadiuos: "10px",
+            }}
+          >
+            <h1 className="fw-bold  d-inline p-0">We Care About Your Health</h1>
             {/* <p>We Care About Your Health.</p> */}
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-
-      {/* <div className="h-btn d-flex justify-content-center  ">
-        <Link className="rounded-pill text-decoration-none main-btn" to="">
-          Choose a Test
-        </Link>
-      </div> */}
 
       <section className="container choose-sec">
         <div className="row justify-content-lg-center ">
@@ -86,11 +91,20 @@ const Home = ({ showAlert, setShowAlert }) => {
               <div className="card-text">
                 <h3 className="text-center fw-bold"> CKD disease </h3>
                 <p>
-                Kidney disease, also known as renal disease, refers to a condition where the kidneys lose their ability to effectively filter waste and excess fluids from the blood, leading to an accumulation of harmful substances in the body. This can progress to chronic kidney disease (CKD) or acute kidney injury (AKI) and can result from various causes, including diabetes, high blood pressure, infections, and genetic factors (for more details click <Link to={'/ckddetails'}>here</Link>).
+                  Kidney disease, also known as renal disease, refers to a
+                  condition where the kidneys lose their ability to effectively
+                  filter waste and excess fluids from the blood, leading to an
+                  accumulation of harmful substances in the body. This can
+                  progress to chronic kidney disease (CKD) or acute kidney
+                  injury (AKI) and can result from various causes, including
+                  diabetes, high blood pressure, infections, and genetic factors
+                  (for more details click <Link to={"/ckddetails"}>here</Link>).
                 </p>
               </div>
               <div className="d-flex justify-content-end">
-                <Link className="choose-btn" to={"/testone"}>choose a Test</Link>
+                <Link className="choose-btn" to={"/testone"}>
+                  choose a Test
+                </Link>
               </div>
             </div>
           </div>
@@ -98,17 +112,24 @@ const Home = ({ showAlert, setShowAlert }) => {
             <div className="choose-card">
               {/* <img src="./images/1.jpg" style={{ width: "100%" }} alt="" /> */}
               <div className="card-text">
-              <h3 className="text-center fw-bold"> Liver disease </h3>
+                <h3 className="text-center fw-bold"> Liver disease </h3>
                 <p>
-                Liver disease refers to any condition that impairs the liver's function, causing it to lose its ability to process nutrients, filter toxins, and produce vital proteins. This can include conditions such as hepatitis, fatty liver disease, cirrhosis, and liver cancer, and can result from factors like infections, alcohol abuse, obesity, and genetic disorders (for more details click <Link to={'/liverdetails'}>here</Link>).
+                  Liver disease refers to any condition that impairs the liver's
+                  function, causing it to lose its ability to process nutrients,
+                  filter toxins, and produce vital proteins. This can include
+                  conditions such as hepatitis, fatty liver disease, cirrhosis,
+                  and liver cancer, and can result from factors like infections,
+                  alcohol abuse, obesity, and genetic disorders (for more
+                  details click <Link to={"/liverdetails"}>here</Link>).
                 </p>
               </div>
               <div className="d-flex justify-content-end">
-                <Link className="choose-btn" to={"/testtwo"}>choose a Test</Link>
+                <Link className="choose-btn" to={"/testtwo"}>
+                  choose a Test
+                </Link>
               </div>
             </div>
           </div>
-          
         </div>
       </section>
       <Footer />
@@ -117,3 +138,27 @@ const Home = ({ showAlert, setShowAlert }) => {
 };
 
 export default Home;
+
+
+
+
+
+
+
+
+      {/* { <div style={{position:"relative"}}> <Alert variant="success" style={{zIndex:"3", textAlign:"center", position:"fixed", width:"100%"}}>
+            You have logged successfully
+          </Alert>      <IoMdClose style={{ position: "absolute"  ,right:"17px", bottom:"-25px" ,zIndex:"3", cursor:"pointer" }} onClick={()=> {setShowAlert(false)}} />
+ </div>
+ } */}
+
+
+
+
+{
+  /* <div className="h-btn d-flex justify-content-center  ">
+        <Link className="rounded-pill text-decoration-none main-btn" to="">
+          Choose a Test
+        </Link>
+      </div> */
+}

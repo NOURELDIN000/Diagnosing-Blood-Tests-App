@@ -1,6 +1,6 @@
-import './DoctorRegisteration.css'
+import "./DoctorRegisteration.css";
 import { Link } from "react-router-dom";
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import { IoPersonOutline } from "react-icons/io5";
@@ -13,9 +13,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { useNavigate } from "react-router";
 import axios from "axios";
 
-
-const DoctorRegisteration = ({setShowRegisterAlert}) => {
-
+const DoctorRegisteration = ({ setShowRegisterAlert }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,16 +31,12 @@ const DoctorRegisteration = ({setShowRegisterAlert}) => {
   const [Specialization, setSpecialization] = useState("");
   const [ClinicAddress, setClinicAddress] = useState("");
   const [clinicGovernorate, setClinicGovernorate] = useState("");
- 
-
- 
 
   const [accept, setAccept] = useState(false);
   const [emailError, setEmailError] = useState("");
 
   const [loading, setLoading] = useState(false);
 
-  
   const navigation = useNavigate();
 
   // const baseUrl = "https://bload-test.icanforsoftware.com/api/";
@@ -56,7 +50,7 @@ const DoctorRegisteration = ({setShowRegisterAlert}) => {
       name === "" ||
       password === "" ||
       password.length < 8 ||
-      passwordR !== password ||  
+      passwordR !== password ||
       email === "" ||
       email.indexOf("@") === -1 ||
       email.indexOf("@") === 0 ||
@@ -70,9 +64,8 @@ const DoctorRegisteration = ({setShowRegisterAlert}) => {
       identificationFront === "" ||
       identificationBack === "" ||
       Specialization === "" ||
-      picProfile === "" 
+      picProfile === ""
       // docSyndicateCard === ""
-
     ) {
       flag = false;
     } else {
@@ -82,7 +75,7 @@ const DoctorRegisteration = ({setShowRegisterAlert}) => {
     if (flag) {
       setLoading(true);
       try {
-         await axios
+        await axios
           .post(
             `${baseUrl}doctor/regitertion?api_password=AHMED$2024&name&phone&address&governorate`,
             {
@@ -95,10 +88,10 @@ const DoctorRegisteration = ({setShowRegisterAlert}) => {
               age: age,
               medical_specialization: Specialization,
               clinic_governorate: clinicGovernorate,
-              clinic_address: ClinicAddress ,
-              identification_card_face : identificationFront ,
-              identification_card_back : identificationBack ,
-              profile_pic : picProfile ,
+              clinic_address: ClinicAddress,
+              identification_card_face: identificationFront,
+              identification_card_back: identificationBack,
+              profile_pic: picProfile,
 
               // male: gender === "male" ? 1 : 0,
               // female: gender === "female" ? 1 : 0,
@@ -124,15 +117,24 @@ const DoctorRegisteration = ({setShowRegisterAlert}) => {
         <div className="mb-5">
           <h1>Create an account</h1>
 
-          <p>Just one step to get started. ( <Link className="patientformbtn" to={'/'}>Go To Patient Form</Link>)</p>
-      
+          <p>
+            Just one step to get started. ({" "}
+            <Link className="patientformbtn" to={"/"}>
+              Go To Patient Form
+            </Link>
+            )
+          </p>
         </div>
-
 
         <FloatingLabel
           className="mb-3 "
           controlId="floatingTextOne"
-          label={<> <IoPersonOutline style={{ marginRight: "5px" }} /> Full name </>}
+          label={
+            <>
+              {" "}
+              <IoPersonOutline style={{ marginRight: "5px" }} /> Full name{" "}
+            </>
+          }
         >
           <Form.Control
             className={accept && name === "" ? "is-invalid" : ""}
@@ -151,7 +153,11 @@ const DoctorRegisteration = ({setShowRegisterAlert}) => {
 
         <FloatingLabel
           controlId="floatingEmail"
-          label={<><MdAlternateEmail style={{ marginRight: "5px" }} /> E-mail</>}
+          label={
+            <>
+              <MdAlternateEmail style={{ marginRight: "5px" }} /> E-mail
+            </>
+          }
           className="mb-3"
         >
           <Form.Control
@@ -196,7 +202,11 @@ const DoctorRegisteration = ({setShowRegisterAlert}) => {
         <FloatingLabel
           className="mb-3"
           controlId="floatingPassword"
-          label={<><LuLock style={{ marginRight: "5px" }} /> Password</>}
+          label={
+            <>
+              <LuLock style={{ marginRight: "5px" }} /> Password
+            </>
+          }
         >
           <Form.Control
             className={
@@ -225,14 +235,15 @@ const DoctorRegisteration = ({setShowRegisterAlert}) => {
         <FloatingLabel
           className="mb-3"
           controlId="floatingPassword"
-          label={<><LuLock style={{ marginRight: "5px" }} />Confirm Password</>}
+          label={
+            <>
+              <LuLock style={{ marginRight: "5px" }} />
+              Confirm Password
+            </>
+          }
         >
           <Form.Control
-            className={
-              accept && (passwordR !== password ) 
-                ? "is-invalid"
-                : ""
-            }
+            className={accept && passwordR !== password ? "is-invalid" : ""}
             placeholder=""
             type="password"
             value={passwordR}
@@ -244,17 +255,21 @@ const DoctorRegisteration = ({setShowRegisterAlert}) => {
             <p className="mt-3 text-danger">confirm Password is Required.</p>
           )}
           {passwordR !== password && accept && (
-            <p className="mt-3 text-danger">confirm Password don't match Password.</p>
+            <p className="mt-3 text-danger">
+              confirm Password don't match Password.
+            </p>
           )}
-          
         </FloatingLabel>
-
-        
 
         <FloatingLabel
           className="mb-3 "
           controlId="floatingTextTwo"
-          label={<> <MdEmail style={{marginRight:"5px"}} />  Address </> }
+          label={
+            <>
+              {" "}
+              <MdEmail style={{ marginRight: "5px" }} /> Address{" "}
+            </>
+          }
         >
           <Form.Control
             className={accept && address === "" ? "is-invalid" : ""}
@@ -274,7 +289,12 @@ const DoctorRegisteration = ({setShowRegisterAlert}) => {
         <FloatingLabel
           className="mb-3 "
           controlId="floatingTextThree"
-          label={<> <IoPersonOutline style={{marginRight:"5px"}} />  Age </> }
+          label={
+            <>
+              {" "}
+              <IoPersonOutline style={{ marginRight: "5px" }} /> Age{" "}
+            </>
+          }
         >
           <Form.Control
             className={accept && age === "" ? "is-invalid" : ""}
@@ -294,7 +314,12 @@ const DoctorRegisteration = ({setShowRegisterAlert}) => {
         <FloatingLabel
           className="mb-3 "
           controlId="floatingTextFour"
-          label={<> <FaPhoneAlt style={{marginRight:"5px"}} />  Phone</> }
+          label={
+            <>
+              {" "}
+              <FaPhoneAlt style={{ marginRight: "5px" }} /> Phone
+            </>
+          }
         >
           <Form.Control
             className={accept && phone === "" ? "is-invalid" : ""}
@@ -309,7 +334,7 @@ const DoctorRegisteration = ({setShowRegisterAlert}) => {
           {phone === "" && accept && (
             <p className="mt-3 text-danger ">phone is Required.</p>
           )}
-          {phone.length < 11 && accept && phone !=="" &&(
+          {phone.length < 11 && accept && phone !== "" && (
             <p className="mt-3 text-danger "> phone must be 11 numbers.</p>
           )}
         </FloatingLabel>
@@ -343,9 +368,10 @@ const DoctorRegisteration = ({setShowRegisterAlert}) => {
           controlId="floatingTextFive"
           label="Governorate"
         >
-          
           <Form.Select
-            className={` ${accept && governorate=== "" ? "is-invalid" : "" }   mt-5`} 
+            className={` ${
+              accept && governorate === "" ? "is-invalid" : ""
+            }   mt-5`}
             value={governorate}
             onChange={(e) => {
               setGovernorate(e.target.value);
@@ -353,29 +379,29 @@ const DoctorRegisteration = ({setShowRegisterAlert}) => {
           >
             <option value="">Select Governorate</option>
             <option value="Cairo">Cairo</option>
-              <option value="Alexandria">Alexandria</option>
-              <option value="Damanhur">Damanhur</option>
-              <option value="Damietta">Damietta</option>
-              <option value="Asyut">Asyut</option>
-              <option value="Aswan">Aswan</option>
-              <option value="Sohag">Sohag</option>
-              <option value="Suef">Suef</option>
-              <option value="Hurghada">Hurghada</option>
-              <option value="Tanta">Tanta</option>
-              <option value="Mansoura">Mansoura</option>
-              <option value="Banha">Banha</option>
-              <option value="Minya">Minya</option>
-              <option value="Faiyum">Faiyum</option>
-              <option value="Zagazig">Zagazig</option>
-              <option value="Ismailia">Ismailia</option>
-              <option value="Suez">Suez</option>
-              <option value="Rosetta">Rosetta</option>
-              <option value="Qena">Qena</option>
-              <option value="Port Said">Port Said</option>
-              <option value="Mallawi">Mallawi</option>
-              <option value="Kafr El Sheikh">Kafr El Sheikh</option>
-              <option value="6th of October">6th of October</option>
-              <option value="Giza">Giza</option>
+            <option value="Alexandria">Alexandria</option>
+            <option value="Damanhur">Damanhur</option>
+            <option value="Damietta">Damietta</option>
+            <option value="Asyut">Asyut</option>
+            <option value="Aswan">Aswan</option>
+            <option value="Sohag">Sohag</option>
+            <option value="Suef">Suef</option>
+            <option value="Hurghada">Hurghada</option>
+            <option value="Tanta">Tanta</option>
+            <option value="Mansoura">Mansoura</option>
+            <option value="Banha">Banha</option>
+            <option value="Minya">Minya</option>
+            <option value="Faiyum">Faiyum</option>
+            <option value="Zagazig">Zagazig</option>
+            <option value="Ismailia">Ismailia</option>
+            <option value="Suez">Suez</option>
+            <option value="Rosetta">Rosetta</option>
+            <option value="Qena">Qena</option>
+            <option value="Port Said">Port Said</option>
+            <option value="Mallawi">Mallawi</option>
+            <option value="Kafr El Sheikh">Kafr El Sheikh</option>
+            <option value="6th of October">6th of October</option>
+            <option value="Giza">Giza</option>
           </Form.Select>
 
           {governorate === "" && accept && (
@@ -388,9 +414,10 @@ const DoctorRegisteration = ({setShowRegisterAlert}) => {
           controlId="floatingTextFive"
           label="Clinic Governorate"
         >
-          
           <Form.Select
-            className={` ${accept && clinicGovernorate=== "" ? "is-invalid" : "" }   mt-5`} 
+            className={` ${
+              accept && clinicGovernorate === "" ? "is-invalid" : ""
+            }   mt-5`}
             value={clinicGovernorate}
             onChange={(e) => {
               setClinicGovernorate(e.target.value);
@@ -398,29 +425,29 @@ const DoctorRegisteration = ({setShowRegisterAlert}) => {
           >
             <option value="">Select Governorate</option>
             <option value="Cairo">Cairo</option>
-              <option value="Alexandria">Alexandria</option>
-              <option value="Damanhur">Damanhur</option>
-              <option value="Damietta">Damietta</option>
-              <option value="Asyut">Asyut</option>
-              <option value="Aswan">Aswan</option>
-              <option value="Sohag">Sohag</option>
-              <option value="Suef">Suef</option>
-              <option value="Hurghada">Hurghada</option>
-              <option value="Tanta">Tanta</option>
-              <option value="Mansoura">Mansoura</option>
-              <option value="Banha">Banha</option>
-              <option value="Minya">Minya</option>
-              <option value="Faiyum">Faiyum</option>
-              <option value="Zagazig">Zagazig</option>
-              <option value="Ismailia">Ismailia</option>
-              <option value="Suez">Suez</option>
-              <option value="Rosetta">Rosetta</option>
-              <option value="Qena">Qena</option>
-              <option value="Port Said">Port Said</option>
-              <option value="Mallawi">Mallawi</option>
-              <option value="Kafr El Sheikh">Kafr El Sheikh</option>
-              <option value="6th of October">6th of October</option>
-              <option value="Giza">Giza</option>
+            <option value="Alexandria">Alexandria</option>
+            <option value="Damanhur">Damanhur</option>
+            <option value="Damietta">Damietta</option>
+            <option value="Asyut">Asyut</option>
+            <option value="Aswan">Aswan</option>
+            <option value="Sohag">Sohag</option>
+            <option value="Suef">Suef</option>
+            <option value="Hurghada">Hurghada</option>
+            <option value="Tanta">Tanta</option>
+            <option value="Mansoura">Mansoura</option>
+            <option value="Banha">Banha</option>
+            <option value="Minya">Minya</option>
+            <option value="Faiyum">Faiyum</option>
+            <option value="Zagazig">Zagazig</option>
+            <option value="Ismailia">Ismailia</option>
+            <option value="Suez">Suez</option>
+            <option value="Rosetta">Rosetta</option>
+            <option value="Qena">Qena</option>
+            <option value="Port Said">Port Said</option>
+            <option value="Mallawi">Mallawi</option>
+            <option value="Kafr El Sheikh">Kafr El Sheikh</option>
+            <option value="6th of October">6th of October</option>
+            <option value="Giza">Giza</option>
           </Form.Select>
 
           {clinicGovernorate === "" && accept && (
@@ -428,39 +455,46 @@ const DoctorRegisteration = ({setShowRegisterAlert}) => {
           )}
         </FloatingLabel>
 
-
-
-      
-<Form.Group controlId="formFile" className="mb-3 mt-4">
-        <Form.Label>Identification Card (Front)</Form.Label>
-        <Form.Control
-         className={accept && identificationFront === "" ? "is-invalid" : ""}
-         placeholder=""
-         type="file"
-         accept="image/*"
-         value={identificationFront}
-         onChange={(e) => {
-           setIdentificationFront(e.target.value);}}
+        <Form.Group controlId="formFile" className="mb-3 mt-4">
+          <Form.Label>Identification Card (Front)</Form.Label>
+          <Form.Control
+            className={accept && identificationFront === "" ? "is-invalid" : ""}
+            placeholder=""
+            type="file"
+            accept="image/*"
+            value={identificationFront}
+            onChange={(e) => {
+              setIdentificationFront(e.target.value);
+            }}
           />
-      </Form.Group>
+        </Form.Group>
 
-      {accept && identificationFront ==="" && (<p className="mt-3 text-danger">Identification Card (Front) is Required.</p>)}
+        {accept && identificationFront === "" && (
+          <p className="mt-3 text-danger">
+            Identification Card (Front) is Required.
+          </p>
+        )}
 
-      <Form.Group controlId="formFile" className="mb-3 mt-4">
-        <Form.Label>Identification Card (Back)</Form.Label>
-        <Form.Control
-         className={accept && identificationBack === "" ? "is-invalid" : ""}
-         placeholder=""
-         type="file"
-         accept="image/*"
-         value={identificationBack}
-         onChange={(e) => {
-           setIdentificationBack(e.target.value);}}
+        <Form.Group controlId="formFile" className="mb-3 mt-4">
+          <Form.Label>Identification Card (Back)</Form.Label>
+          <Form.Control
+            className={accept && identificationBack === "" ? "is-invalid" : ""}
+            placeholder=""
+            type="file"
+            accept="image/*"
+            value={identificationBack}
+            onChange={(e) => {
+              setIdentificationBack(e.target.value);
+            }}
           />
-      </Form.Group>
-      {accept && identificationBack ==="" && (<p className="mt-3 text-danger">Identification Card (Back) is Required.</p>)}
+        </Form.Group>
+        {accept && identificationBack === "" && (
+          <p className="mt-3 text-danger">
+            Identification Card (Back) is Required.
+          </p>
+        )}
 
-      {/* <Form.Group controlId="formFile" className="mb-3 mt-4">
+        {/* <Form.Group controlId="formFile" className="mb-3 mt-4">
         <Form.Label>Doctor Syndicate Card</Form.Label>
         <Form.Control
          className={accept && docSyndicateCard=== "" ? "is-invalid" : ""}
@@ -474,52 +508,58 @@ const DoctorRegisteration = ({setShowRegisterAlert}) => {
       </Form.Group>
       {accept && docSyndicateCard ==="" && (<p className="mt-3 text-danger">Doctor Syndicate Card is Required.</p>)} */}
 
-      <Form.Group controlId="formFile" className="mb-3 mt-4">
-        <Form.Label>Profile Picture</Form.Label>
-        <Form.Control
-         className={accept && picProfile === "" ? "is-invalid" : ""}
-         placeholder=""
-         type="file"
-         accept="image/*"
-         value={picProfile}
-         onChange={(e) => {
-           setPicProfile(e.target.value);}}
+        <Form.Group controlId="formFile" className="mb-3 mt-4">
+          <Form.Label>Profile Picture</Form.Label>
+          <Form.Control
+            className={accept && picProfile === "" ? "is-invalid" : ""}
+            placeholder=""
+            type="file"
+            accept="image/*"
+            value={picProfile}
+            onChange={(e) => {
+              setPicProfile(e.target.value);
+            }}
           />
-      </Form.Group>
+        </Form.Group>
 
-      {accept && picProfile ==="" && (<p className="mt-3 text-danger">Profile Picture is Required.</p>)}
+        {accept && picProfile === "" && (
+          <p className="mt-3 text-danger">Profile Picture is Required.</p>
+        )}
 
-
-
-      <FloatingLabel
+        <FloatingLabel
           className="mb-3 "
           controlId="floatingTextTen"
           label="Specialization"
         >
-          
           <Form.Select
-            className= {` ${accept && Specialization === "" ? "is-invalid" : "" }   mt-5`} 
+            className={` ${
+              accept && Specialization === "" ? "is-invalid" : ""
+            }   mt-5`}
             value={Specialization}
             onChange={(e) => {
               setSpecialization(e.target.value);
             }}
           >
             <option value="">Select a Specialization</option>
-            <option value="SPECIALIZED PHISICAN INTERNAL">SPECIALIZED PHISICAN INTERNAL</option>
-    
-             
+            <option value="SPECIALIZED PHISICAN INTERNAL">
+              SPECIALIZED PHISICAN INTERNAL
+            </option>
           </Form.Select>
 
           {Specialization === "" && accept && (
             <p className="mt-3 text-danger">Specialization is Required.</p>
           )}
         </FloatingLabel>
-           
 
         <FloatingLabel
           className="mb-3 "
           controlId="floatingTextFour"
-          label={<> <MdEmail style={{marginRight:"5px"}} />  Clinic Address </> }
+          label={
+            <>
+              {" "}
+              <MdEmail style={{ marginRight: "5px" }} /> Clinic Address{" "}
+            </>
+          }
         >
           <Form.Control
             className={accept && ClinicAddress === "" ? "is-invalid" : ""}
@@ -534,67 +574,7 @@ const DoctorRegisteration = ({setShowRegisterAlert}) => {
           {ClinicAddress === "" && accept && (
             <p className="mt-3 text-danger ">Clinic Address is Required.</p>
           )}
-          
         </FloatingLabel>
-
-
-
-
-
-
-
-
-{/* <div className="mb-3 " style={{ position: "relative" }}>
-  <label htmlFor="gender" className="form-label " style={{fontSize:"18px",marginLeft:'11px'}}>
-    Gender:
-  </label>
-  <div className="" style={{ position: "absolute", right: "0px", bottom:"-7px" }}>
-    
-
-    <Form.Check
-      inline
-      label="Male"
-      // type="radio"
-      name="gender"
-      id="male"
-      value="male"
-      checked={gender === "male"}
-      onChange={(e) => setGender(e.target.value)}
-      className="mb-3"
-    />
-    
-   
-
-    <Form.Check
-    // required
-      inline
-      label="Female"
-      // type="radio"
-      name="gender"
-      id="female"
-      value="female"
-      checked={gender === "female"}
-      onChange={(e) => setGender(e.target.value)}
-      // feedback="Gender is Required"
-      // feedbackType={ !gender  && accept ? "invalid" : ""}
-      // feedbackType="invalid"
-      className="mb-3"
-    />
-    
-  </div>
-
-  {gender === "" && accept && (
-    <p className="text-danger ">Gender is Required.</p>
-  )}
-</div> */}
-
-       
-
-
-
-
-
-
 
         <button className="btn" type="submit">
           {loading ? "creating an account..." : "Create an account"}
@@ -667,4 +647,4 @@ const DoctorRegisteration = ({setShowRegisterAlert}) => {
   );
 };
 
-export default DoctorRegisteration ;
+export default DoctorRegisteration;

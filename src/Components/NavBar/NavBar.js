@@ -6,7 +6,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { GoHomeFill } from "react-icons/go";
 import { IoPerson } from "react-icons/io5";
 import { BsChatFill } from "react-icons/bs";
-import { IoSettingsSharp } from "react-icons/io5";
+// import { IoSettingsSharp } from "react-icons/io5";
 
 import { Link } from "react-router-dom";
 
