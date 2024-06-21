@@ -5,6 +5,7 @@ import Table from "react-bootstrap/esm/Table";
 import Cookie from "cookie-universal";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const PatientDetails = () => {
   const [patientsDetails, setPatientsDetails] = useState({});
@@ -21,7 +22,8 @@ const PatientDetails = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(
+      try{
+      const response = await axios.get(
         `${baseUrl}test/info/${patientid}?api_password=AHMED$2024`,
         {
           headers: {
@@ -30,10 +32,13 @@ const PatientDetails = () => {
         }
       );
 
-      const data = await response.json();
+      const data = response.data;
       console.log(data);
       setPatientsDetails(data);
-    };
+    } catch(err){
+      console.error("error", err)
+    }
+  }
 
     fetchData();
   }, [patientid, token]);

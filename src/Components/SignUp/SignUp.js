@@ -39,7 +39,7 @@ const SignUp = ({ setShowRegisterAlert }) => {
   const baseUrl = "http://127.0.0.1:8000/api/";
 
   async function Submit(e) {
-    let flag = true;
+    let isValid = true;
     e.preventDefault();
     setAccept(true);
     if (
@@ -56,12 +56,12 @@ const SignUp = ({ setShowRegisterAlert }) => {
       governorate === "" ||
       address === ""
     ) {
-      flag = false;
+      isValid = false;
     } else {
-      flag = true;
+      isValid = true;
     }
 
-    if (flag) {
+    if (isValid) {
       setLoading(true);
       try {
         await axios

@@ -63,7 +63,7 @@ const Profile = () => {
         },
       }
     );
-    console.log(res);
+  
     setLoading(false);
     cookie.remove("Bearer");
     navigate("/");

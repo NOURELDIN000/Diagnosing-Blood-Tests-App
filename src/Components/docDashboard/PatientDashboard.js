@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import DocNavBar from "../DocNavBar/DocNavBar";
 import "./docDashboard.css";
 import Table from "react-bootstrap/Table";
-
+import axios  from "axios";
 import React, { useEffect, useState } from "react";
 
 import Cookie from "cookie-universal";
@@ -21,7 +21,8 @@ const PatientDashboard = () => {
 
   useEffect(() => {
     const fetchData = async (id) => {
-      const response = await fetch(
+      try{
+      const response = await axios.get(
         `${baseUrl}Doctor/Dashboard?api_password=AHMED$2024&id=${id}`,
         {
           headers: {
@@ -30,11 +31,14 @@ const PatientDashboard = () => {
         }
       );
 
-      const data = await response.json();
+      const data = response.data;
       console.log(data.doctor);
       console.log(data.patients);
       setPatients(data.patients);
-    };
+    } catch(err){
+        console.error("Error Fetching Data", err)
+    }
+  }
 
     fetchData();
   }, [token]);

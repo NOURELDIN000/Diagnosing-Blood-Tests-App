@@ -7,8 +7,9 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { Link } from "react-router-dom";
 import { BsChatFill } from "react-icons/bs";
-import { IoPerson, IoSettingsSharp } from "react-icons/io5";
+import { IoPerson } from "react-icons/io5";
 import { GoHomeFill } from "react-icons/go";
+import axios from "axios";
 // import { RiDeleteBin6Line } from "react-icons/ri";
 // import moment from "moment-timezone"; // Import moment-timezone
 
@@ -24,42 +25,26 @@ const UploadedTests = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(
-        `${baseUrl}Profile?api_password=AHMED$2024`,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
+      try {
+        const response = await axios.get(
+          `${baseUrl}Profile?api_password=AHMED$2024`,
+          {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          }
+        );
 
-      const data = await response.json();
-      console.log(data);
-      setUploadedTest(data);
+        const data = response.data;
+        console.log(data);
+        setUploadedTest(data);
+      } catch (err) {
+        console.error("error", err);
+      }
     };
 
     fetchData();
   }, [token]);
-
-  // const handleDelete = async (testId) => {
-  //   const response = await fetch(`${baseUrl}DeleteTest/${testId}`, {
-  //     method: 'DELETE',
-  //     headers: {
-  //       Authorization: "Bearer " + token,
-  //       'Content-Type': 'application/json'
-  //     },
-  //   });
-
-  //   if (response.ok) {
-  //     const updatedTests = uploadedTest.user_tests.filter(test => test.id !== testId);
-  //     setUploadedTest({
-  //       ...uploadedTest,
-  //       user_tests: updatedTests,
-  //     });
-  //   } else {
-  //     console.error('Failed to delete the test');
-  //   }
-  // };
 
   return (
     <div className="uploaded-dashboard">
@@ -181,23 +166,3 @@ const UploadedTests = () => {
 };
 
 export default UploadedTests;
-
-{
-  /* <tr>
-          <td>{uploadedTest.user_Data?.id}</td>
-          <td>{uploadedTest.user_Data?.name}</td>
-          <td>{uploadedTest.user_Data?.age}</td>
-          <td>{uploadedTest.user_Data?.female === 1 ? "Female" : "Male"}</td>
-         
-          <td> <img  src='/images/1.jpg'   alt="Test_image" width="100px" height="100px" /></td>
-          <td>{uploadedTest.user_tests?.[0]?.date}</td>
-          <td>{uploadedTest.user_tests?.[0]?.test_type}</td>
-          <td>{uploadedTest.user_tests?.[0]?.test_result}</td>
-          <td>{uploadedTest.user_tests?.[0]?.time}</td>
-          
-        
-        </tr>
-
-      
-         */
-}

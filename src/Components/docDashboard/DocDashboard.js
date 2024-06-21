@@ -4,7 +4,7 @@ import "./docDashboard.css";
 import Table from "react-bootstrap/Table";
 
 import React, { useEffect, useState } from "react";
-// import axios from 'axios';
+import axios from "axios";
 import Cookie from "cookie-universal";
 import Alert from "react-bootstrap/Alert";
 import { IoMdClose } from "react-icons/io";
@@ -21,23 +21,25 @@ const DocDashboard = ({ showAlert, setShowAlert }) => {
 
   const token = cookie.get("DocBearer");
 
- 
-
   useEffect(() => {
     const fetchData = async (id) => {
-      const response = await fetch(
-        `${baseUrl}Doctor/Dashboard?api_password=AHMED$2024&id=${id}`,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
+      try {
+        const response = await axios.get(
+          `${baseUrl}Doctor/Dashboard?api_password=AHMED$2024&id=${id}`,
+          {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          }
+        );
 
-      const data = await response.json();
-      console.log(data.doctor);
-      console.log(data.patients);
-      setDoctors(data.doctor);
+        const data = response.data;
+        console.log(data.doctor);
+        console.log(data.patients);
+        setDoctors(data.doctor);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     };
 
     fetchData();
@@ -45,25 +47,24 @@ const DocDashboard = ({ showAlert, setShowAlert }) => {
 
   useEffect(() => {
     const fetchPatientId = async (id) => {
-      const res = await fetch(
-        `${baseUrl}test/info/${id}?api_password=AHMED$2024`,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
+      try {
+        const response = await axios.get(
+          `${baseUrl}test/info/${id}?api_password=AHMED$2024`,
+          {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          }
+        );
 
-      const data = await res.json();
-      console.log(data);
-      setPatientsDetails(data);
-      // setDoctors(data)
-      // let doc_id = data.doc_id?.user_id
-      // console.log(doc_id)
+        const data = response.data;
+        console.log(data);
+        setPatientsDetails(data);
+      } catch (error) {
+        console.error("Error fetching patient data:", error);
+      }
     };
-    // let doc_id = patientsDetails.id
-    // let docId = patientsDetails.doc_id?.user_id
-    // console.log(docId)
+
     fetchPatientId(29);
   }, [token]);
 
@@ -140,18 +141,15 @@ export default DocDashboard;
 
 //        )})} */}
 
+// useEffect( ()=>{
+//   let res =  axios.get(`${baseUrl}Doctor/Dashboard?api_password=AHMED$2024`, {
 
-
-
- // useEffect( ()=>{
-  //   let res =  axios.get(`${baseUrl}Doctor/Dashboard?api_password=AHMED$2024`, {
-
-  //   headers: {
-  //     Authorization: 'Bearer ' + token
-  //   }
-  // // eslint-disable-next-line no-use-before-define
-  // }).then((doctors)=> {
-  //   console.log(doctors.patients)
-  //   setDoctors(doctors.patients)
-  // })
-  // },[])
+//   headers: {
+//     Authorization: 'Bearer ' + token
+//   }
+// // eslint-disable-next-line no-use-before-define
+// }).then((doctors)=> {
+//   console.log(doctors.patients)
+//   setDoctors(doctors.patients)
+// })
+// },[])
